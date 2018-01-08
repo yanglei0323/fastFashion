@@ -1,5 +1,29 @@
 <!--pages/index/index.wxml-->
 <view class="container">
+    <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
     
-    
+    <view class="store-md">
+    	<text class="store-md-title strong">附近门店</text>
+    	<text class="store-md-msg">优质门店为您服务</text>
+    </view>
+
+    <!-- 门店列表 -->
+    <view>
+        <block wx:for="{{storeList}}" wx:key="index">
+        	<view class="store-list">
+            	<image src="{{item.image}}" class="store-img"></image>
+            	<text class="store-title strong">{{item.title}}</text>
+            	<view class="store-md-msg">
+            		<text>{{item.location}}</text>
+            		<text>{{item.distance}}</text>
+            	</view>
+        	</view>
+        </block>
+    </view>
 </view>

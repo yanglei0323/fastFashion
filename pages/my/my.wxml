@@ -1,5 +1,38 @@
 <!--pages/my/my.wxml-->
 <view class="container">
-    
-    
+	<view class="header">
+        <image src="{{thumb}}" class="thumb"></image>
+        <text class="nickname strong">{{nickname}}</text>
+        <text class="about">距离您上次服务已经<text class="time">8</text>天了~</text>
+    </view>
+    <!-- 功能列表 -->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <navigator url="">优惠券</navigator>
+        </view>
+    </view>
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <navigator url="">历史评价</navigator>
+        </view>
+    </view>
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <navigator url="">投诉建议</navigator>
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage">
+            <navigator url="">个人设置</navigator>
+        </view>
+    </view>
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <navigator url="">关于快时尚</navigator>
+        </view>
+    </view>
+    <view class="contact-us">
+    	<text class="light">客服电话：010-85611588</text>
+    	<text>客服时间：09:00-21:00 周一至周五</text>
+    </view>
 </view>

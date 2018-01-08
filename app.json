@@ -9,13 +9,14 @@
     "navigationBarTextStyle": "black",
     "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh":true,
+    "onReachBottomDistance":50
 
   },
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#f17786",
-    "borderStyle": "black",
+    "borderStyle": "#b2b2b2",
     "backgroundColor": "#ffffff",
     "list": [
       {

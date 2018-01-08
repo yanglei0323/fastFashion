@@ -1,0 +1,27 @@
+.swiper-box{
+	width:710rpx;
+	height:375rpx;
+	margin:20rpx auto 0;
+}
+.slide-image{
+	width:100%;
+	height:375rpx;
+}
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal{
+     margin-bottom: 2rpx;
+}
+.swiper-box .wx-swiper-dot{
+    width:20rpx;
+    display: inline-flex;
+    height: 20rpx;
+    justify-content:space-between;
+}
+.swiper-box .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1; 
+    background: #fff;
+    border-radius: 50%;
+}
+.swiper-box .wx-swiper-dot-active::before{
+    background:#f6838d;   
+}

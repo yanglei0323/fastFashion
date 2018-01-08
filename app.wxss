@@ -2,5 +2,6 @@
 
 /* 将样式模块化 */
 @import './styles/reset.wxss';
+@import './styles/swiper.wxss';
 
 
