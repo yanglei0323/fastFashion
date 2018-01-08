@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/orders/orders",
+    "pages/my/my"
+  ],
+  "window": {
+    "navigationBarTitleText": "YUE时尚-臻选您的美丽",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "enablePullDownRefresh":true
+
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#f17786",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "iconPath": "assets/icons/orders.png",
+        "selectedIconPath": "assets/icons/orders-active.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "assets/icons/my.png",
+        "selectedIconPath": "assets/icons/my-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
