@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/evaluate/evaluate.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -8,25 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    thumb:'',
-    nickname:''
+    evaList: [
+      {id:1,title:'东方广场店',distance:'195M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'},
+      {id:2,title:'朝外悠唐店',distance:'325M',location:'北京市朝阳区悠唐广场',image:'../../assets/images/slider3.png'},
+      {id:3,title:'工体世贸店',distance:'765M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'}
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var that = this;
-    /**
-     * 获取用户信息
-     */
-    wx.getUserInfo({
-      success: function(res){
-        that.setData({
-          thumb: res.userInfo.avatarUrl,
-          nickname: res.userInfo.nickName
-        })
-      }
-    })
+
+    wx.setNavigationBarTitle({
+      title: 'YUE时尚-历史评价'
+    });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -63,12 +59,26 @@ Page({
     setTimeout(function(){
         wx.stopPullDownRefresh();
     },1500)
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    wx.showLoading({
+      title: '加载中',
+      success: function (){
+        setTimeout(function(){
+          wx.hideLoading()
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 1500
+          })
+        },1500)
+      }
+    })
 
   },
 
@@ -83,21 +93,5 @@ Page({
       imageUrl: '',
 
     }
-  },
-  makecall: function (){
-    wx.showActionSheet({
-      itemList: ['010-85611588', '呼叫'],
-      itemColor:'#333',
-      success: function(res) {
-        if(res.tapIndex == 1){
-            wx.makePhoneCall({
-              phoneNumber: '01085611588' 
-            })
-        }
-      },
-      fail: function(res) {
-        // console.log(res.errMsg)
-      }
-    })
   }
 })

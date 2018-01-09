@@ -1,0 +1,7 @@
+<!--pages/makecall/makecall.wxml-->
+<template name="tocall">
+	<view class="contact-us">
+		<text class="light">客服电话：010-85611588</text>
+		<text>客服时间：09:00-21:00 周一至周五</text>
+	</view>
+</template>

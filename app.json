@@ -2,7 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/orders/orders",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/coupon/coupon",
+    "pages/makecall/makecall",
+    "pages/setup/setup",
+    "pages/setupSex/setupSex",
+    "pages/setupAge/setupAge",
+    "pages/setupTel/setupTel",
+    "pages/evaluate/evaluate"
   ],
   "window": {
     "navigationBarTitleText": "YUE时尚-臻选您的美丽",

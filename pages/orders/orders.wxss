@@ -88,15 +88,16 @@ swiper-item{
 }
 .project-footer button{
 	width:176rpx;
-	height:60rpx;
 	font-size:28rpx;
-	line-height:60rpx;
 	text-align:center;
-	border-radius:8rpx;
+	border-radius:10rpx;
 	float:right;
-	margin:30rpx 20rpx 30rpx 0;
-	border:1rpx solid #f6838d;
+	margin:24rpx 20rpx 24rpx 0;
 }
+button::after {
+	border:1px solid #f6838d;
+}
+
 .btn-add{
 	background:#f6838d;
 	color:#fff;margin-right:30rpx;
@@ -109,4 +110,7 @@ swiper-item{
 	color:#fff;
 	background:#999;
 	border:1rpx solid #999 !important;
+}
+.btn-refund::after {
+	border:1rpx solid #999 ;
 }

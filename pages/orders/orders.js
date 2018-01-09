@@ -1,5 +1,7 @@
 // pages/orders/orders.js
 const app = getApp();
+const bsurl = require('../../util/bsurl.js');
+const imgpath = require('../../util/imgpath.js');
 Page({
 
   /**

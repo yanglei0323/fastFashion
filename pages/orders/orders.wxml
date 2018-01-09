@@ -16,7 +16,7 @@
 		            <text class="project-status">待服务</text>
 			    </view>
 			    <view class="project-cont">
-			    	<image src="../../assets/images/slider1.png"></image>
+			    	<image src="../../assets/images/store.png"></image>
 			    	<view class="project-msg">
 			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
 			    		<text class="store-text">服务门店：工体店</text>
@@ -42,7 +42,7 @@
 		            <text class="project-status">待服务</text>
 			    </view>
 			    <view class="project-cont">
-			    	<image src="../../assets/images/slider1.png"></image>
+			    	<image src="../../assets/images/store.png"></image>
 			    	<view class="project-msg">
 			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
 			    		<text class="store-text">服务门店：工体店</text>
@@ -71,7 +71,7 @@
 		            <text class="project-status">待服务</text>
 			    </view>
 			    <view class="project-cont">
-			    	<image src="../../assets/images/slider1.png"></image>
+			    	<image src="../../assets/images/store.png"></image>
 			    	<view class="project-msg">
 			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
 			    		<text class="store-text">服务门店：工体店</text>
@@ -100,7 +100,7 @@
 		            <text class="project-status">待评价</text>
 			    </view>
 			    <view class="project-cont">
-			    	<image src="../../assets/images/slider1.png"></image>
+			    	<image src="../../assets/images/store.png"></image>
 			    	<view class="project-msg">
 			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
 			    		<text class="store-text">服务门店：工体店</text>
@@ -128,7 +128,7 @@
 		            <text class="project-status">已退款</text>
 			    </view>
 			    <view class="project-cont">
-			    	<image src="../../assets/images/slider1.png"></image>
+			    	<image src="../../assets/images/store.png"></image>
 			    	<view class="project-msg">
 			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
 			    		<text class="store-text">服务门店：工体店</text>

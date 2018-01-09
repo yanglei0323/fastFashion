@@ -1,0 +1,34 @@
+<!--pages/setupAge/setupAge.wxml-->
+<view class="container">
+    <view class="header">
+        <text class="nickname strong">修改年龄</text>
+        <text class="about">请选择年龄范围，以便我们更好的为您服务</text>
+    </view>
+    <view class="ec-10"></view>
+    <!-- 功能列表 -->
+    <view class="cell-box">
+        <view class="cell-manage" bindtap="chooseAge" data-id="1">
+            <view>70后</view>
+            <icon type="{{age == 1 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage" bindtap="chooseAge" data-id="2">
+            <view>80后</view>
+            <icon type="{{age == 2 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage" bindtap="chooseAge" data-id="3">
+            <view>90后</view>
+            <icon type="{{age == 3 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage" bindtap="chooseAge" data-id="4">
+            <view>00后</view>
+            <icon type="{{age == 4 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+        </view>
+    </view>
+    <view class="submit-btn" bindtap="goBack">确定</view>
+</view>

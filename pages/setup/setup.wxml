@@ -1,0 +1,29 @@
+<!--pages/setup/setup.wxml-->
+<import src="../makecall/makecall.wxml" />
+<view class="container">
+	<view class="header">
+        <image src="{{thumb}}" class="thumb"></image>
+        <text class="nickname strong">{{nickname}}</text>
+        <text class="about">距离您上次服务已经<text class="time">8</text>天了~</text>
+    </view>
+    <!-- 功能列表 -->
+    <view class="cell-box mt-10">
+        <navigator class="cell-manage" url="../setupSex/setupSex" hover-class="navigator-hover">
+            <view>性别</view>
+            <text class="cell-text">男</text>
+        </navigator>
+    </view>
+    <view class="cell-box">
+        <navigator class="cell-manage" url="../setupAge/setupAge" hover-class="navigator-hover">
+            <view>年龄</view>
+            <text class="cell-text">12</text>
+        </navigator>
+    </view>
+    <view class="cell-box">
+        <navigator class="cell-manage" url="../setupTel/setupTel" hover-class="navigator-hover">
+            <view>更换手机号</view>
+            <text class="cell-text">13888888888</text>
+        </navigator>
+    </view>
+    <template is="tocall" />
+</view>

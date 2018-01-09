@@ -1,0 +1,20 @@
+<!--pages/setupTel/setupTel.wxml-->
+<view class="container">
+	<view class="header">
+        <text class="nickname strong">更换手机号</text>
+        <text class="about">请填写手机号，以便我们更好的为您服务</text>
+    </view>
+    <view class="ec-10"></view>
+    <view class="cell-box">
+        <view class="cell-manage">
+            <input placeholder="请输入您新的手机号" maxlength="11" type="number" placeholder-class="placeholder"/>
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage">
+            <input placeholder="请输入验证码" maxlength="6" type="number" placeholder-class="placeholder"/>
+            <view class="code">获取验证码</view>
+        </view>
+    </view>
+    <view class="submit-btn" bindtap="updateTel">确定</view>
+</view>

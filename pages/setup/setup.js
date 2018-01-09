@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/setup/setup.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -83,21 +83,5 @@ Page({
       imageUrl: '',
 
     }
-  },
-  makecall: function (){
-    wx.showActionSheet({
-      itemList: ['010-85611588', '呼叫'],
-      itemColor:'#333',
-      success: function(res) {
-        if(res.tapIndex == 1){
-            wx.makePhoneCall({
-              phoneNumber: '01085611588' 
-            })
-        }
-      },
-      fail: function(res) {
-        // console.log(res.errMsg)
-      }
-    })
   }
 })

@@ -1,0 +1,21 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="container">
+	<block wx:for="{{couponList}}" wx:key="index">
+		<view class="coupon-cont">
+			<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+			<view class="coupon-left">
+				<text>{{item.title}}</text>
+				<text class="coupon-cond">{{item.condition}}</text>
+			</view>
+			<view class="coupon-right" data-id="{{item.id}}" bindtap="chooseCoupon">
+				<view>
+					<text class="coupon-lab">悦券</text>
+					<text>全品类（特例商品除外）</text>
+				</view>
+				<text class="coupon-type light">{{item.type}}</text>
+				<text class="coupon-time">{{item.time}}</text>
+			</view>
+			<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{item.select}}" />
+		</view>
+	</block>
+</view>

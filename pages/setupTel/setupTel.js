@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/setupTel/setupTel.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -8,25 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    thumb:'',
-    nickname:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var that = this;
-    /**
-     * 获取用户信息
-     */
-    wx.getUserInfo({
-      success: function(res){
-        that.setData({
-          thumb: res.userInfo.avatarUrl,
-          nickname: res.userInfo.nickName
-        })
-      }
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -84,20 +70,7 @@ Page({
 
     }
   },
-  makecall: function (){
-    wx.showActionSheet({
-      itemList: ['010-85611588', '呼叫'],
-      itemColor:'#333',
-      success: function(res) {
-        if(res.tapIndex == 1){
-            wx.makePhoneCall({
-              phoneNumber: '01085611588' 
-            })
-        }
-      },
-      fail: function(res) {
-        // console.log(res.errMsg)
-      }
-    })
+  updateTel: function (){
+    wx.navigateBack();
   }
 })

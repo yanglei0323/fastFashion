@@ -1,4 +1,5 @@
 <!--pages/my/my.wxml-->
+<import src="../makecall/makecall.wxml" />
 <view class="container">
 	<view class="header">
         <image src="{{thumb}}" class="thumb"></image>
@@ -8,31 +9,28 @@
     <!-- 功能列表 -->
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="">优惠券</navigator>
+            <navigator url="../coupon/coupon" hover-class="navigator-hover">优惠券</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="">历史评价</navigator>
+            <navigator url="../evaluate/evaluate" hover-class="navigator-hover">历史评价</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="">投诉建议</navigator>
+            <view bindtap="makecall">投诉建议</view>
         </view>
     </view>
     <view class="cell-box">
         <view class="cell-manage">
-            <navigator url="">个人设置</navigator>
+            <navigator url="../setup/setup" hover-class="navigator-hover">个人设置</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="">关于快时尚</navigator>
+            <view>关于快时尚</view>
         </view>
     </view>
-    <view class="contact-us">
-    	<text class="light">客服电话：010-85611588</text>
-    	<text>客服时间：09:00-21:00 周一至周五</text>
-    </view>
+    <template is="tocall" />
 </view>
