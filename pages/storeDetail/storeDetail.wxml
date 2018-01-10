@@ -1,0 +1,139 @@
+<!--pages/storeDetail/storeDetail.wxml-->
+<import src="../makecall/makecall.wxml" />
+<view class="container">
+    <view class="bg-fff">
+        <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="sd-title bg-fff">
+        <text class="sd-name strong">东方广场店</text>
+        <text class="sd-location">北京市东城区东方广场平台PW31-07</text>
+        <text class="sd-distance">3M</text>
+        <text class="sd-navigation light" bindtap="toNavigation">导 航</text>
+    </view>
+
+    <!--服务项目-->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <view class="strong">请选择服务</view>
+        </view>
+    </view>
+    <view class="service-box bg-fff">
+        <text class="service-name ft-24 color-333">YUE洗发造型</text>
+        <text class="service-num ft-20 color-999">订单数量：2345</text>
+        <view class="service-price">
+            <text class="service-original ft-20 color-999">￥79.0</text>
+            <text class="service-current ft-24 color-333">￥58.8</text>
+        </view>
+        <text class="service-label ft-20 light">已选该服务</text>
+    </view>
+    <view class="service-box bg-fff">
+        <text class="service-name ft-24 color-333">卡诗深层护理</text>
+        <text class="service-num ft-20 color-999">订单数量：2345</text>
+        <view class="service-price">
+            <text class="service-original ft-20 color-999">￥79.0</text>
+            <text class="service-current ft-24 color-333">￥58.8</text>
+        </view>
+        <text class="service-label ft-20 light">已选该服务</text>
+    </view>
+    <view class="service-box bg-fff">
+        <text class="service-name ft-24 color-333">头皮SPA</text>
+        <text class="service-num ft-20 color-999">订单数量：2345</text>
+        <view class="service-price">
+            <text class="service-original ft-20 color-999">￥79.0</text>
+            <text class="service-current ft-24 color-333">￥58.8</text>
+        </view>
+        <text class="service-label ft-20 light">已选该服务</text>
+    </view>
+
+    <!--服务评价-->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <view class="strong">服务评价（285）</view>
+        </view>
+    </view>
+    <view class="eval-cont bg-fff">
+        <image src="../../assets/images/store.png" class="head-img"></image>
+        <view class="eval-msg">
+            <text class="msg-name">客户昵称</text>
+            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
+            <text class="msg-item">服务项目：YUE洗发造型</text>
+            <text class="msg-name mt-60">造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他</text>
+            <view class="eval-all light ft-24" bindtap="toEvalAll">查看全部评价</view>
+        </view>
+        <text class="msg-item eval-time">2018.01.09 19:44</text>
+    </view>
+
+    <!--门店信息-->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <view class="strong">门店信息</view>
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage paddingLeft-74">
+            <image src="../../assets/icons/time.png" class="store-icon"></image>
+            <text class="store-info color-666">10:00-21:00 周一至周日</text>
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage paddingLeft-74">
+            <image src="../../assets/icons/time.png" class="store-icon"></image>
+            <text class="store-info color-666">10:00-21:00 北京市东城区东方广场平台PW31-07</text>
+        </view>
+    </view>
+    <view class="cell-box">
+        <view class="cell-manage paddingLeft-74">
+            <image src="../../assets/icons/time.png" class="store-icon"></image>
+            <text class="store-info color-666">地铁：乘坐1号线王府井站A口出，乘坐1号线王府井站A口出乘坐1号线王府井站A口出</text>
+        </view>
+    </view>
+
+    <template is="tocall" />
+
+    <!--购物车-->
+    <view class="mask" wx:if="{{hasMask}}" bindtap="hideMask">
+        <view class="carts-box bg-ec" catchtap="stopProp">
+            <view class="carts-head color-666">
+                <text>购物车</text>
+                <view>
+                    <image src="../../assets/icons/delet.png" class="delet-icon"></image>
+                    <text>清空购物车</text>
+                </view>
+            </view>
+            <view class="carts-item bg-fff color-333">
+                <text>YUE洗发造型</text>
+                <view class="carts-right">
+                    <text class="sitem-price">￥58.8</text>
+                    <image class="sitem-delet" src="../../assets/icons/jian.png"></image>
+                    <text class="sitem-num color-999">1</text>
+                    <image class="sitem-add" src="../../assets/icons/jia.png"></image>
+                </view>
+            </view>
+            <view class="carts-item bg-fff color-333">
+                <text>头皮SPA</text>
+                <view class="carts-right">
+                    <text class="sitem-price">￥58.8</text>
+                    <image class="sitem-delet" src="../../assets/icons/jian.png"></image>
+                    <text class="sitem-num color-999">99</text>
+                    <image class="sitem-add" src="../../assets/icons/jia.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--底部-->
+    <view class="fixedbtn-box bg-fff"> 
+        <view class="fixedbtn-left light" bindtap="showCart">
+            <image src="../../assets/icons/carts.png" class="carts-icon"></image>
+            <text class="cart-label ft-20 bg-light">9</text>
+            <text class="carts-price">￥117.6</text>
+        </view>
+        <view class="fixedbtn-right bg-light">去约时间</view>
+    </view>
+</view>

@@ -1,0 +1,261 @@
+@import '../../styles/mycell.wxss';
+.cell-box .cell-manage::after{
+    display:none;
+}
+.cell-box .cell-manage{
+    padding-left:20rpx;
+}
+.mt-10{
+    margin-top:10rpx;
+}
+.container{
+    background:#ececec;
+    padding-bottom:200rpx;
+}
+.bg-fff{
+    background:#fff;
+}
+.sd-title{
+    height:160rpx;
+    position:relative;
+    color:#999;
+    font-size:20rpx;
+    line-height:20rpx;
+    display:flex;
+    flex-direction:column;
+    padding:0 20rpx;
+}
+.sd-name{
+    color:#333;
+    font-size:28rpx;
+    line-height:28rpx;
+    margin:60rpx 0 20rpx 0;
+}
+.sd-distance{
+    position:absolute;
+    top:65rpx;
+    right:20rpx;
+}
+.sd-navigation{
+    position:absolute;
+    bottom:30rpx;
+    right:20rpx;
+}
+
+.service-box{
+    position:relative;
+    height:132rpx;
+    border-bottom:1rpx solid #ececec;
+    display:flex;
+    flex-direction:column;
+    padding:0 20rpx;
+}
+.service-name{
+    margin-top:36rpx;
+}
+.service-num{
+    margin-top:20rpx;
+}
+.service-price{
+    position:absolute;
+    top:0;
+    right:50rpx;
+}
+.service-original{
+    line-height:132rpx;
+    text-decoration:line-through; 
+}
+.service-current{
+    line-height:132rpx;
+}
+.service-box::after{
+    position: absolute;
+    right: 25rpx;
+    top: 58rpx;
+    content: '';
+    width: 18rpx;
+    height: 18rpx;
+    border-top: 3rpx solid #7f7f7f;
+    border-right: 3rpx solid #7f7f7f;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.service-label{
+    position:absolute;
+    top:15rpx;
+    right:20rpx;
+}
+
+.eval-cont{
+    width:100%;
+    min-height:302rpx;
+    border-bottom:1rpx solid #ececec;
+    position:relative;
+}
+.head-img{
+    position:absolute;
+    left:20rpx;
+    top:30rpx;
+    width:60rpx;
+    height:60rpx;
+    border-radius:50%;
+}
+.eval-msg{
+    padding:50rpx 20rpx 30rpx 100rpx;
+    display:flex;
+    flex-direction:column;
+}
+.msg-name{
+    font-size:24rpx;
+    color:#333;
+    line-height:24rpx;
+}
+.msg-item{
+    font-size:20rpx;
+    color:#999;
+    line-height:20rpx;
+    margin-top:20rpx;
+}
+.mt-60{
+    margin-top:60rpx;
+}
+.eval-star{
+    color:#f6838d;
+}
+.eval-time{
+    position:absolute;
+    right:20rpx;
+    top:30rpx;
+}
+.eval-all{
+    text-align:center;
+    margin-top:80rpx;
+    padding-right:80rpx;
+}
+
+.store-info{
+    font-size:24rpx;
+}
+.store-icon{
+    width:34rpx;
+    height:34rpx;
+    position:absolute;
+    left:20rpx;
+    top:27rpx;
+}
+.paddingLeft-74{
+    padding-left:74rpx !important;
+}
+.fixedbtn-box{
+    width:100%;
+    height:88rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+    line-height:88rpx;
+    display:flex;
+    justify-content:space-between;
+}
+.fixedbtn-left{
+    position:relative;
+    width:49%;
+    font-size:24rpx;
+}
+.carts-price{
+    margin-left:150rpx;
+}
+.carts-icon{
+    width:44rpx;
+    height:33rpx;
+    position:absolute;
+    left:60rpx;
+    top:28rpx;
+}
+.cart-label{
+    display:inline-block;
+    position:absolute;
+    left:92rpx;
+    top:14rpx;
+    color:#fff;
+    border-radius:50%;
+    padding:.15em .4em;
+    min-width:8px;
+    line-height:1.2;
+    text-align:center;
+    font-size:10px;
+    vertical-align:middle;
+}
+.fixedbtn-right{
+    font-size:28rpx;
+    text-align:center;
+    color:#fff;
+    width:50%;
+}
+.mask{
+    width:100%;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    background:rgba(0,0,0,0.33);
+}
+.carts-box{
+    width:100%;
+    position:fixed;
+    left:0;
+    bottom:0;
+    padding-bottom:128rpx;
+}
+.carts-head{
+    padding:0 20rpx;
+    font-size:20rpx;
+    height:38rpx;
+    line-height:38rpx;
+    display:flex;
+    justify-content:space-between;
+}
+.carts-item{
+    height:88rpx;
+    line-height:88rpx;
+    font-size:24rpx;
+    display:flex;
+    justify-content:space-between;
+    padding:0 20rpx;
+    border-bottom:1rpx solid #ececec;
+}
+.carts-right{
+    width:226rpx;
+    position:relative;
+    overflow:hidden;
+}
+.sitem-delet{
+    display:inline-block;
+    width:24rpx;
+    height:24rpx;
+    position:absolute;
+    top:32rpx;
+    right:64rpx;
+}
+.sitem-num{
+    display:inline-block;
+    width:40rpx;
+    text-align:center;
+    line-height:88rpx;
+    overflow:hidden;
+    position:absolute;
+    top:0;
+    right:24rpx;
+}
+.sitem-add{
+    display:inline-block;
+    width:24rpx;
+    height:24rpx;
+    position:absolute;
+    top:32rpx;
+    right:0;
+}
+.delet-icon{
+    width:20rpx;
+    height:20rpx;
+    margin-right:10rpx;
+}

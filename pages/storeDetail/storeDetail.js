@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/storeDetail/storeDetail.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    storeId:1,
+    hasMask:false,
     imgUrls: [
       '../../assets/images/slider1.png',
       '../../assets/images/slider2.png',
@@ -27,7 +29,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // console.log(options);
+    var that = this;
+    let id = options.storeId;
+    let storeList = this.data.storeList;
+    for(let item of storeList){
+      if(item.id == id){
+        wx.setNavigationBarTitle({
+          title: 'YUE时尚-'+item.title
+        });
+      }
+    }
+    that.setData({
+      storeId:id
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -71,19 +86,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    wx.showLoading({
-      title: '加载中',
-      success: function (){
-        setTimeout(function(){
-          wx.hideLoading()
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 1500
-          })
-        },1500)
-      }
-    })
 
   },
 
@@ -99,10 +101,37 @@ Page({
 
     }
   },
-  toStoreDetail: function (e){
-    let storId = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../storeDetail/storeDetail?storeId='+storId
+  toNavigation: function (){
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function(res) {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        wx.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          scale: 18,
+          name:'YUE时尚-朝外悠唐店',
+          address:'（测试，别当真）北京市朝阳区神路街39号日坛上街1-58'
+        })
+      }
     })
+  },
+  toEvalAll: function (){
+    wx.navigateTo({
+      url: '../evaluate/evaluate'
+    })
+  },
+  showCart: function (){
+    this.setData({
+        hasMask:true
+    })
+  },
+  hideMask: function (){
+    this.setData({
+        hasMask:false
+    })
+  },
+  stopProp: function (e){
   }
 })

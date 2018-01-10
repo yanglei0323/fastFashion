@@ -50,6 +50,9 @@
     position: relative;
     height: 88rpx;
     padding-left:62rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .cell-box .cell-manage::after{
     position: absolute;

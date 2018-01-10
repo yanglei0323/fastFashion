@@ -16,7 +16,7 @@
     <!-- 门店列表 -->
     <view>
         <block wx:for="{{storeList}}" wx:key="index">
-        	<view class="store-list">
+        	<view class="store-list" bindtap="toStoreDetail" data-id="{{item.id}}">
             	<image src="{{item.image}}" class="store-img"></image>
             	<text class="store-title strong">{{item.title}}</text>
             	<view class="store-md-msg">

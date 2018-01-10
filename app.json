@@ -9,7 +9,8 @@
     "pages/setupSex/setupSex",
     "pages/setupAge/setupAge",
     "pages/setupTel/setupTel",
-    "pages/evaluate/evaluate"
+    "pages/evaluate/evaluate",
+    "pages/storeDetail/storeDetail"
   ],
   "window": {
     "navigationBarTitleText": "YUE时尚-臻选您的美丽",

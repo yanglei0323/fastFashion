@@ -30,6 +30,15 @@ page{
 .gray{
     color: #C9C9C9;
 }
+.color-333{
+  color:#333;
+}
+.color-666{
+  color:#666;
+}
+.color-999{
+  color:#999;
+}
 
 .strong{
     font-weight: bold;
@@ -38,20 +47,31 @@ page{
     color:#f6838d;
 }
 
-.bc_green{
-    background-color: #09BB07;
+.bg-ec{
+    background-color: #ececec;
 }
-.bc_red{
-    background-color: #F76260;
+.bg-fff{
+    background-color: #fff;
 }
-.bc_blue{
-    background-color: #10AEFF;
+.bg-light{
+    background-color: #f6838d;
 }
-.bc_yellow{
-    background-color: #FFBE00;
+
+.ft-20{
+  font-size:20rpx;
+  line-height:20rpx;
 }
-.bc_gray{
-    background-color: #C9C9C9;
+.ft-24{
+  font-size:24rpx;
+  line-height:24rpx;
+}
+.ft-28{
+  font-size:28rpx;
+  line-height:28rpx;
+}
+.ft-32{
+  font-size:32rpx;
+  line-height:32rpx;
 }
 
 .tc{
