@@ -82,9 +82,9 @@
         </view>
     </view>
     <view class="cell-box">
-        <view class="cell-manage paddingLeft-74">
+        <view class="cell-manage paddingLeft-74" bindtap="toNavigation">
             <image src="../../assets/icons/time.png" class="store-icon"></image>
-            <text class="store-info color-666">10:00-21:00 北京市东城区东方广场平台PW31-07</text>
+            <text class="store-info color-666">北京市东城区东方广场平台PW31-07</text>
         </view>
     </view>
     <view class="cell-box">
