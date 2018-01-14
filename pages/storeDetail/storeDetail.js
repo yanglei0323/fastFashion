@@ -8,13 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    storeId:1,
     hasMask:false,
-    imgUrls: [
-      '../../assets/images/slider1.png',
-      '../../assets/images/slider2.png',
-      '../../assets/images/slider3.png'
-    ],
+    storeInfo:[],
+    imgUrls: [],
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
@@ -29,7 +25,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options);
     var that = this;
     let id = options.storeId;
     wx.request({//获取门店详情
@@ -42,19 +37,21 @@ Page({
         storeid:id
       },
       success: function (res) {
-        console.log(res);
-      }
-    });
-    let storeList = this.data.storeList;
-    for(let item of storeList){
-      if(item.id == id){
+        let storeInfo = res.data.data;
+        console.log(storeInfo);
+        let imgarray = [];
+        for(let item of res.data.data.imgarray){
+            item = imgpath + item;
+            imgarray.push(item);
+        }
+        that.setData({
+          storeInfo:storeInfo,
+          imgUrls:imgarray
+        });
         wx.setNavigationBarTitle({
-          title: 'YUE时尚-'+item.title
+          title: 'YUE时尚-'+storeInfo.name
         });
       }
-    }
-    that.setData({
-      storeId:id
     });
   },
   /**
@@ -108,20 +105,18 @@ Page({
   onShareAppMessage: function () {
     
   },
-  toNavigation: function (){
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: function(res) {
-        let latitude = res.latitude
-        let longitude = res.longitude
-        wx.openLocation({
-          latitude: latitude,
-          longitude: longitude,
-          scale: 18,
-          name:'YUE时尚-朝外悠唐店',
-          address:'（测试，别当真）北京市朝阳区神路街39号日坛上街1-58'
-        })
-      }
+  toNavigation: function (e){
+    var that = this;
+    let x=parseFloat(e.currentTarget.dataset.x);
+    let y=parseFloat(e.currentTarget.dataset.y);
+    let name=e.currentTarget.dataset.name;
+    let location=e.currentTarget.dataset.location;
+    wx.openLocation({
+      latitude: x,
+      longitude: y,
+      scale: 18,
+      name:name,
+      address:location
     })
   },
   toEvalAll: function (){

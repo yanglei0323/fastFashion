@@ -44,7 +44,7 @@ Page({
           url: bsurl + '/home/nearbystore.json',
           method: 'POST',
           header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
+              'content-type': 'application/x-www-form-urlencoded'
           },
           data:{
             positionx:app.globalData.positionx,
