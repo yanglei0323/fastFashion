@@ -1,1 +1,1 @@
-module.exports="101.200.205.162:8889"
+module.exports="http://ttapi.yueyishujia.com:8889"

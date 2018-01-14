@@ -25,3 +25,4 @@ YUE时尚小程序
 - 3、小程序头像、介绍每月只能修改5次，服务范围每月只能修改1次；
 - 4、`小程序名称未上线之前有两次修改机会`，上线之后无法修改（若想修改需要重新进行微信认证300/次）；
 - 5、本地资源无法通过 css 获取：background-image：可以使用网络图片，或者 base64，或者使用标签；
+- 6、wx.request的post请求后台无法接收到参数，请求时需要设置'content-type': 'application/x-www-form-urlencoded'；

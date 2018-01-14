@@ -32,6 +32,19 @@ Page({
     // console.log(options);
     var that = this;
     let id = options.storeId;
+    wx.request({//获取门店详情
+      url: bsurl + '/home/storedetail.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded'
+      },
+      data:{
+        storeid:id
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    });
     let storeList = this.data.storeList;
     for(let item of storeList){
       if(item.id == id){
@@ -93,13 +106,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '11111',
-      desc: '222222',
-      path: '',
-      imageUrl: '',
-
-    }
+    
   },
   toNavigation: function (){
     wx.getLocation({

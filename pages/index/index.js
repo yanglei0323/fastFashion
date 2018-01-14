@@ -8,26 +8,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      '../../assets/images/slider1.png',
-      '../../assets/images/slider2.png',
-      '../../assets/images/slider3.png'
-    ],
+    imgUrls: [],
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
-    storeList: [
-      {id:1,title:'东方广场店',distance:'195M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'},
-      {id:2,title:'朝外悠唐店',distance:'325M',location:'北京市朝阳区悠唐广场',image:'../../assets/images/slider3.png'},
-      {id:3,title:'工体世贸店',distance:'765M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'}
-    ]
+    storelsit: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    wx.request({//获取首页轮播图信息
+      url: bsurl + '/home/homead.json',
+      method: 'POST',
+      success: function (res) {
+        let homeadlist =res.data.data.homeadlist;
+        for(let item of homeadlist){
+            item.imgurl = imgpath + item.imgurl;
+        } 
+        that.setData({
+          imgUrls:homeadlist
+        });
+      }
+    });
+
+    //获取附近门店
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+        app.globalData.positionx = res.latitude;
+        app.globalData.positiony = res.longitude;
+        wx.request({//获取附近门店
+          url: bsurl + '/home/nearbystore.json',
+          method: 'POST',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          data:{
+            positionx:app.globalData.positionx,
+            positiony:app.globalData.positiony
+          },
+          success: function (res) {
+            let storelsit=res.data.data.storelsit;
+            for(let item of storelsit){
+                item.imgurl = imgpath + item.imgurl;
+            }
+            that.setData({
+              storelsit:storelsit
+            });
+          }
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -84,7 +118,6 @@ Page({
         },1500)
       }
     })
-
   },
 
   /**
@@ -92,11 +125,10 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '11111',
-      desc: '222222',
-      path: '',
+      title: 'YUE-时尚',
+      desc: '臻选您的美丽',
+      path: 'pages/index/index',
       imageUrl: '',
-
     }
   },
   toStoreDetail: function (e){

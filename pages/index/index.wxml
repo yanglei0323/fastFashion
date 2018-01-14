@@ -3,7 +3,7 @@
     <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
         <block wx:for="{{imgUrls}}" wx:key="{{index}}">
             <swiper-item>
-                <image src="{{item}}" class="slide-image"/>
+                <image src="{{item.imgurl}}" class="slide-image"/>
             </swiper-item>
         </block>
     </swiper>
@@ -15,10 +15,10 @@
 
     <!-- 门店列表 -->
     <view>
-        <block wx:for="{{storeList}}" wx:key="index">
+        <block wx:for="{{storelsit}}" wx:key="index">
         	<view class="store-list" bindtap="toStoreDetail" data-id="{{item.id}}">
-            	<image src="{{item.image}}" class="store-img"></image>
-            	<text class="store-title strong">{{item.title}}</text>
+            	<image src="{{item.imgurl}}" class="store-img"></image>
+            	<text class="store-title strong">{{item.name}}</text>
             	<view class="store-md-msg">
             		<text>{{item.location}}</text>
             		<text>{{item.distance}}</text>
