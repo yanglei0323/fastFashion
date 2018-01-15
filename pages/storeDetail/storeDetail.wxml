@@ -13,7 +13,7 @@
     <view class="sd-title bg-fff">
         <text class="sd-name strong">{{storeInfo.name}}</text>
         <text class="sd-location">{{storeInfo.location}}</text>
-        <text class="sd-distance">{{storeInfo.distance}}</text>
+        <text class="sd-distance">{{storeInfo.distance}}M</text>
         <text class="sd-navigation light" bindtap="toNavigation" data-x="{{storeInfo.positionx}}" data-y="{{storeInfo.positiony}}" data-name="{{storeInfo.name}}" data-location="{{storeInfo.location}}">导 航</text>
     </view>
 
@@ -23,50 +23,39 @@
             <view class="strong">请选择服务</view>
         </view>
     </view>
-    <view class="service-box bg-fff">
-        <text class="service-name ft-24 color-333">YUE洗发造型</text>
-        <text class="service-num ft-20 color-999">订单数量：2345</text>
-        <view class="service-price">
-            <text class="service-original ft-20 color-999">￥79.0</text>
-            <text class="service-current ft-24 color-333">￥58.8</text>
+    <block wx:for="{{storeInfo.serviceArray}}" wx:key="{{index}}">
+        <view class="service-box bg-fff" data-id="{{item.id}}" bindtap="toServiceDetail">
+            <text class="service-name ft-24 color-333">{{item.name}}</text>
+            <text class="service-num ft-20 color-999">订单数量：{{item.ordernum}}</text>
+            <view class="service-price">
+                <text class="service-original ft-20 color-999">￥{{item.originalprice}}</text>
+                <text class="service-current ft-24 color-333">￥{{item.price}}</text>
+            </view>
+            <text class="service-label ft-20 light" wx:if="{{item.isSelected}}">已选该服务</text>
         </view>
-        <text class="service-label ft-20 light">已选该服务</text>
-    </view>
-    <view class="service-box bg-fff">
-        <text class="service-name ft-24 color-333">卡诗深层护理</text>
-        <text class="service-num ft-20 color-999">订单数量：2345</text>
-        <view class="service-price">
-            <text class="service-original ft-20 color-999">￥79.0</text>
-            <text class="service-current ft-24 color-333">￥58.8</text>
-        </view>
-        <text class="service-label ft-20 light">已选该服务</text>
-    </view>
-    <view class="service-box bg-fff">
-        <text class="service-name ft-24 color-333">头皮SPA</text>
-        <text class="service-num ft-20 color-999">订单数量：2345</text>
-        <view class="service-price">
-            <text class="service-original ft-20 color-999">￥79.0</text>
-            <text class="service-current ft-24 color-333">￥58.8</text>
-        </view>
-        <text class="service-label ft-20 light">已选该服务</text>
-    </view>
+    </block>
 
     <!--服务评价-->
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <view class="strong">服务评价（285）</view>
+            <view class="strong">服务评价（{{storeInfo.commentnum}}）</view>
         </view>
     </view>
     <view class="eval-cont bg-fff">
-        <image src="../../assets/images/store.png" class="head-img"></image>
+        <image src="{{storeInfo.comment.user.avatar}}" class="head-img"></image>
         <view class="eval-msg">
-            <text class="msg-name">客户昵称</text>
-            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
-            <text class="msg-item">服务项目：YUE洗发造型</text>
-            <text class="msg-name mt-60">造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他</text>
-            <view class="eval-all light ft-24" bindtap="toEvalAll">查看全部评价</view>
+            <text class="msg-name">{{storeInfo.comment.user.name}}</text>
+            <text class="msg-item" wx:if="{{star == 0}}">星级 <text class="eval-star">☆☆☆☆☆</text></text>
+            <text class="msg-item" wx:if="{{star == 1}}">星级 <text class="eval-star">★☆☆☆☆</text></text>
+            <text class="msg-item" wx:if="{{star == 2}}">星级 <text class="eval-star">★★☆☆☆</text></text>
+            <text class="msg-item" wx:if="{{star == 3}}">星级 <text class="eval-star">★★★☆☆</text></text>
+            <text class="msg-item" wx:if="{{star == 4}}">星级 <text class="eval-star">★★★★☆</text></text>
+            <text class="msg-item" wx:if="{{star == 5}}">星级 <text class="eval-star">★★★★★</text></text>
+            <text class="msg-item">服务项目：{{storeInfo.comment.service}}</text>
+            <text class="msg-name mt-60">{{storeInfo.comment.content}}</text>
+            <view class="eval-all light ft-24" bindtap="toEvalAll" data-id="{{storeInfo.id}}">查看全部评价</view>
         </view>
-        <text class="msg-item eval-time">2018.01.09 19:44</text>
+        <text class="msg-item eval-time">{{storeInfo.comment.time}}</text>
     </view>
 
     <!--门店信息-->
@@ -82,7 +71,7 @@
         </view>
     </view>
     <view class="cell-box">
-        <view class="cell-manage paddingLeft-74" bindtap="toNavigation">
+        <view class="cell-manage paddingLeft-74" bindtap="toNavigation" data-x="{{storeInfo.positionx}}" data-y="{{storeInfo.positiony}}" data-name="{{storeInfo.name}}" data-location="{{storeInfo.location}}">
             <image src="../../assets/icons/time.png" class="store-icon"></image>
             <text class="store-info color-666">{{storeInfo.location}}</text>
         </view>

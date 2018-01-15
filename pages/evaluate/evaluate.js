@@ -8,21 +8,65 @@ Page({
    * 页面的初始数据
    */
   data: {
-    evaList: [
-      {id:1,title:'东方广场店',distance:'195M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'},
-      {id:2,title:'朝外悠唐店',distance:'325M',location:'北京市朝阳区悠唐广场',image:'../../assets/images/slider3.png'},
-      {id:3,title:'工体世贸店',distance:'765M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'}
-    ]
+    evaList: [],
+    page: 1,
+    storeId:0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    wx.setNavigationBarTitle({
-      title: 'YUE时尚-历史评价'
+    var that = this;
+    let storeId = options.storeId;
+    that.setData({
+      storeId:storeId
     });
+    that.getcommentlist();
     
+  },
+  getcommentlist: function (){
+    wx.showLoading({
+      title: '加载中',
+      success: function (){
+      }
+    });
+    var that = this;
+    wx.request({//获取门店全部评价
+      url: bsurl + '/home/store/commentlist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded'
+      },
+      data:{
+        storeid:that.data.storeId,
+        page:that.data.page
+      },
+      success: function (res) {
+        let evaList = that.data.evaList;
+        let commentlist = res.data.data.commentlist;
+        console.log(commentlist);
+        if(commentlist.length > 0){
+          let page = that.data.page;
+          page += 1;
+          for(let item of commentlist){
+            evaList.push(item);
+          }
+          that.setData({
+            evaList:evaList,
+            page:page
+          });
+          wx.hideLoading();
+        }else{
+          wx.hideLoading();
+          wx.showToast({
+            title: '暂无更多评论',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+        
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -66,32 +110,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    wx.showLoading({
-      title: '加载中',
-      success: function (){
-        setTimeout(function(){
-          wx.hideLoading()
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 1500
-          })
-        },1500)
-      }
-    })
-
+    var that = this;
+    that.getcommentlist();
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '11111',
-      desc: '222222',
-      path: '',
-      imageUrl: '',
-
-    }
   }
 })

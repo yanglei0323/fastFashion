@@ -12,11 +12,8 @@ Page({
     winHeight: 0,  
     // tab切换  
     currentTab: 0, 
-    ordersList: [
-      {id:1,title:'东方广场店',distance:'195M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'},
-      {id:2,title:'朝外悠唐店',distance:'325M',location:'北京市朝阳区悠唐广场',image:'../../assets/images/slider3.png'},
-      {id:3,title:'工体世贸店',distance:'765M',location:'北京市东城区东方广场平台PW31-07',image:'../../assets/images/slider2.png'}
-    ]
+    ordersList: [],
+    allpage:1
   },  
   /** 
      * 滑动切换tab 
@@ -46,8 +43,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;  
-  
+    var that = this;
     /** 
      * 获取系统信息 
      */  
@@ -60,6 +56,22 @@ Page({
         });  
       }  
   
+    });
+    wx.request({//获取全部订单
+      url: bsurl + '/order/orderlist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data: {
+        type: 'all',
+        page:1
+      },
+      success: function (res) {
+        console.log(res);
+        
+      }
     });
   },
   /**

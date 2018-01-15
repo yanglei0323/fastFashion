@@ -14,7 +14,7 @@
     </view>
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="../evaluate/evaluate" hover-class="navigator-hover">历史评价</navigator>
+            <navigator url="" hover-class="navigator-hover">历史评价</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">

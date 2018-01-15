@@ -1,43 +1,20 @@
 <!--pages/evaluate/evaluate.wxml-->
 <view class="container">
-    <view class="eval-cont">
-        <image src="../../assets/images/store.png" class="head-img"></image>
-        <view class="eval-msg">
-            <text class="msg-name">客户昵称</text>
-            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
-            <text class="msg-item">服务项目：YUE洗发造型</text>
-            <text class="msg-name mt-60">造型是技术很好，下次还找他</text>
+    <block wx:for="{{evaList}}" wx:key="index">
+        <view class="eval-cont">
+            <image src="{{item.user.avatar}}" class="head-img"></image>
+            <view class="eval-msg">
+                <text class="msg-name">{{item.user.name}}</text>
+                <text class="msg-item" wx:if="{{item.star == 0}}">星级 <text class="eval-star">☆☆☆☆☆</text></text>
+                <text class="msg-item" wx:if="{{item.star == 1}}">星级 <text class="eval-star">★☆☆☆☆</text></text>
+                <text class="msg-item" wx:if="{{item.star == 2}}">星级 <text class="eval-star">★★☆☆☆</text></text>
+                <text class="msg-item" wx:if="{{item.star == 3}}">星级 <text class="eval-star">★★★☆☆</text></text>
+                <text class="msg-item" wx:if="{{item.star == 4}}">星级 <text class="eval-star">★★★★☆</text></text>
+                <text class="msg-item" wx:if="{{item.star == 5}}">星级 <text class="eval-star">★★★★★</text></text>
+                <text class="msg-item">服务项目：{{item.service}}</text>
+                <text class="msg-name mt-60">{{item.content}}</text>
+            </view>
+            <text class="msg-item eval-time">{{item.time}}</text>
         </view>
-        <text class="msg-item eval-time">2018.01.09 19:44</text>
-    </view>
-    <view class="eval-cont">
-        <image src="../../assets/images/store.png" class="head-img"></image>
-        <view class="eval-msg">
-            <text class="msg-name">客户昵称</text>
-            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
-            <text class="msg-item">服务项目：YUE洗发造型</text>
-            <text class="msg-name mt-60">造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他</text>
-        </view>
-        <text class="msg-item eval-time">2018.01.09 19:44</text>
-    </view>
-    <view class="eval-cont">
-        <image src="../../assets/images/store.png" class="head-img"></image>
-        <view class="eval-msg">
-            <text class="msg-name">客户昵称</text>
-            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
-            <text class="msg-item">服务项目：YUE洗发造型</text>
-            <text class="msg-name mt-60">造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他</text>
-        </view>
-        <text class="msg-item eval-time">2018.01.09 19:44</text>
-    </view>
-    <view class="eval-cont">
-        <image src="../../assets/images/store.png" class="head-img"></image>
-        <view class="eval-msg">
-            <text class="msg-name">客户昵称</text>
-            <text class="msg-item">星级 <text class="eval-star">★★★★☆</text></text>
-            <text class="msg-item">服务项目：YUE洗发造型</text>
-            <text class="msg-name mt-60">造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他造型是技术很好，下次还找他</text>
-        </view>
-        <text class="msg-item eval-time">2018.01.09 19:44</text>
-    </view>
+    </block>
 </view>

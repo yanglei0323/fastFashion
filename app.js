@@ -51,6 +51,7 @@ App({
             sexFlag:userInfo.gender //性别 0：未知、1：男、2：女
           },
           success: function (res) {
+            // console.log(res);
             that.globalData.userInfo = res.data.data;
             wx.setStorageSync('userInfo',res.data.data);
             that.globalData.sessionId = res.data.data.sessionid;

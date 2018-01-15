@@ -1,0 +1,31 @@
+.tab-view{
+	width:100%;
+	height:88rpx;
+	background:#f3f3f3;
+	display:flex;
+	justify-content:center;
+}
+.tab-item{
+	width:20%;
+	font-size:24rpx;
+	color:#666;
+	position:relative;
+	display:flex;
+	flex-direction:column ;
+	justify-content:center;
+	align-items:center;
+}
+.on{
+	background:#f6838d;
+	color:#fff;
+}
+.triangle{
+    position: absolute;
+    bottom: -37rpx;
+    left: 60rpx;
+    width:0; 
+    height:0; 
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-top:20px solid #f6838d;
+}

@@ -1,0 +1,52 @@
+<!--pages/storeDetail/storeDetail.wxml-->
+<import src="../makecall/makecall.wxml" />
+<view class="container">
+    <view class="bg-fff">
+        <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="service-title bg-fff">
+        <text class="mt-60 item-title strong">{{serviceInfo.name}}</text>
+        <text class="mt-20 item-cont">{{serviceInfo.info}}</text>
+        <text class="mt-15">
+            <text class="item-title strong">￥{{serviceInfo.price}}</text>
+            <text class="item-cont ml-20 through">￥{{serviceInfo.originalprice}}</text>
+        </text>
+    </view>
+
+    <!--服务项目-->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <view class="strong">请选择服务</view>
+        </view>
+    </view>
+    <block wx:for="{{itemUrls}}" wx:key="{{index}}">
+        <view class="service-cell pl-108 bg-fff">
+            <image src="{{item.imgurl}}" class="service-icon"></image>
+            <text class="service-info color-666">{{item.name}}</text>
+        </view>
+    </block>
+
+    <!--用户须知-->
+    <view class="cell-box mt-10">
+        <view class="cell-manage">
+            <view class="strong">用户须知</view>
+        </view>
+    </view>
+    <view class="bg-fff info-msg color-666">
+        <text>{{serviceInfo.notice}}</text>
+    </view>
+
+    <template is="tocall" />
+
+    <!--底部-->
+    <view class="fixedbtn-box bg-fff"> 
+        <view class="fixedbtn-left light" bindtap="addToCart">加入购物车</view>
+        <view class="fixedbtn-right bg-light" bindtap="appointment">去约时间</view>
+    </view>
+</view>

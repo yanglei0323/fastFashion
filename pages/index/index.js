@@ -111,7 +111,7 @@ Page({
         setTimeout(function(){
           wx.hideLoading()
           wx.showToast({
-            title: '成功',
+            title: '加载成功',
             icon: 'success',
             duration: 1500
           })

@@ -9,50 +9,74 @@ Page({
    */
   data: {
     hasMask:false,
-    storeInfo:[],
-    imgUrls: [],
-    star:0,
+    serviceInfo:[],
+    storeId:0,
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
-    storeList: []
+    imgUrls: [],
+    itemUrls:[]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    let id = options.storeId;
+    let id = options.serviceid;
+    let storeId = options.storeId;
     wx.request({//获取门店详情
-      url: bsurl + '/home/storedetail.json',
+      url: bsurl + '/home/servicedetail.json',
       method: 'POST',
       header: {
           'content-type': 'application/x-www-form-urlencoded'
       },
       data:{
-        storeid:id,
-        positionx:app.globalData.positionx,
-        positiony:app.globalData.positiony
+        serviceid:id
       },
       success: function (res) {
-        let storeInfo = res.data.data;
-        console.log(res);
+        let serviceInfo = res.data.data;
         let imgarray = [];
-        for(let item of res.data.data.imgarray){
+        for(let item of serviceInfo.imgarray){
             item = imgpath + item;
             imgarray.push(item);
         }
+        let itemlist = [];
+        for(let item of serviceInfo.item){
+            item.imgurl = imgpath + item.imgurl;
+            itemlist.push(item);
+        }
         that.setData({
-          storeInfo:storeInfo,
+          serviceInfo:serviceInfo,
           imgUrls:imgarray,
-          star:storeInfo.comment.star
-        });
-        wx.setNavigationBarTitle({
-          title: 'YUE时尚-'+storeInfo.name
+          itemUrls:itemlist,
+          storeId:storeId
         });
       }
     });
+  },
+  addToCart: function (){
+    var that = this;
+    wx.request({//添加到购物车
+      url: bsurl + '/cart/addtocart.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        serviceid:that.data.serviceInfo.id
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    });
+  },
+  appointment: function (){
+    var that = this;
+    wx.navigateTo({
+      url: '../appointment/appointment?storeId='+that.data.storeId
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -104,50 +128,5 @@ Page({
    */
   onShareAppMessage: function () {
     
-  },
-  toNavigation: function (e){
-    wx.showToast({
-      title: '正在打开地图...',
-      icon: 'success',
-      duration: 2000
-    });
-    var that = this;
-    let x=parseFloat(e.currentTarget.dataset.x);
-    let y=parseFloat(e.currentTarget.dataset.y);
-    let name=e.currentTarget.dataset.name;
-    let location=e.currentTarget.dataset.location;
-    wx.openLocation({
-      latitude: y,//纬度
-      longitude: x,//经度
-      scale: 18,
-      name:name,
-      address:location
-    })
-  },
-  toEvalAll: function (e){
-    var that = this;
-    let storeId=e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../evaluate/evaluate?storeId='+storeId
-    })
-  },
-  toServiceDetail: function (e){
-    var that = this;
-    let serviceid=e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../serviceDetail/serviceDetail?serviceid='+serviceid+'&storeId='+that.data.storeInfo.id
-    })
-  },
-  showCart: function (){
-    this.setData({
-        hasMask:true
-    })
-  },
-  hideMask: function (){
-    this.setData({
-        hasMask:false
-    })
-  },
-  stopProp: function (e){
   }
 })

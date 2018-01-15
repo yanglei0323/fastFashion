@@ -1,0 +1,12 @@
+<!--pages/appointment/appointment.wxml-->
+<view class="container">
+	<view class="tab-view">
+		<block wx:for="{{tabInfo}}" wx:key="{{index}}">
+	        <view class="tab-item {{currentTab==item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="changeTab">
+	            <text data-current="{{item.index}}">{{item.date}}</text>
+	            <text data-current="{{item.index}}">{{item.week}}</text>
+	            <view class="triangle" wx:if="{{currentTab == item.index}}"></view>
+	        </view>
+	    </block>
+	</view>
+</view>
