@@ -26,3 +26,15 @@ YUE时尚小程序
 - 4、`小程序名称未上线之前有两次修改机会`，上线之后无法修改（若想修改需要重新进行微信认证300/次）；
 - 5、本地资源无法通过 css 获取：background-image：可以使用网络图片，或者 base64，或者使用标签；
 - 6、wx.request的post请求后台无法接收到参数，请求时需要设置'content-type': 'application/x-www-form-urlencoded'；
+- 7、data-*携带数据，其中*不能是大写，例如data-userId，js中获取为undefined，而写成data-userid可以正常获取；
+- 8、当前页面操作影响上一级页面数据，返回上一页面数据没改变，可以用以下方式解决：
+```js
+	//获取页面栈  
+	var pages = getCurrentPages();  
+	if (pages.length > 1) {  
+	    //上一个页面实例对象  
+	    var prePage = pages[pages.length - 2];  
+	    //关键在这里,这里面是触发上个界面  
+	    prePage.changeData(prePage.data.historyArr) //changeData为上一个页面声明的方法
+	} 
+```
