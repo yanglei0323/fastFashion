@@ -15,13 +15,14 @@ App({
                   //session 未过期，并且在本生命周期一直有效
                     that.globalData.userInfo = wx.getStorageSync('userInfo');
                     that.globalData.sessionId = wx.getStorageSync('sessionId');
+                    that.confirmPhone();
                 },
                 fail: function(){
                   //登录态过期
                   that.getUserInfo();
                 }
               })
-          }else{//用户第一次进入小程序
+          }else{//缓存中没有登录信息，重新获取
               that.getUserInfo();
           }
       }
@@ -56,10 +57,29 @@ App({
             wx.setStorageSync('userInfo',res.data.data);
             that.globalData.sessionId = res.data.data.sessionid;
             wx.setStorageSync('sessionId',res.data.data.sessionid);
+            that.confirmPhone();
           }
         })
       }
     })
+  },
+  confirmPhone: function(){//验证是否绑定了手机号
+    var that = this;
+    wx.request({
+      url: bsurl + '/user/mine.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':that.globalData.sessionId
+      },
+      success: function (res) {
+        // if(res.data.code == 2){//初次登录且未绑定手机号
+        //   wx.redirectTo({
+        //     url: '../setupTel/setupTel?type=1' 
+        //   })
+        // }
+      }
+    });
   },
   globalData: {
     userInfo:null,    //用户信息

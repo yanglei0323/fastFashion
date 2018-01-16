@@ -5,6 +5,9 @@
 .cell-box .cell-manage::after{
     display:none;
 }
+.borderTop-1{
+	border-top:1rpx solid #ececec;
+}
 .ec-10{
 	width:100%;
 	height:10rpx;
@@ -32,7 +35,9 @@
 	right:0;
 	border-left:1rpx solid #ececec;
 }
-
+.sending-code{
+	color:#666;
+}
 .submit-btn{
 	width:600rpx;
 	height:88rpx;

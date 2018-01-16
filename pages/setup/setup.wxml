@@ -20,7 +20,7 @@
         </navigator>
     </view>
     <view class="cell-box">
-        <navigator class="cell-manage" url="../setupTel/setupTel" hover-class="navigator-hover">
+        <navigator class="cell-manage" url="../setupTel/setupTel?type=2" hover-class="navigator-hover">
             <view>更换手机号</view>
             <text class="cell-text">13888888888</text>
         </navigator>

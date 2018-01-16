@@ -1,20 +1,21 @@
 <!--pages/setupTel/setupTel.wxml-->
 <view class="container">
-	<view class="header">
+	<view class="header" wx:if="{{type == 2}}">
         <text class="nickname strong">更换手机号</text>
         <text class="about">请填写手机号，以便我们更好的为您服务</text>
     </view>
-    <view class="ec-10"></view>
-    <view class="cell-box">
+    <view class="ec-10" wx:if="{{type == 2}}"></view>
+    <view class="cell-box borderTop-1">
         <view class="cell-manage">
-            <input placeholder="请输入您新的手机号" maxlength="11" type="number" placeholder-class="placeholder"/>
+            <input placeholder="请输入您新的手机号" maxlength="11" type="number" placeholder-class="placeholder" bindinput ="phoneInput"/>
         </view>
     </view>
     <view class="cell-box">
         <view class="cell-manage">
-            <input placeholder="请输入验证码" maxlength="6" type="number" placeholder-class="placeholder"/>
-            <view class="code">获取验证码</view>
+            <input placeholder="请输入验证码" maxlength="6" type="number" placeholder-class="placeholder" bindinput ="codeInput"/>
+            <view class="code" wx:if="{{!sending}}" bindtap="getCode">获取验证码</view>
+            <view class="code sending-code" wx:if="{{sending}}">{{sendCodeText}}</view>
         </view>
     </view>
-    <view class="submit-btn" bindtap="updateTel">确定</view>
+    <view class="submit-btn" bindtap="updateTel">{{btnText}}</view>
 </view>

@@ -21,11 +21,87 @@
 }
 .triangle{
     position: absolute;
-    bottom: -37rpx;
+    bottom: -25rpx;
     left: 60rpx;
     width:0; 
     height:0; 
     border-left:8px solid transparent;
     border-right:8px solid transparent;
-    border-top:20px solid #f6838d;
+    border-top:16px solid #f6838d;
+}
+.swiper-box{
+	width:720rpx;
+	height:978rpx;
+	margin:15rpx auto 0;
+	padding-bottom:138rpx;
+}
+.appointTime-cont{
+	display: -webkit-flex;
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  	justify-content:space-around;
+  	align-items:center;
+  	height:auto;
+}
+.appointTime-item{
+	width:220rpx;
+	height:90rpx;
+	border:1rpx solid #d2d2d2;
+	border-radius:5rpx;
+	margin-top:15rpx;
+	font-size:24rpx;
+	color:#666;
+	display: -webkit-flex;
+  	display: flex;
+  	flex-direction:column;
+  	justify-content:center;
+  	align-items:center;
+  	position:relative;
+  	overflow:hidden;
+}
+.full{
+	background:#ddd;
+}
+.overtime{
+	background:#ececec;
+}
+.selected{
+	background:#fff;
+	color:#f6838d;
+	border:1rpx solid #f6838d;
+}
+.selected-div{
+	width: 62rpx;
+	height:40rpx;
+    transform: rotate(-45deg);
+    background:#f6838d;
+    position:absolute;
+    right:-21rpx;
+    bottom:-12rpx;
+}
+.selected-text{
+	color:#fff;
+    position:absolute;
+    right:6rpx;
+    bottom:-3rpx;
+}
+.fixedbtn-box{
+    width:100%;
+    height:88rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+    line-height:88rpx;
+    font-size:28rpx;
+    display:flex;
+    text-align:center;
+    justify-content:space-between;
+}
+.fixedbtn-left{
+    width:49%;
+}
+.fixedbtn-right{
+    color:#fff;
+    width:50%;
 }

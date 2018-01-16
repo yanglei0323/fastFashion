@@ -69,6 +69,13 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        // var pages = getCurrentPages();  
+        // if (pages.length > 1) {  
+        //     //上一个页面实例对象  
+        //     var prePage = pages[pages.length - 2];  
+        //     //关键在这里,这里面是触发上个界面  
+        //     prePage.changeData(prePage.data.historyArr)  
+        // } 
       }
     });
   },

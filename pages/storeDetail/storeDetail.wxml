@@ -45,11 +45,11 @@
         <image src="{{storeInfo.comment.user.avatar}}" class="head-img"></image>
         <view class="eval-msg">
             <text class="msg-name">{{storeInfo.comment.user.name}}</text>
-            <text class="msg-item" wx:if="{{star == 0}}">星级 <text class="eval-star">☆☆☆☆☆</text></text>
-            <text class="msg-item" wx:if="{{star == 1}}">星级 <text class="eval-star">★☆☆☆☆</text></text>
-            <text class="msg-item" wx:if="{{star == 2}}">星级 <text class="eval-star">★★☆☆☆</text></text>
-            <text class="msg-item" wx:if="{{star == 3}}">星级 <text class="eval-star">★★★☆☆</text></text>
-            <text class="msg-item" wx:if="{{star == 4}}">星级 <text class="eval-star">★★★★☆</text></text>
+            <text class="msg-item" wx:if="{{star == 0}}">星级 <text class="eval-star"><text class="color-999">☆☆☆☆☆</text></text></text>
+            <text class="msg-item" wx:if="{{star == 1}}">星级 <text class="eval-star">★<text class="color-999">☆☆☆☆</text></text></text>
+            <text class="msg-item" wx:if="{{star == 2}}">星级 <text class="eval-star">★★<text class="color-999">☆☆☆</text></text></text>
+            <text class="msg-item" wx:if="{{star == 3}}">星级 <text class="eval-star">★★★<text class="color-999">☆☆</text></text></text>
+            <text class="msg-item" wx:if="{{star == 4}}">星级 <text class="eval-star">★★★★<text class="color-999">☆</text></text></text>
             <text class="msg-item" wx:if="{{star == 5}}">星级 <text class="eval-star">★★★★★</text></text>
             <text class="msg-item">服务项目：{{storeInfo.comment.service}}</text>
             <text class="msg-name mt-60">{{storeInfo.comment.content}}</text>
