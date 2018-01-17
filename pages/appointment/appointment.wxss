@@ -40,7 +40,7 @@
 }
 .swiper-box{
 	width:720rpx;
-	height:978rpx;
+	height:985rpx;
 	margin:15rpx auto 0;
 	padding-bottom:138rpx;
 }

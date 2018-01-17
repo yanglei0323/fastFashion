@@ -16,7 +16,11 @@ Page({
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
-    storeList: []
+    storeList: [],
+    serviceArray: [],
+    cartTotalPrice:0,
+    cartNum:0,
+    cartList:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,7 +32,8 @@ Page({
       url: bsurl + '/home/storedetail.json',
       method: 'POST',
       header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
       },
       data:{
         storeid:id,
@@ -37,7 +42,7 @@ Page({
       },
       success: function (res) {
         let storeInfo = res.data.data;
-        console.log(res);
+        // console.log(res);
         let imgarray = [];
         for(let item of res.data.data.imgarray){
             item = imgpath + item;
@@ -46,13 +51,17 @@ Page({
         that.setData({
           storeInfo:storeInfo,
           imgUrls:imgarray,
-          star:storeInfo.comment.star
+          star:storeInfo.comment.star,
+          serviceArray:storeInfo.serviceArray
         });
         wx.setNavigationBarTitle({
           title: 'YUE时尚-'+storeInfo.name
-        });
+        }); 
+        //获取购物车信息
+        that.getCartInfo();
       }
     });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -140,9 +149,21 @@ Page({
   },
   appointment: function (){
     var that = this;
-    wx.navigateTo({
-      url: '../appointment/appointment?storeId='+that.data.storeInfo.id
-    })
+    if(that.data.cartNum == 0){//当前购物车没有选择任何服务
+        wx.showModal({
+          title: 'YUE时尚提示您',
+          content: '当前购物车中没有选中的服务，请先选择服务再来预约时间！',
+          showCancel:false,
+          confirmColor:'#f6838d',
+          success: function(res) {
+
+          }
+        })
+    }else{
+        wx.navigateTo({
+          url: '../appointment/appointment?storeId='+that.data.storeInfo.id
+        })
+    }
   },
   showCart: function (){
     this.setData({
@@ -155,5 +176,201 @@ Page({
     })
   },
   stopProp: function (e){
+  },
+  refreshServiceAdd:function (id){//用于刷新服务项目的选中状态（增加选中）
+      var that = this;
+      let serviceArray = that.data.serviceArray;
+      for(let item of serviceArray){
+          if(item.id == id){
+              item.isSelected = true;
+          }
+      }
+      that.setData({
+          serviceArray:serviceArray
+      });
+  },
+  refreshServiceDel:function (id){//用于刷新服务项目的选中状态(取消选中)
+      var that = this;
+      let serviceArray = that.data.serviceArray;
+      for(let item of serviceArray){
+          if(item.id == id){
+              item.isSelected = false;
+          }
+      }
+      that.setData({
+          serviceArray:serviceArray
+      });
+  },
+  getCartInfo: function (){
+    //获取该门店下的购物车信息 
+    var that = this;
+    wx.request({
+      url: bsurl + '/cart/mycart.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        storeid:that.data.storeInfo.id
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          cartTotalPrice:0,
+          cartNum:0,
+          cartList:[]
+        });
+        let cartList = res.data.data.cartlist;
+        let cartTotalPrice = 0;
+        let cartNum = 0;
+        if(cartList.length >= 1){
+          for(let item of cartList){
+              let price = item.num*item.price;
+              cartTotalPrice += price;
+              cartNum += item.num;
+          }
+          that.setData({
+            cartTotalPrice:cartTotalPrice,
+            cartNum:cartNum,
+            cartList:cartList
+          });
+        }
+      }
+    });
+  },
+  delOfCart: function (e){
+      var that = this;
+      let serviceid = e.currentTarget.dataset.id;
+      wx.request({
+          url: bsurl + '/cart/decreasingcart.json',
+          method: 'POST',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'sessionid':app.globalData.sessionId
+          },
+          data:{
+            serviceid:serviceid
+          },
+          success: function (res) {
+            if(res.data.code == 1){
+                wx.showToast({
+                  title: '删除成功！',
+                  icon: 'success',
+                  duration: 1500
+                });
+                let cartList = that.data.cartList;
+                for(let item of cartList){
+                    if(item.service.serviceid == serviceid && item.num == 1){//此商品在购物车且目前仅剩一件
+                        that.refreshServiceDel(serviceid);//删除此商品选中状态
+                    }
+                }
+                that.getCartInfo();//重新获取购物车信息
+            }else{
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: res.data.reason,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
+            }
+          }
+      });
+  },
+  addToCart: function (e){
+      var that = this;
+      let serviceid = e.currentTarget.dataset.id;
+      let carts = that.data.cartList;
+      for(let item of carts){
+          if(item.service.serviceid == serviceid && item.num >= 5){
+              wx.showModal({
+                title: 'YUE时尚提示您',
+                content:'每项服务单次预约上限为5次！',
+                showCancel:false,
+                confirmColor:'#f6838d',
+                success: function(res) {
+                }
+              })
+              return;
+          }
+      }
+      wx.request({
+          url: bsurl + '/cart/addtocart.json',
+          method: 'POST',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'sessionid':app.globalData.sessionId
+          },
+          data:{
+            serviceid:serviceid
+          },
+          success: function (res) {
+            if(res.data.code == 1){
+                wx.showToast({
+                  title: '添加成功！',
+                  icon: 'success',
+                  duration: 1500
+                });
+                that.getCartInfo();//重新获取购物车信息
+            }else{
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: res.data.reason,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
+            }
+          }
+      });
+  },
+  clearCart:function (){
+      var that = this;
+      wx.showModal({
+        title: 'YUE时尚提示您',
+        content:'是否确认清空该门店下的购物车中的服务项目？',
+        confirmColor:'#f6838d',
+        success: function(res) {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+            wx.request({
+                url: bsurl + '/cart/clearcart.json',
+                method: 'POST',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'sessionid':app.globalData.sessionId
+                },
+                data:{
+                  storeid:that.data.storeInfo.id
+                },
+                success: function (res) {
+                    if(res.data.code == 1){
+                      that.getCartInfo();//重新获取购物车信息
+                      that.setData({
+                        hasMask:false
+                      });
+                      wx.showToast({
+                        title: '清空成功！',
+                        icon: 'success',
+                        duration: 1500
+                      });
+                      let serviceArray = that.data.serviceArray;
+                      for(let item of serviceArray){
+                           item.isSelected = false;
+                      }
+                      that.setData({
+                          serviceArray:serviceArray
+                      });
+                    }
+                }
+            });
+          } else if (res.cancel) {
+            // console.log('用户点击取消')
+          }
+        }
+      }) 
   }
 })

@@ -1,7 +1,11 @@
 <!--pages/appointment/appointment.wxml-->
 <view class="container">
 	<view class="appointment-title bg-fff">
-		<text class="ft-28 strong color-333">YUE洗发造型</text>
+		<text class="ft-28 strong color-333">
+			<block wx:for="{{cartList}}" wx:key="{{index}}">
+		        <text>{{item.service.name}} </text>
+		    </block>
+		</text>
 		<text class="appointment-text ft-20 color-999">请选择服务时间，以便我们更好的为您服务</text>
 	</view>
 	<view class="tab-view">
@@ -78,6 +82,6 @@
 	<!--底部-->
 	<view class="fixedbtn-box bg-fff"> 
         <view class="fixedbtn-left color-999 {{currentDay>=1 ? 'light' : ''}}">{{showSelect}}</view>
-        <view class="fixedbtn-right bg-light">确定选择</view>
+        <view class="fixedbtn-right bg-light" bindtap="confirmAppoint">确定选择</view>
     </view>
 </view>

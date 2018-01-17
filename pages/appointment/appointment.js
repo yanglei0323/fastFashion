@@ -19,7 +19,8 @@ Page({
     day4:[],
     day5:[],
     reservetime:[],
-    showSelect:'请选择时间'
+    showSelect:'请选择时间',
+    cartList:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -38,6 +39,24 @@ Page({
       storeId:storeId
     });
 
+
+    wx.request({//获取购物车中的信息
+      url: bsurl + '/cart/mycart.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        storeid:storeId
+      },
+      success: function (res) {
+        that.setData({
+          cartList:res.data.data.cartlist
+        });
+      }
+    });
+
     // 获取门店预约时间数组
     wx.request({
       url: bsurl + '/user/getreservetime.json',
@@ -50,72 +69,70 @@ Page({
         storeid:storeId
       },
       success: function (res) {
-          // console.log(res.data.data.reservetime[0]);
-      }
-    });
-
-    let reservetime ="012300500000000000005000,000002000050000000000000,000000000000000000000000,000000000000000000000000,000000000000000000000000";
-    that.setData({
-      reservetime:reservetime.split(",")
-    });
-    
-    var sepcificTimeArr = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', 
+          let reservetime = res.data.data.reservetime;
+          that.setData({
+            reservetime:reservetime.split(",")
+          });
+          var sepcificTimeArr = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', 
             '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', 
             '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', 
             '19:00', '19:30', '20:00', '20:30', '21:00', '21:30'];
     
-    //获取当前时间
-    let mydate = new Date();
-    let myhours=mydate.getHours();
-    let mytime=mydate.getMinutes();
-    var nowtime=new Date("1111/1/1," + myhours + ":" + mytime + ":0");
-    //status：{5：已约满，9：已过期，<5：可预约}（9是前端自定义的）
-    //构造day1第一天数据
-    var day1List = [];
-    for (let d1 = 1; d1 < 25; d1++) {
-      let ydtime=new Date("1111/1/1," + sepcificTimeArr[d1 - 1] + ":0");
-      let chartime=nowtime.getTime()-ydtime.getTime();
-      if(chartime <= 0){//可预约
-         day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
-      }else{//已过期
-          if(that.data.reservetime[0][d1 - 1] == 5){//已过期中属于预约满的情况
-             day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
-          }else{
-             day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':9});
+          //获取当前时间
+          let mydate = new Date();
+          let myhours=mydate.getHours();
+          let mytime=mydate.getMinutes();
+          var nowtime=new Date("1111/1/1," + myhours + ":" + mytime + ":0");
+          //status：{5：已约满，9：已过期，<5：可预约}（9是前端自定义的）
+          //构造day1第一天数据
+          var day1List = [];
+          for (let d1 = 1; d1 < 25; d1++) {
+            let ydtime=new Date("1111/1/1," + sepcificTimeArr[d1 - 1] + ":0");
+            let chartime=nowtime.getTime()-ydtime.getTime();
+            if(chartime <= 0){//可预约
+               day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
+            }else{//已过期
+                if(that.data.reservetime[0][d1 - 1] == 5){//已过期中属于预约满的情况
+                   day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
+                }else{
+                   day1List.push({'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':9});
+                }
+            }
           }
+          //构造day2第二天数据
+          var day2List = [];
+          for (let d2 = 1; d2 < 25; d2++) {
+              day2List.push({'showSelect':that.data.tabInfo[1].date+' '+sepcificTimeArr[d2 - 1], 'day': 2, 'time': d2, 'showtime':sepcificTimeArr[d2 - 1], 'status':that.data.reservetime[1][d2 - 1]});
+            
+          }
+          //构造day3第三天数据
+          var day3List = [];
+          for (let d3 = 1; d3 < 25; d3++) {
+              day3List.push({'showSelect':that.data.tabInfo[2].date+' '+sepcificTimeArr[d3 - 1], 'day': 3, 'time': d3, 'showtime':sepcificTimeArr[d3 - 1], 'status':that.data.reservetime[2][d3 - 1]});
+            
+          }
+          //构造day4第四天数据
+          var day4List = [];
+          for (let d4 = 1; d4 < 25; d4++) {
+              day4List.push({'showSelect':that.data.tabInfo[3].date+' '+sepcificTimeArr[d4 - 1], 'day': 4, 'time': d4, 'showtime':sepcificTimeArr[d4 - 1], 'status':that.data.reservetime[3][d4 - 1]});
+            
+          }
+          //构造day5第五天数据
+          var day5List = [];
+          for (let d5 = 1; d5 < 25; d5++) {
+              day5List.push({'showSelect':that.data.tabInfo[4].date+' '+sepcificTimeArr[d5 - 1], 'day': 5, 'time': d5, 'showtime':sepcificTimeArr[d5 - 1], 'status':that.data.reservetime[4][d5 - 1]});
+            
+          }
+          that.setData({
+            day1:day1List,
+            day2:day2List,
+            day3:day3List,
+            day4:day4List,
+            day5:day5List
+          });
       }
-    }
-    //构造day2第二天数据
-    var day2List = [];
-    for (let d2 = 1; d2 < 25; d2++) {
-        day2List.push({'showSelect':that.data.tabInfo[1].date+' '+sepcificTimeArr[d2 - 1], 'day': 2, 'time': d2, 'showtime':sepcificTimeArr[d2 - 1], 'status':that.data.reservetime[1][d2 - 1]});
-      
-    }
-    //构造day3第三天数据
-    var day3List = [];
-    for (let d3 = 1; d3 < 25; d3++) {
-        day3List.push({'showSelect':that.data.tabInfo[2].date+' '+sepcificTimeArr[d3 - 1], 'day': 3, 'time': d3, 'showtime':sepcificTimeArr[d3 - 1], 'status':that.data.reservetime[2][d3 - 1]});
-      
-    }
-    //构造day4第四天数据
-    var day4List = [];
-    for (let d4 = 1; d4 < 25; d4++) {
-        day4List.push({'showSelect':that.data.tabInfo[3].date+' '+sepcificTimeArr[d4 - 1], 'day': 4, 'time': d4, 'showtime':sepcificTimeArr[d4 - 1], 'status':that.data.reservetime[3][d4 - 1]});
-      
-    }
-    //构造day5第五天数据
-    var day5List = [];
-    for (let d5 = 1; d5 < 25; d5++) {
-        day5List.push({'showSelect':that.data.tabInfo[4].date+' '+sepcificTimeArr[d5 - 1], 'day': 5, 'time': d5, 'showtime':sepcificTimeArr[d5 - 1], 'status':that.data.reservetime[4][d5 - 1]});
-      
-    }
-    that.setData({
-      day1:day1List,
-      day2:day2List,
-      day3:day3List,
-      day4:day4List,
-      day5:day5List
     });
+
   },
   addDays:function (days) {
     var that = this;
@@ -187,14 +204,6 @@ Page({
     let status = e.currentTarget.dataset.status;
     let showSelect = e.currentTarget.dataset.showselect;
     if(status >= 5){//当前时间不可选
-        wx.showModal({
-          title: 'YUE时尚提示您',
-          content: '您选择的服务超出了预约时间，请重新选择',
-          showCancel:false,
-          confirmColor:'#f6838d',
-          success: function(res) {
-          }
-        })
         return;
     }else{
       if(that.data.currentDay == day && that.data.currentTime == time){//已经是选中状态，则取消
@@ -211,6 +220,52 @@ Page({
           });
       }
     }
+  },
+  confirmAppoint: function (){
+      var that = this;
+      let storeId = that.data.storeId;
+      let day = that.data.currentDay;
+      let time = that.data.currentTime;
+      if(day == 0){
+          wx.showModal({
+            title: 'YUE时尚提示您',
+            content: '请先选择预约时间！',
+            showCancel:false,
+            confirmColor:'#f6838d',
+            success: function(res) {
+            }
+          })
+          return;
+      }else{
+          wx.request({
+            url: bsurl + '/user/reserve.json',
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'sessionid':app.globalData.sessionId
+            },
+            data:{
+              storeid:storeId,
+              day:day,
+              time:time 
+            },
+            success: function (res) {
+              console.log(res);
+              if(res.data.code == 1){
+
+              }else{
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: res.data.reason,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
+              }
+            }
+          });
+      }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

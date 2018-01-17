@@ -23,7 +23,7 @@
             <view class="strong">请选择服务</view>
         </view>
     </view>
-    <block wx:for="{{storeInfo.serviceArray}}" wx:key="{{index}}">
+    <block wx:for="{{serviceArray}}" wx:key="{{index}}">
         <view class="service-box bg-fff" data-id="{{item.id}}" bindtap="toServiceDetail">
             <text class="service-name ft-24 color-333">{{item.name}}</text>
             <text class="service-num ft-20 color-999">订单数量：{{item.ordernum}}</text>
@@ -90,29 +90,22 @@
         <view class="carts-box bg-ec" catchtap="stopProp">
             <view class="carts-head color-666">
                 <text>购物车</text>
-                <view>
+                <view bindtap="clearCart">
                     <image src="../../assets/icons/delet.png" class="delet-icon"></image>
                     <text>清空购物车</text>
                 </view>
             </view>
-            <view class="carts-item bg-fff color-333">
-                <text>YUE洗发造型</text>
-                <view class="carts-right">
-                    <text class="sitem-price">￥58.8</text>
-                    <image class="sitem-delet" src="../../assets/icons/jian.png"></image>
-                    <text class="sitem-num color-999">1</text>
-                    <image class="sitem-add" src="../../assets/icons/jia.png"></image>
+            <block wx:for="{{cartList}}" wx:key="{{index}}">
+                <view class="carts-item bg-fff color-333">
+                    <text>{{item.service.name}}</text>
+                    <view class="carts-right">
+                        <text class="sitem-price">￥{{item.price}}</text>
+                        <image class="sitem-delet" src="../../assets/icons/jian.png" data-id="{{item.service.serviceid}}" bindtap="delOfCart"></image>
+                        <text class="sitem-num color-999">{{item.num}}</text>
+                        <image class="sitem-add" src="../../assets/icons/jia.png" data-id="{{item.service.serviceid}}" bindtap="addToCart"></image>
+                    </view>
                 </view>
-            </view>
-            <view class="carts-item bg-fff color-333">
-                <text>头皮SPA</text>
-                <view class="carts-right">
-                    <text class="sitem-price">￥58.8</text>
-                    <image class="sitem-delet" src="../../assets/icons/jian.png"></image>
-                    <text class="sitem-num color-999">99</text>
-                    <image class="sitem-add" src="../../assets/icons/jia.png"></image>
-                </view>
-            </view>
+            </block>
         </view>
     </view>
 
@@ -120,8 +113,8 @@
     <view class="fixedbtn-box bg-fff"> 
         <view class="fixedbtn-left light" bindtap="showCart">
             <image src="../../assets/icons/carts.png" class="carts-icon"></image>
-            <text class="cart-label ft-20 bg-light">9</text>
-            <text class="carts-price">￥117.6</text>
+            <text class="cart-label ft-20 bg-light" wx:if="{{cartNum >= 1}}">{{cartNum}}</text>
+            <text class="carts-price">￥{{cartTotalPrice}}</text>
         </view>
         <view class="fixedbtn-right bg-light" bindtap="appointment">去约时间</view>
     </view>

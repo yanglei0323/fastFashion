@@ -25,11 +25,11 @@ Page({
     var that = this;
     if(options.type == 1){
         that.setData({
-          btnText:'登录',
+          btnText:'绑定',
           type:1
         });
         wx.setNavigationBarTitle({
-          title: 'YUE时尚-登录'
+          title: 'YUE时尚-绑定手机'
         });
     }
   },
@@ -180,13 +180,13 @@ Page({
           console.log(res);
           if(res.data.code == 1){//绑定成功
             wx.showToast({
-              title: '登录成功',
+              title: '绑定成功',
               icon: 'success',
               duration: 1500
             });
             app.globalData.userInfo = res.data.data;
             wx.setStorageSync('userInfo',res.data.data);
-            wx.redirectTo({
+            wx.switchTab({
               url: '../index/index' 
             });
           }else{

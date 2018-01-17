@@ -69,21 +69,65 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        // var pages = getCurrentPages();  
-        // if (pages.length > 1) {  
-        //     //上一个页面实例对象  
-        //     var prePage = pages[pages.length - 2];  
-        //     //关键在这里,这里面是触发上个界面  
-        //     prePage.changeData(prePage.data.historyArr)  
-        // } 
+        if(res.data.code == 1){
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: '添加成功，在购物车等你哦~',
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+              }
+            })
+            //改变上一页面该项目的选中状态
+            var pages = getCurrentPages();  
+            if (pages.length > 1) {   
+                var prePage = pages[pages.length - 2];  
+                prePage.refreshServiceAdd(that.data.serviceInfo.id);  
+                prePage.getCartInfo();  
+            }
+        }else{
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: res.data.reason,
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+              }
+            })
+        } 
       }
     });
   },
   appointment: function (){
     var that = this;
-    wx.navigateTo({
-      url: '../appointment/appointment?storeId='+that.data.storeId
-    })
+    wx.request({//获取购物车中的信息
+      url: bsurl + '/cart/mycart.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        storeid:that.data.storeId
+      },
+      success: function (res) {
+        let cartList=res.data.data.cartlist;
+        if(cartList.length >= 1){
+            wx.navigateTo({
+              url: '../appointment/appointment?storeId='+that.data.storeId
+            })
+        }else{
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: '请先将服务加入购物车，再去预约时间',
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+              }
+            })
+        }
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
