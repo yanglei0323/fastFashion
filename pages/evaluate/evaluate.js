@@ -35,7 +35,8 @@ Page({
       url: bsurl + '/home/store/commentlist.json',
       method: 'POST',
       header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
       },
       data:{
         storeid:that.data.storeId,

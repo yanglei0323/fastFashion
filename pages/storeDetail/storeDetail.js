@@ -138,6 +138,12 @@ Page({
       url: '../serviceDetail/serviceDetail?serviceid='+serviceid+'&storeId='+that.data.storeInfo.id
     })
   },
+  appointment: function (){
+    var that = this;
+    wx.navigateTo({
+      url: '../appointment/appointment?storeId='+that.data.storeInfo.id
+    })
+  },
   showCart: function (){
     this.setData({
         hasMask:true

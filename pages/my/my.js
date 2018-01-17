@@ -23,7 +23,6 @@ Page({
           'sessionid':app.globalData.sessionId
       },
       success: function (res) {
-        console.log(res);
         that.setData({
           userInfo:res.data.data
         });

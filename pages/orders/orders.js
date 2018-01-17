@@ -9,11 +9,15 @@ Page({
    */
   data: {
     winWidth: 0,  
-    winHeight: 0,  
+    winHeight: 0,
+    loading:true,  
     // tab切换  
     currentTab: 0, 
     ordersList: [],
-    allpage:1
+    allpage:1,
+    dfwpage:1,
+    dpjpage:1,
+    ytkpage:1
   },  
   /** 
      * 滑动切换tab 
@@ -122,12 +126,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '标题',
-      desc: '描述',
-      path: '',
-      imageUrl: '',
-
-    }
   }
 })

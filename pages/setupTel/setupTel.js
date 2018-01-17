@@ -82,7 +82,8 @@ Page({
           url: bsurl + '/user/bindsend.json',
           method: 'POST',
           header: {
-              'content-type': 'application/x-www-form-urlencoded'
+              'content-type': 'application/x-www-form-urlencoded',
+              'sessionid':app.globalData.sessionId
           },
           data:{
             telnum:that.data.phoneNum

@@ -61,6 +61,8 @@
 			    	<button class="btn-detail">订单详情</button>
 			    </view>
 	    	</view> 
+		    <!--加载图标-->
+		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
 	    </swiper-item>  
 
 	    <!-- 待服务 -->  
@@ -89,7 +91,10 @@
 			    	<button class="btn-add">增加项目</button>
 			    	<button class="btn-detail">订单详情</button>
 			    </view>
-	    	</view>  
+	    	</view> 
+
+		    <!--加载图标-->
+		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image> 
 	    </swiper-item> 
 
 	    <!-- 待评价 -->  
@@ -118,6 +123,8 @@
 			    	<button class="btn-add">去评价</button>
 			    </view>
 	    	</view>  
+		    <!--加载图标-->
+		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
 	    </swiper-item> 
 
 	    <!-- 已退款 -->  
@@ -146,6 +153,8 @@
 			    	<button class="btn-refund">已退款</button>
 			    </view>
 	    	</view> 
+		    <!--加载图标-->
+		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
 	    </swiper-item> 
 	</swiper>
     

@@ -123,6 +123,6 @@
             <text class="cart-label ft-20 bg-light">9</text>
             <text class="carts-price">￥117.6</text>
         </view>
-        <view class="fixedbtn-right bg-light">去约时间</view>
+        <view class="fixedbtn-right bg-light" bindtap="appointment">去约时间</view>
     </view>
 </view>

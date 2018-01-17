@@ -77,4 +77,10 @@ page{
 .tc{
     text-align: center;
 }
+.loading-icon{
+  width:80rpx;
+  height:65rpx;
+  margin:100rpx auto;
+  display:block;
+}
 

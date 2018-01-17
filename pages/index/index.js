@@ -13,7 +13,8 @@ Page({
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
-    storelsit: []
+    storelsit: [],
+    loading:true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -56,7 +57,8 @@ Page({
                 item.imgurl = imgpath + item.imgurl;
             }
             that.setData({
-              storelsit:storelsit
+              storelsit:storelsit,
+              loading:false
             });
           }
         });

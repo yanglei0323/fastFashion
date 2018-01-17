@@ -1,5 +1,9 @@
 <!--pages/appointment/appointment.wxml-->
 <view class="container">
+	<view class="appointment-title bg-fff">
+		<text class="ft-28 strong color-333">YUE洗发造型</text>
+		<text class="appointment-text ft-20 color-999">请选择服务时间，以便我们更好的为您服务</text>
+	</view>
 	<view class="tab-view">
 		<block wx:for="{{tabInfo}}" wx:key="{{index}}">
 	        <view class="tab-item {{currentTab==item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="changeTab">

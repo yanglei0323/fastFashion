@@ -25,5 +25,6 @@
             	</view>
         	</view>
         </block>
+        <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
     </view>
 </view>
