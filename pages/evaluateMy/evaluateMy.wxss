@@ -1,0 +1,44 @@
+.container:nth-child(1){
+    border-top:1rpx solid #ececec;
+}
+.eval-cont{
+    width:100%;
+    min-height:302rpx;
+    border-bottom:1rpx solid #ececec;
+    position:relative;
+}
+.head-img{
+    position:absolute;
+    left:20rpx;
+    top:30rpx;
+    width:60rpx;
+    height:60rpx;
+    border-radius:50%;
+}
+.eval-msg{
+    padding:50rpx 20rpx 60rpx 100rpx;
+    display:flex;
+    flex-direction:column;
+}
+.msg-name{
+    font-size:24rpx;
+    color:#333;
+    line-height:24rpx;
+}
+.msg-item{
+    font-size:20rpx;
+    color:#999;
+    line-height:20rpx;
+    margin-top:20rpx;
+}
+.mt-60{
+    margin-top:60rpx;
+}
+.eval-star{
+    color:#f6838d;
+}
+.eval-time{
+    position:absolute;
+    right:20rpx;
+    top:30rpx;
+}

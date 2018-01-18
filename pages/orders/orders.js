@@ -101,7 +101,7 @@ Page({
             });
         }else{
           wx.showToast({
-            title: '暂无更多..',
+            title: '暂无更多',
             icon: 'success',
             duration: 2000
           })
@@ -144,7 +144,7 @@ Page({
             });
         }else{
           wx.showToast({
-            title: '暂无更多..',
+            title: '暂无更多',
             icon: 'success',
             duration: 2000
           })
@@ -186,7 +186,7 @@ Page({
             });
         }else{
           wx.showToast({
-            title: '暂无更多..',
+            title: '暂无更多',
             icon: 'success',
             duration: 2000
           })
@@ -228,7 +228,7 @@ Page({
             });
         }else{
           wx.showToast({
-            title: '暂无更多..',
+            title: '暂无更多',
             icon: 'success',
             duration: 2000
           })

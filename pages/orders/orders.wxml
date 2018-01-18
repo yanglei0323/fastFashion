@@ -46,6 +46,7 @@
 				    </view>
 		    	</view>
 	    	</block> 
+	    	<view class="load-more" bindtap="getAllorders">加载更多</view>
 	    </swiper-item>  
 
 	    <!-- 待服务 -->  
@@ -81,6 +82,7 @@
 				    </view>
 		    	</view>
 	    	</block>
+	    	<view class="load-more" bindtap="getDfworders">加载更多</view>
 
 	    </swiper-item> 
 
@@ -117,6 +119,7 @@
 				    </view>
 		    	</view>
 	    	</block> 
+	    	<view class="load-more" bindtap="getDpjorders">加载更多</view>
 	    </swiper-item> 
 
 	    <!-- 已退款 -->  
@@ -152,6 +155,7 @@
 				    </view>
 		    	</view>
 	    	</block>
+	    	<view class="load-more" bindtap="getYtkorders">加载更多</view>
 	    </swiper-item> 
 	</swiper>
     

@@ -9,12 +9,12 @@
     <!-- 功能列表 -->
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="../coupon/coupon" hover-class="navigator-hover">优惠券</navigator>
+            <navigator url="" hover-class="navigator-hover">优惠券</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="" hover-class="navigator-hover">历史评价</navigator>
+            <navigator url="../evaluateMy/evaluateMy" hover-class="navigator-hover">历史评价</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">

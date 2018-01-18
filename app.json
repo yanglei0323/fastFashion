@@ -13,7 +13,8 @@
     "pages/storeDetail/storeDetail",
     "pages/serviceDetail/serviceDetail",
     "pages/appointment/appointment",
-    "pages/payService/payService"
+    "pages/payService/payService",
+    "pages/evaluateMy/evaluateMy"
   ],
   "window": {
     "navigationBarTitleText": "YUE时尚-臻选您的美丽",

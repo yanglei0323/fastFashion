@@ -111,3 +111,10 @@ button::after {
 .btn-refund::after {
 	border:1rpx solid #999 ;
 }
+.load-more{
+	width:100%;
+	font-size:24rpx;
+	line-height:60rpx;
+	color:#999;
+	text-align:center;
+}
