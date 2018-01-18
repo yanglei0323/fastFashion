@@ -6,29 +6,13 @@
     </view>
     <view class="ec-10"></view>
     <!-- 功能列表 -->
-    <view class="cell-box">
-        <view class="cell-manage" bindtap="chooseAge" data-id="1">
-            <view>70后</view>
-            <icon type="{{age == 1 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+    <block wx:for="{{agelist}}" wx:key="{{index}}">
+        <view class="cell-box">
+            <view class="cell-manage" bindtap="chooseAge" data-id="{{index}}" data-name="{{item}}">
+                <view>{{item}}</view>
+                <icon type="{{age == index ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+            </view>
         </view>
-    </view>
-    <view class="cell-box">
-        <view class="cell-manage" bindtap="chooseAge" data-id="2">
-            <view>80后</view>
-            <icon type="{{age == 2 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
-        </view>
-    </view>
-    <view class="cell-box">
-        <view class="cell-manage" bindtap="chooseAge" data-id="3">
-            <view>90后</view>
-            <icon type="{{age == 3 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
-        </view>
-    </view>
-    <view class="cell-box">
-        <view class="cell-manage" bindtap="chooseAge" data-id="4">
-            <view>00后</view>
-            <icon type="{{age == 4 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
-        </view>
-    </view>
+    </block>
     <view class="submit-btn" bindtap="goBack">确定</view>
 </view>

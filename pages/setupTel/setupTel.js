@@ -96,6 +96,15 @@ Page({
                     icon: 'success',
                     duration: 1500
                   })
+              }else{
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: res.data.reason,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
               }
           }
         });
@@ -130,6 +139,15 @@ Page({
                     icon: 'success',
                     duration: 1500
                   })
+              }else{
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: res.data.reason,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
               }
           }
         });
@@ -203,7 +221,7 @@ Page({
       });
     }else if(that.data.type == 2){//（修改手机）
       wx.request({
-        url: bsurl + '/user/changetelephone/sendcode.json',
+        url: bsurl + '/user/changetelephone/save.json',
         method: 'POST',
         header: {
             'content-type': 'application/x-www-form-urlencoded',
@@ -222,6 +240,12 @@ Page({
               icon: 'success',
               duration: 1500
             });
+            //改变上一页面该项目的选中状态
+            var pages = getCurrentPages();
+            if (pages.length > 1) {   
+                var prePage = pages[pages.length - 2];    
+                prePage.getUserinfo();
+            }
             wx.navigateBack();
           }else{
             wx.showModal({

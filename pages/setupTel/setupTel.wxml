@@ -7,7 +7,7 @@
     <view class="ec-10" wx:if="{{type == 2}}"></view>
     <view class="cell-box borderTop-1">
         <view class="cell-manage">
-            <input placeholder="请输入您新的手机号" maxlength="11" type="number" placeholder-class="placeholder" bindinput ="phoneInput"/>
+            <input placeholder="请输入您新的手机号" maxlength="11" type="number" placeholder-class="placeholder" bindinput ="phoneInput" focus="true"/>
         </view>
     </view>
     <view class="cell-box">

@@ -8,12 +8,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    age:1 
+    age:0,
+    ageName:'',
+    agelist:[] 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.request({//获取年龄信息
+      url: bsurl + '/user/agelist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          agelist:res.data.data.agelist,
+          ageName:res.data.data.agelist[0]
+        });
+      }
+    });
 
   },
   /**
@@ -64,21 +82,52 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '11111',
-      desc: '222222',
-      path: '',
-      imageUrl: '',
-
-    }
   },
   chooseAge: function (e){
     var that=this;
     that.setData({
-      age : e.currentTarget.dataset.id
+      age : e.currentTarget.dataset.id,
+      ageName:e.currentTarget.dataset.name
     });
   },
   goBack: function (){
-    wx.navigateBack();
+    var that = this;
+    wx.request({
+      url: bsurl + '/user/edit.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        age:that.data.ageName
+      },
+      success: function (res) {
+        if(res.data.code == 1){
+            wx.showToast({
+              title: '修改成功！',
+              icon: 'success',
+              duration: 2000
+            });
+            //改变上一页面该项目的选中状态
+            var pages = getCurrentPages();
+            if (pages.length > 1) {   
+                var prePage = pages[pages.length - 2];    
+                prePage.getUserinfo(); 
+            }
+             wx.navigateBack();
+        }else{
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: res.data.reason,
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+
+              }
+            })
+        }
+      }
+    });
   }
 })

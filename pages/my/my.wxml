@@ -4,7 +4,7 @@
 	<view class="header">
         <image src="{{userInfo.avatar}}" class="thumb"></image>
         <text class="nickname strong">{{userInfo.name}}</text>
-        <text class="about">距离您上次服务已经<text class="time">8</text>天了~</text>
+        <text class="about">距离您上次服务已经<text class="time">{{userInfo.lastservice}}</text>天了~</text>
     </view>
     <!-- 功能列表 -->
     <view class="cell-box mt-10">

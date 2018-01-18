@@ -8,25 +8,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    thumb:'',
-    nickname:''
+    userInfo:[]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var that = this;
-    /**
-     * 获取用户信息
-     */
-    wx.getUserInfo({
-      success: function(res){
+    var that = this;
+    that.getUserinfo();
+  },
+  getUserinfo: function(){
+    var that = this;
+    wx.request({//获取个人信息
+      url: bsurl + '/user/mine.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      success: function (res) {
+        console.log(res);
         that.setData({
-          thumb: res.userInfo.avatarUrl,
-          nickname: res.userInfo.nickName
-        })
+          userInfo:res.data.data
+        });
       }
-    })
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,12 +82,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '11111',
-      desc: '222222',
-      path: '',
-      imageUrl: '',
-
-    }
   }
 })
