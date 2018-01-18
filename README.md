@@ -1,5 +1,5 @@
 # fastFashion
-YUE时尚小程序 
+YUE时尚小程序wxapp 
 
 ## 功能
 - [x] 首页
@@ -38,3 +38,4 @@ YUE时尚小程序
 	    prePage.changeData(prePage.data.historyArr) //changeData为上一个页面声明的方法
 	} 
 ```
+- 9、wx.navigateTo和wx.redirectTo无法跳转到tabBar里的页面，需要使用wx.switchTab进行跳转：
