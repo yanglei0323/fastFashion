@@ -10,151 +10,148 @@
 	<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 71}}px" bindchange="bindChange">  
 	    <!-- 全部 -->  
 	    <swiper-item>
-	    	<view class="project-item">  
-			    <view class="project-title strong">
-			    	<text>工体店</text>
-		            <text class="project-status">待服务</text>
-			    </view>
-			    <view class="project-cont">
-			    	<image src="../../assets/images/store.png"></image>
-			    	<view class="project-msg">
-			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
-			    		<text class="store-text">服务门店：工体店</text>
-			    		<text class="store-text">门店地址：北京市东城区东方广场</text>
-			    	</view>
-			    </view>
-			    <view class="project-title">
-			    	<text></text>
-		            <text>
-		            	<text class="price-discount">已优惠：￥5.00</text>
-		            	<text class="price-total">合计：￥53.8</text>
-		            </text>
-			    </view>
-			    <view class="project-footer">
-			    	<button class="btn-add">增加项目</button>
-			    	<button class="btn-detail">订单详情</button>
-			    </view>
-	    	</view>  
-
-	    	<view class="project-item">  
-			    <view class="project-title strong">
-			    	<text>工体店</text>
-		            <text class="project-status">待服务</text>
-			    </view>
-			    <view class="project-cont">
-			    	<image src="../../assets/images/store.png"></image>
-			    	<view class="project-msg">
-			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
-			    		<text class="store-text">服务门店：工体店</text>
-			    		<text class="store-text">门店地址：北京市东城区东方广场</text>
-			    	</view>
-			    </view>
-			    <view class="project-title">
-			    	<text></text>
-		            <text>
-		            	<text class="price-discount">已优惠：￥5.00</text>
-		            	<text class="price-total">合计：￥53.8</text>
-		            </text>
-			    </view>
-			    <view class="project-footer">
-			    	<button class="btn-add">增加项目</button>
-			    	<button class="btn-detail">订单详情</button>
-			    </view>
-	    	</view> 
-		    <!--加载图标-->
-		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
+	    	<block wx:for="{{allordersList}}" wx:key="{{index}}">
+		    	<view class="project-item">  
+				    <view class="project-title strong">
+				    	<text>{{item.store.name}}</text>
+			            <text class="project-status">{{item.state}}</text>
+				    </view>
+				    <view class="project-cont">
+				    	<image src="../../assets/images/store.png"></image>
+				    	<view class="project-msg">
+				    		<text class="project-name strong">
+				    			<text>服务项目：</text>
+				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
+				    				<text>{{service.name}} </text>
+				    			</block>
+				    		</text>
+				    		<text class="store-text">服务门店：{{item.store.name}}</text>
+				    		<text class="store-text">门店地址：{{item.store.location}}</text>
+				    	</view>
+				    </view>
+				    <view class="project-title">
+				    	<text></text>
+			            <text>
+			            	<text class="price-discount">已优惠：￥{{item.freeprice}}</text>
+			            	<text class="price-total">合计：￥{{item.price}}</text>
+			            </text>
+				    </view>
+				    <view class="project-footer">
+				    	<button class="btn-add" wx:if="{{item.stateflag == 0}}" bindtap="toPay" data-orderid="{{item.id}}">去付款</button>
+				    	<button class="btn-add" wx:if="{{item.stateflag == 1}}" bindtap="toStore" data-storeid="{{item.store.id}}">增加项目</button>
+				    	<button class="btn-add" wx:if="{{item.stateflag == 2}}">去评价</button>
+				    	<button class="btn-refund" wx:if="{{item.stateflag == 3}}">已取消</button>
+				    	<button class="btn-add" wx:if="{{item.stateflag == 5}}">已完成</button>
+				    	<button class="btn-refund" wx:if="{{item.stateflag == 4 ||item.stateflag == 6}}">已退款</button>
+				    </view>
+		    	</view>
+	    	</block> 
 	    </swiper-item>  
 
 	    <!-- 待服务 -->  
-	    <swiper-item>  
-	        <view class="project-item">  
-			    <view class="project-title strong">
-			    	<text>工体店</text>
-		            <text class="project-status">待服务</text>
-			    </view>
-			    <view class="project-cont">
-			    	<image src="../../assets/images/store.png"></image>
-			    	<view class="project-msg">
-			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
-			    		<text class="store-text">服务门店：工体店</text>
-			    		<text class="store-text">门店地址：北京市东城区东方广场</text>
-			    	</view>
-			    </view>
-			    <view class="project-title">
-			    	<text></text>
-		            <text>
-		            	<text class="price-discount">已优惠：￥5.00</text>
-		            	<text class="price-total">合计：￥53.8</text>
-		            </text>
-			    </view>
-			    <view class="project-footer">
-			    	<button class="btn-add">增加项目</button>
-			    	<button class="btn-detail">订单详情</button>
-			    </view>
-	    	</view> 
+	    <swiper-item>
+	    	<block wx:for="{{dfwordersList}}" wx:key="{{index}}">
+		    	<view class="project-item">  
+				    <view class="project-title strong">
+				    	<text>{{item.store.name}}</text>
+			            <text class="project-status">{{item.state}}</text>
+				    </view>
+				    <view class="project-cont">
+				    	<image src="../../assets/images/store.png"></image>
+				    	<view class="project-msg">
+				    		<text class="project-name strong">
+				    			<text>服务项目：</text>
+				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
+				    				<text>{{service.name}} </text>
+				    			</block>
+				    		</text>
+				    		<text class="store-text">服务门店：{{item.store.name}}</text>
+				    		<text class="store-text">门店地址：{{item.store.location}}</text>
+				    	</view>
+				    </view>
+				    <view class="project-title">
+				    	<text></text>
+			            <text>
+			            	<text class="price-discount">已优惠：￥{{item.freeprice}}</text>
+			            	<text class="price-total">合计：￥{{item.price}}</text>
+			            </text>
+				    </view>
+				    <view class="project-footer">
+				    	<button class="btn-add" bindtap="toStore" data-storeid="{{item.store.id}}">增加项目</button>
+				    </view>
+		    	</view>
+	    	</block>
 
-		    <!--加载图标-->
-		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image> 
 	    </swiper-item> 
 
 	    <!-- 待评价 -->  
 	    <swiper-item>  
-	    	<view class="project-item">  
-			    <view class="project-title strong">
-			    	<text>工体店</text>
-		            <text class="project-status">待评价</text>
-			    </view>
-			    <view class="project-cont">
-			    	<image src="../../assets/images/store.png"></image>
-			    	<view class="project-msg">
-			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
-			    		<text class="store-text">服务门店：工体店</text>
-			    		<text class="store-text">门店地址：北京市东城区东方广场</text>
-			    	</view>
-			    </view>
-			    <view class="project-title">
-			    	<text></text>
-		            <text>
-		            	<text class="price-discount">已优惠：￥5.00</text>
-		            	<text class="price-total">合计：￥53.8</text>
-		            </text>
-			    </view>
-			    <view class="project-footer">
-			    	<button class="btn-add">去评价</button>
-			    </view>
-	    	</view>  
-		    <!--加载图标-->
-		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
+	    	<block wx:for="{{dpjordersList}}" wx:key="{{index}}">
+		    	<view class="project-item">  
+				    <view class="project-title strong">
+				    	<text>{{item.store.name}}</text>
+			            <text class="project-status">{{item.state}}</text>
+				    </view>
+				    <view class="project-cont">
+				    	<image src="../../assets/images/store.png"></image>
+				    	<view class="project-msg">
+				    		<text class="project-name strong">
+				    			<text>服务项目：</text>
+				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
+				    				<text>{{service.name}} </text>
+				    			</block>
+				    		</text>
+				    		<text class="store-text">服务门店：{{item.store.name}}</text>
+				    		<text class="store-text">门店地址：{{item.store.location}}</text>
+				    	</view>
+				    </view>
+				    <view class="project-title">
+				    	<text></text>
+			            <text>
+			            	<text class="price-discount">已优惠：￥{{item.freeprice}}</text>
+			            	<text class="price-total">合计：￥{{item.price}}</text>
+			            </text>
+				    </view>
+				    <view class="project-footer">
+				    	<button class="btn-add">去评价</button>
+				    </view>
+		    	</view>
+	    	</block> 
 	    </swiper-item> 
 
 	    <!-- 已退款 -->  
-	    <swiper-item>  
-	    	<view class="project-item">  
-			    <view class="project-title strong">
-			    	<text>工体店</text>
-		            <text class="project-status">已退款</text>
-			    </view>
-			    <view class="project-cont">
-			    	<image src="../../assets/images/store.png"></image>
-			    	<view class="project-msg">
-			    		<text class="project-name strong">服务项目：YUE洗发造型</text>
-			    		<text class="store-text">服务门店：工体店</text>
-			    		<text class="store-text">门店地址：北京市东城区东方广场</text>
-			    	</view>
-			    </view>
-			    <view class="project-title">
-			    	<text></text>
-		            <text>
-		            	<text class="price-discount">已优惠：￥5.00</text>
-		            	<text class="price-total">合计：￥53.8</text>
-		            </text>
-			    </view>
-			    <view class="project-footer">
-			    	<button class="btn-refund">已退款</button>
-			    </view>
-	    	</view> 
-		    <!--加载图标-->
-		    <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
+	    <swiper-item> 
+	    	<block wx:for="{{ytkordersList}}" wx:key="{{index}}">
+		    	<view class="project-item">  
+				    <view class="project-title strong">
+				    	<text>{{item.store.name}}</text>
+			            <text class="project-status">{{item.state}}</text>
+				    </view>
+				    <view class="project-cont">
+				    	<image src="../../assets/images/store.png"></image>
+				    	<view class="project-msg">
+				    		<text class="project-name strong">
+				    			<text>服务项目：</text>
+				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
+				    				<text>{{service.name}} </text>
+				    			</block>
+				    		</text>
+				    		<text class="store-text">服务门店：{{item.store.name}}</text>
+				    		<text class="store-text">门店地址：{{item.store.location}}</text>
+				    	</view>
+				    </view>
+				    <view class="project-title">
+				    	<text></text>
+			            <text>
+			            	<text class="price-discount">已优惠：￥{{item.freeprice}}</text>
+			            	<text class="price-total">合计：￥{{item.price}}</text>
+			            </text>
+				    </view>
+				    <view class="project-footer">
+			    		<button class="btn-refund">已退款</button>
+				    </view>
+		    	</view>
+	    	</block>
 	    </swiper-item> 
 	</swiper>
     

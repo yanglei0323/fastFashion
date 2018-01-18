@@ -8,20 +8,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-    selectedCoupon:[],
-    couponList: [
-      {id:1,title:'￥100',condition:'满1000元使用',type:'满减券',time:'2017.1.9-2017-1.10',select:false},
-      {id:2,title:'9折',condition:'',type:'折扣券',time:'2017.1.9-2017-1.10',select:false},
-      {id:3,title:'免费',condition:'',type:'体验券',time:'2017.1.9-2017-1.10',select:false},
-      {id:4,title:'9折',condition:'',type:'折扣券',time:'2017.1.9-2017-1.10',select:false},
-      {id:5,title:'免费',condition:'',type:'体验券',time:'2017.1.9-2017-1.10',select:false},
-      {id:6,title:'免费',condition:'',type:'体验券',time:'2017.1.9-2017-1.10',select:false},
-    ]
+    selectedCouponId:0,
+    couponList: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      var that = this;
+      wx.request({//获取可用优惠券
+        url: bsurl + '/user/mycouponlist.json',
+        method: 'POST',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'sessionid':app.globalData.sessionId
+        },
+        success: function (res) {
+          console.log(res);
+          let couponList=res.data.data.couponlist;
+          that.setData({
+            couponList:couponList
+          });
+        }
+      });
+  },
+  chooseCoupon: function (e){
+    var that=this;
+    that.setData({
+      selectedCouponId:e.currentTarget.dataset.id
+    });
+    var pages = getCurrentPages();  
+    if (pages.length > 1) {   
+        var prePage = pages[pages.length - 2];    
+        prePage.setData({
+          couponName:e.currentTarget.dataset.name,
+          couponId:e.currentTarget.dataset.id
+        });  
+    }
+    
+  },
+  clearUsed: function (){
+    var that=this;
+    that.setData({
+      selectedCouponId:0
+    });
+    var pages = getCurrentPages();  
+    if (pages.length > 1) {   
+        var prePage = pages[pages.length - 2];    
+        prePage.setData({
+          couponName:'',
+          couponId:0
+        });  
+    }
+    wx.navigateBack();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -71,39 +110,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '11111',
-      desc: '222222',
-      path: '',
-      imageUrl: '',
-
-    }
-  },
-  chooseCoupon: function (e){
-    var that=this;
-    let id = e.currentTarget.dataset.id;
-    let couponList = this.data.couponList;
-    let selectedCoupon = this.data.selectedCoupon;
-    for(let item of couponList){
-      if(item.id == id){
-        if(!item.select){
-          item.select = true;
-          selectedCoupon.push(item);
-        }else if(item.select){
-          item.select = false;
-          for(let selctitem of selectedCoupon){
-            if(selctitem.id == id){
-              let index=selectedCoupon.indexOf(selctitem);
-              selectedCoupon.splice(index,1);
-            }
-          }
-        }
-      }
-    }
-    that.setData({
-      selectedCoupon : selectedCoupon,
-      couponList: couponList
-    });
-    // console.log(this.data.selectedCoupon);
   }
 })

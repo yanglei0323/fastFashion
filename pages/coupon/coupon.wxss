@@ -1,5 +1,6 @@
 .container{
 	background:#ececec;
+	padding-bottom:100rpx;
 }
 .coupon-cont{
 	width:730rpx;
@@ -71,4 +72,15 @@
 	right:75rpx;
 	top:92rpx;
 	z-index:999;
+}
+.fixedbtn-box{
+	width:100%;
+	height:88rpx;
+	position:fixed;
+	left:0;
+	bottom:0;
+	font-size:28rpx;
+	color:#333;
+	line-height:88rpx;
+	text-align:center;
 }

@@ -5,15 +5,17 @@ const imgpath = require('../../util/imgpath.js');
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     winWidth: 0,  
-    winHeight: 0,
-    loading:true,  
+    winHeight: 0, 
     // tab切换  
     currentTab: 0, 
-    ordersList: [],
+    allordersList: [],
+    dfwordersList: [],
+    dpjordersList: [],
+    ytkordersList: [],
     allpage:1,
     dfwpage:1,
     dpjpage:1,
@@ -61,6 +63,16 @@ Page({
       }  
   
     });
+    that.getAllorders();
+    that.getDfworders();
+    that.getDpjorders();
+    that.getYtkorders();
+  },
+  getAllorders: function (){//获取全部订单
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取全部订单
       url: bsurl + '/order/orderlist.json',
       method: 'POST',
@@ -70,13 +82,174 @@ Page({
       },
       data: {
         type: 'all',
-        page:1
+        page:that.data.allpage
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
+        let allordersList = that.data.allordersList;
+        let allpage = that.data.allpage+1;
+        let orderlist=res.data.data.orderlist;
+        if(orderlist.length >= 1){
+            for(let item of orderlist){
+                // item.store.imgurl = imgpath + item.store.imgurl;
+                allordersList.push(item);
+            }
+            that.setData({
+              allordersList:allordersList,
+              allpage:allpage
+            });
+        }else{
+          wx.showToast({
+            title: '暂无更多..',
+            icon: 'success',
+            duration: 2000
+          })
+        }
         
       }
     });
+
+  },
+  getDfworders: function (){//获取待服务订单
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({
+      url: bsurl + '/order/orderlist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data: {
+        type: 'pending',
+        page:that.data.dfwpage
+      },
+      success: function (res) {
+        console.log(res);
+        wx.hideLoading();
+        let dfwordersList = that.data.dfwordersList;
+        let dfwpage = that.data.dfwpage+1;
+        let orderlist=res.data.data.orderlist;
+        if(orderlist.length >= 1){
+            for(let item of orderlist){
+                // item.store.imgurl = imgpath + item.store.imgurl;
+                dfwordersList.push(item);
+            }
+            that.setData({
+              dfwordersList:dfwordersList,
+              dfwpage:dfwpage
+            });
+        }else{
+          wx.showToast({
+            title: '暂无更多..',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+        
+      }
+    });
+  },
+  getDpjorders: function (){//获取待评价订单
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({
+      url: bsurl + '/order/orderlist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data: {
+        type: 'commenting',
+        page:that.data.dpjpage
+      },
+      success: function (res) {
+        console.log(res);
+        wx.hideLoading();
+        let dpjordersList = that.data.dpjordersList;
+        let dpjpage = that.data.dpjpage+1;
+        let orderlist=res.data.data.orderlist;
+        if(orderlist.length >= 1){
+            for(let item of orderlist){
+                // item.store.imgurl = imgpath + item.store.imgurl;
+                dpjordersList.push(item);
+            }
+            that.setData({
+              dpjordersList:dpjordersList,
+              dpjpage:dpjpage
+            });
+        }else{
+          wx.showToast({
+            title: '暂无更多..',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+        
+      }
+    });
+  },
+  getYtkorders: function (){//获取已退款订单
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({//获取全部订单
+      url: bsurl + '/order/orderlist.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data: {
+        type: 'refund',
+        page:that.data.ytkpage
+      },
+      success: function (res) {
+        console.log(res);
+        wx.hideLoading();
+        let ytkordersList = that.data.ytkordersList;
+        let ytkpage = that.data.ytkpage+1;
+        let orderlist=res.data.data.orderlist;
+        if(orderlist.length >= 1){
+            for(let item of orderlist){
+                // item.store.imgurl = imgpath + item.store.imgurl;
+                ytkordersList.push(item);
+            }
+            that.setData({
+              ytkordersList:ytkordersList,
+              ytkpage:ytkpage
+            });
+        }else{
+          wx.showToast({
+            title: '暂无更多..',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+        
+      }
+    });
+  },
+  toStore:function (e){
+    var that = this;
+    let storId = e.currentTarget.dataset.storeid;
+    wx.navigateTo({
+      url: '../storeDetail/storeDetail?storeId='+storId
+    })
+  },
+  toPay:function (e){
+    var that = this;
+    let orderid = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '../payService/payService?orderid='+orderid
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

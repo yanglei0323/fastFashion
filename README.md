@@ -39,3 +39,14 @@ YUE时尚小程序wxapp
 	} 
 ```
 - 9、wx.navigateTo和wx.redirectTo无法跳转到tabBar里的页面，需要使用wx.switchTab进行跳转：
+- 10、wx:for里面嵌套着wx:for，也就是当二维数组或者多维数组时，可以用wx:for-item赋别名：
+```js
+	//获取页面栈  
+	<view wx:for="{{parentList}}"> 
+		{{item.id}} 
+		
+		<view wx:for="{{item.childList}}" wx:for-item="items">
+			{{items.name}}{{item.account}}    
+		</view> 
+	</view> 
+```

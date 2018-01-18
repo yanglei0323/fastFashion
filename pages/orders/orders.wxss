@@ -19,9 +19,6 @@
     border-bottom: 5rpx solid #f6838d;}  
   
 .swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; margin:0;}  
-.swiper-box view{  
-    text-align: center;  
-}
 swiper-item{
 	overflow-y:scroll;
 } 

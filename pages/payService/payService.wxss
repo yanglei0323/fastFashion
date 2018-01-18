@@ -1,0 +1,91 @@
+@import '../../styles/mycell.wxss';
+.pay-header{
+	width:100%;
+	padding:30rpx 20rpx;
+	display:flex;
+	flex-direction:column;
+}
+.mt-10{
+	margin-top:10rpx;
+}
+.mt-20{
+	margin-top:20rpx;
+}
+.project-cont{
+	display:flex;
+	flex-direction:row;
+	width:100%;
+	height:200rpx;
+	padding:30rpx 20rpx;
+	border-top:1rpx solid #ececec;
+}
+.project-cont image{
+	width:200rpx;
+	height:200rpx;
+	margin-right:20rpx;
+}
+.project-msg{
+	width:62%;
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:flex-start;
+	flex-wrap:wrap;
+}
+.project-name{
+	font-size:24rpx;
+	color:#333;
+	line-height:24rpx;
+	margin-top:23rpx;
+	margin-bottom:5rpx;
+}
+.store-text{
+	font-size:20rpx;
+	color:#999;
+	line-height:30rpx;
+}
+.cell-box .cell-manage {
+	padding-left:20rpx;
+
+}
+.label-none .cell-manage::after {
+	display:none;
+}
+.paddingLeft-84{
+	padding-left:84rpx !important;
+}
+.wx-icon{
+	width:44rpx;
+	height:44rpx;
+	position:absolute;
+	left:20rpx;
+	top:22rpx;
+}
+.right-40{
+	right:40rpx !important;
+}
+.fixedbtn-box{
+    width:100%;
+    height:88rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+    line-height:88rpx;
+    font-size:28rpx;
+    display:flex;
+    justify-content:space-between;
+}
+.fixedbtn-left{
+    width:62%;
+    padding-left:20rpx;
+    overflow:hidden;
+}
+.fixedbtn-right{
+    color:#fff;
+    width:37%;
+    text-align:center;
+}
+.free-price{
+	font-size:24rpx;
+	margin-left:20rpx;
+}

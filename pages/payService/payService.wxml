@@ -1,0 +1,58 @@
+<!--pages/payService/payService.wxml-->
+<view class="container">
+	<view class="pay-header bg-fff">
+        <text class="ft-28 color-333 strong">核对订单</text>
+        <text class="ft-20 color-999 mt-20">请认真核对订单后下单</text>
+    </view>
+
+    <view class="project-cont bg-fff">
+        <image src="{{orderInfo.store.imgurl}}"></image>
+        <view class="project-msg">
+            <text class="project-name strong">
+                <text>服务项目：</text>
+                <block wx:for="{{orderInfo.servicelist}}" wx:key="{{index}}">
+                    <text>{{item.name}} </text>
+                </block>
+            </text>
+            <text class="store-text">服务门店：{{orderInfo.store.name}}</text>
+            <text class="store-text">门店地址：{{orderInfo.store.location}}</text>
+        </view>
+    </view>
+
+    <view class="cell-box mt-10 label-none">
+        <view class="cell-manage">
+            <view>服务时间</view>
+            <text class="cell-text light right-40">{{orderInfo.servicetime}} </text>
+        </view>
+    </view>
+
+    <view class="cell-box mt-10">
+        <navigator class="cell-manage" url="../coupon/coupon" hover-class="navigator-hover">
+            <view>优惠券</view>
+            <text class="cell-text light">{{couponName}} </text>
+        </navigator>
+    </view>
+
+    <view class="cell-box mt-10 label-none">
+        <view class="cell-manage">
+            <view>支付方式</view>
+        </view>
+    </view>
+
+    <view class="cell-box label-none">
+        <view class="cell-manage paddingLeft-84">
+            <image class="wx-icon" src="../../assets/icons/wx.png"></image>
+            <view>微信支付</view>
+            <icon type="success" size="20" color="#f6838d" class="select-icon" />
+        </view>
+    </view>
+
+    <!--底部-->
+    <view class="fixedbtn-box bg-fff"> 
+        <view class="fixedbtn-left">
+            <text class="total-price color-333">合计：￥</text>
+            <text class="free-price color-999">已优惠：￥</text>
+        </view>
+        <view class="fixedbtn-right bg-light" bindtap="confirmAppoint">立即支付</view>
+    </view>
+</view>

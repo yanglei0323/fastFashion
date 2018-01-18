@@ -252,7 +252,9 @@ Page({
             success: function (res) {
               console.log(res);
               if(res.data.code == 1){
-
+                  wx.redirectTo({
+                    url: '../payService/payService?orderid='+res.data.data.id
+                  })
               }else{
                 wx.showModal({
                   title: 'YUE时尚提示您',
