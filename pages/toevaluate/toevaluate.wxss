@@ -1,44 +1,93 @@
-.container:nth-child(1){
-    border-top:1rpx solid #ececec;
-}
-.eval-cont{
+.project-cont{
+    display:flex;
+    flex-direction:row;
     width:100%;
-    min-height:302rpx;
-    border-bottom:1rpx solid #ececec;
-    position:relative;
+    height:200rpx;
+    padding:30rpx;
 }
-.head-img{
-    position:absolute;
-    left:20rpx;
-    top:30rpx;
-    width:60rpx;
-    height:60rpx;
-    border-radius:50%;
+.project-cont image{
+    width:200rpx;
+    height:200rpx;
+    margin-right:20rpx;
 }
-.eval-msg{
-    padding:50rpx 20rpx 60rpx 100rpx;
+.project-msg{
+    width:62%;
     display:flex;
     flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-wrap:wrap;
 }
-.msg-name{
+.project-name{
     font-size:24rpx;
     color:#333;
     line-height:24rpx;
+    margin-top:23rpx;
+    margin-bottom:5rpx;
 }
-.msg-item{
+.store-text{
     font-size:20rpx;
     color:#999;
-    line-height:20rpx;
-    margin-top:20rpx;
+    line-height:30rpx;
 }
-.mt-60{
-    margin-top:60rpx;
+.cut-line{
+    width:100%;
+    height:10rpx;
+    background:#ececec;
 }
-.eval-star{
-    color:#f6838d;
+.eval-header{
+    display:flex;
+    flex-direction:column;
+    color:#999;
+    text-align:center;
+    padding:34rpx;
 }
-.eval-time{
-    position:absolute;
-    right:20rpx;
-    top:30rpx;
+.mt-30{
+    margin-top:30rpx;
+}
+.star{
+    font-size:44rpx;
+    line-height:44rpx;
+    text-align:center;
+}
+.eval-label{
+    width:70%;
+    margin:0 auto;
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:center;
+}
+.label-item{
+    display:inline-block;
+    font-size:20rpx;
+    line-height:50rpx;
+    padding:0 20rpx;
+    border:1rpx solid #ececec;
+    border-radius:5rpx;
+}
+.message{
+    width:650rpx;
+    height:110rpx;
+    background:#ececec;
+    font-size:20rpx;
+    border-radius:5rpx;
+    margin:0 auto;
+    padding:20rpx;
+}
+.placeholder-style{
+    color:#999;
+}
+.fixed-btn{
+    width:100%;
+    height:88rpx;
+    line-height:88rpx;
+    text-align:center;
+    font-size:28rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+    color:#fff;
 }

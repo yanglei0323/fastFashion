@@ -15,7 +15,8 @@
     "pages/appointment/appointment",
     "pages/payService/payService",
     "pages/evaluateMy/evaluateMy",
-    "pages/couponAll/couponAll"
+    "pages/couponAll/couponAll",
+    "pages/toevaluate/toevaluate"
   ],
   "window": {
     "navigationBarTitleText": "YUE时尚-臻选您的美丽",

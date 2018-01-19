@@ -1,20 +1,64 @@
-<!--pages/evaluate/evaluate.wxml-->
+<!--pages/toevaluate/toevaluate.wxml-->
 <view class="container">
-    <block wx:for="{{evaList}}" wx:key="index">
-        <view class="eval-cont">
-            <image src="{{item.user.avatar}}" class="head-img"></image>
-            <view class="eval-msg">
-                <text class="msg-name">{{item.user.name}}</text>
-                <text class="msg-item" wx:if="{{item.star == 0}}">星级 <text class="eval-star"><text class="color-999">☆☆☆☆☆</text></text></text>
-                <text class="msg-item" wx:if="{{item.star == 1}}">星级 <text class="eval-star">★<text class="color-999">☆☆☆☆</text></text></text>
-                <text class="msg-item" wx:if="{{item.star == 2}}">星级 <text class="eval-star">★★<text class="color-999">☆☆☆</text></text></text>
-                <text class="msg-item" wx:if="{{item.star == 3}}">星级 <text class="eval-star">★★★<text class="color-999">☆☆</text></text></text>
-                <text class="msg-item" wx:if="{{item.star == 4}}">星级 <text class="eval-star">★★★★<text class="color-999">☆</text></text></text>
-                <text class="msg-item" wx:if="{{item.star == 5}}">星级 <text class="eval-star">★★★★★</text></text>
-                <text class="msg-item">服务项目：{{item.service}}</text>
-                <text class="msg-name mt-60">{{item.content}}</text>
-            </view>
-            <text class="msg-item eval-time">{{item.time}}</text>
+    <view class="project-cont">
+        <image src="../../assets/images/store.png"></image>
+        <view class="project-msg">
+            <text class="project-name strong">
+                <text>朝外悠唐店</text>
+            </text>
+            <text class="store-text">一个好的发型是美好事物的开端</text>
         </view>
-    </block>
+    </view>
+    <view class="cut-line"></view>
+    <view class="eval-header">
+        <text class="ft-24">我的评价</text>
+        <view class="star mt-30">
+            <!--不使用图片、且★和☆一个实心一个空心，暂时只能分别写-->
+            <view wx:if="{{selectstar == 1}}">
+                <text class="light" data-num="1" bindtap="selectStar">★ </text>
+                <text data-num="2" bindtap="selectStar">☆ </text>
+                <text data-num="3" bindtap="selectStar">☆ </text>
+                <text data-num="4" bindtap="selectStar">☆ </text>
+                <text data-num="5" bindtap="selectStar">☆</text>
+            </view>
+            <view wx:if="{{selectstar == 2}}">
+                <text class="light" data-num="1" bindtap="selectStar">★ </text>
+                <text class="light" data-num="2" bindtap="selectStar">★ </text>
+                <text data-num="3" bindtap="selectStar">☆ </text>
+                <text data-num="4" bindtap="selectStar">☆ </text>
+                <text data-num="5" bindtap="selectStar">☆</text>
+            </view>
+            <view wx:if="{{selectstar == 3}}">
+                <text class="light" data-num="1" bindtap="selectStar">★ </text>
+                <text class="light" data-num="2" bindtap="selectStar">★ </text>
+                <text class="light" data-num="3" bindtap="selectStar">★ </text>
+                <text data-num="4" bindtap="selectStar">☆ </text>
+                <text data-num="5" bindtap="selectStar">☆</text>
+            </view>
+            <view wx:if="{{selectstar == 4}}">
+                <text class="light" data-num="1" bindtap="selectStar">★ </text>
+                <text class="light" data-num="2" bindtap="selectStar">★ </text>
+                <text class="light" data-num="3" bindtap="selectStar">★ </text>
+                <text class="light" data-num="4" bindtap="selectStar">★ </text>
+                <text data-num="5" bindtap="selectStar">☆</text>
+            </view>
+            <view wx:if="{{selectstar == 5}}">
+                <text class="light" data-num="1" bindtap="selectStar">★ </text>
+                <text class="light" data-num="2" bindtap="selectStar">★ </text>
+                <text class="light" data-num="3" bindtap="selectStar">★ </text>
+                <text class="light" data-num="4" bindtap="selectStar">★ </text>
+                <text class="light" data-num="5" bindtap="selectStar">★</text>
+            </view>
+        </view>
+        <text class="ft-20 mt-30">请评价等级</text>
+        <view class="eval-label">
+            <view class="mt-30 label-item">店内环境很好</view>
+            <view class="mt-30 label-item">服务超好</view>
+            <view class="mt-30 label-item">很专业</view>
+            <view class="mt-30 label-item">下次一定来</view>
+            <view class="mt-30 label-item">造型技术较满意</view>
+        </view>
+    </view>
+    <textarea placeholder="其他意见和建议" placeholder-class="placeholder-style" name="textarea" class="message" bindblur="bindTextAreaBlur"/>
+    <view class="fixed-btn bg-light">确定提交评价</view>
 </view>

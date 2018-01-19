@@ -251,6 +251,13 @@ Page({
       url: '../payService/payService?orderid='+orderid
     })
   },
+  toevaluate:function (e){
+    var that = this;
+    let orderid = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '../toevaluate/toevaluate?orderid='+orderid
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -39,7 +39,7 @@
 				    <view class="project-footer">
 				    	<button class="btn-add" wx:if="{{item.stateflag == 0}}" bindtap="toPay" data-orderid="{{item.id}}">去付款</button>
 				    	<button class="btn-add" wx:if="{{item.stateflag == 1}}" bindtap="toStore" data-storeid="{{item.store.id}}">增加项目</button>
-				    	<button class="btn-add" wx:if="{{item.stateflag == 2}}">去评价</button>
+				    	<button class="btn-add" wx:if="{{item.stateflag == 2}}" bindtap="toevaluate" data-orderid="{{item.id}}">去评价</button>
 				    	<button class="btn-refund" wx:if="{{item.stateflag == 3}}">已取消</button>
 				    	<button class="btn-add" wx:if="{{item.stateflag == 5}}">已完成</button>
 				    	<button class="btn-refund" wx:if="{{item.stateflag == 4 ||item.stateflag == 6}}">已退款</button>
@@ -115,7 +115,7 @@
 			            </text>
 				    </view>
 				    <view class="project-footer">
-				    	<button class="btn-add">去评价</button>
+				    	<button class="btn-add" bindtap="toevaluate" data-orderid="{{item.id}}">去评价</button>
 				    </view>
 		    	</view>
 	    	</block> 
