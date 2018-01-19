@@ -1,0 +1,78 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="container">
+	<view class="swiper-tab">
+	    <view class="swiper-tab-list strong {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">未使用</view>  
+	    <view class="swiper-tab-list strong {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已使用</view>  
+	    <view class="swiper-tab-list strong {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已过期</view>  
+	</view>  
+	  
+	<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 73}}px" bindchange="bindChange">  
+	    <!-- 未使用 -->  
+	    <swiper-item>
+	    	<block wx:for="{{unUsed}}" wx:key="index">
+				<view class="coupon-cont">
+					<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+					<view class="coupon-left">
+						<text>￥{{item.price}}</text>
+						<text class="coupon-cond">满{{item.scoreprice}}使用</text>
+					</view>
+					<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
+						<view>
+							<text class="coupon-lab">悦券</text>
+							<text>全品类（特例商品除外）</text>
+						</view>
+						<text class="coupon-type light">{{item.typeString}}</text>
+						<text class="coupon-time">{{item.starttime}}-{{item.endtime}}</text>
+					</view>
+					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
+				</view>
+			</block>
+	    </swiper-item>  
+
+	    <!-- 已使用 -->  
+	    <swiper-item>
+	    	<block wx:for="{{used}}" wx:key="index">
+				<view class="coupon-cont">
+					<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+					<view class="coupon-left">
+						<text>￥{{item.price}}</text>
+						<text class="coupon-cond">满{{item.scoreprice}}使用</text>
+					</view>
+					<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
+						<view>
+							<text class="coupon-lab">悦券</text>
+							<text>全品类（特例商品除外）</text>
+						</view>
+						<text class="coupon-type light">{{item.typeString}}</text>
+						<text class="coupon-time">{{item.starttime}}-{{item.endtime}}</text>
+					</view>
+					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
+				</view>
+			</block>
+
+	    </swiper-item> 
+
+	    <!-- 已过期 -->  
+	    <swiper-item>
+	    	<block wx:for="{{overduse}}" wx:key="index">
+				<view class="coupon-cont">
+					<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+					<view class="coupon-left">
+						<text>￥{{item.price}}</text>
+						<text class="coupon-cond">满{{item.scoreprice}}使用</text>
+					</view>
+					<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
+						<view>
+							<text class="coupon-lab">悦券</text>
+							<text>全品类（特例商品除外）</text>
+						</view>
+						<text class="coupon-type light">{{item.typeString}}</text>
+						<text class="coupon-time">{{item.starttime}}-{{item.endtime}}</text>
+					</view>
+					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
+				</view>
+			</block>
+	    </swiper-item> 
+ 
+	</swiper> 
+</view>

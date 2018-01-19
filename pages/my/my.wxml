@@ -9,7 +9,7 @@
     <!-- 功能列表 -->
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <navigator url="" hover-class="navigator-hover">优惠券</navigator>
+            <navigator url="../couponAll/couponAll" hover-class="navigator-hover">优惠券</navigator>
         </view>
     </view>
     <view class="cell-box mt-10">
