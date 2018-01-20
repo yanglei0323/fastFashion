@@ -137,11 +137,11 @@
     font-size:24rpx;
 }
 .store-icon{
-    width:34rpx;
-    height:34rpx;
+    width:50rpx;
+    height:50rpx;
     position:absolute;
-    left:20rpx;
-    top:27rpx;
+    left:12rpx;
+    top:19rpx;
 }
 .paddingLeft-74{
     padding-left:74rpx !important;

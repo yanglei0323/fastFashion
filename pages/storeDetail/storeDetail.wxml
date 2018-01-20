@@ -72,13 +72,13 @@
     </view>
     <view class="cell-box">
         <view class="cell-manage paddingLeft-74" bindtap="toNavigation" data-x="{{storeInfo.positionx}}" data-y="{{storeInfo.positiony}}" data-name="{{storeInfo.name}}" data-location="{{storeInfo.location}}">
-            <image src="../../assets/icons/time.png" class="store-icon"></image>
+            <image src="../../assets/icons/location.png" class="store-icon"></image>
             <text class="store-info color-666">{{storeInfo.location}}</text>
         </view>
     </view>
     <view class="cell-box">
         <view class="cell-manage paddingLeft-74">
-            <image src="../../assets/icons/time.png" class="store-icon"></image>
+            <image src="../../assets/icons/line.png" class="store-icon"></image>
             <text class="store-info color-666">{{storeInfo.trafficroutes}}</text>
         </view>
     </view>
