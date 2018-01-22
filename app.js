@@ -19,7 +19,7 @@ App({
               that.getUserInfo();
           }
       },
-      fail: function(){//第一次进入小程序或者session过期
+      fail: function(){//第一次进入小程序或者session过期 
         //登录态过期
         that.getUserInfo();
       }

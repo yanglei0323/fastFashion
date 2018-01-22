@@ -91,3 +91,7 @@
     bottom:0;
     color:#fff;
 }
+.selected{
+    border:1rpx solid #f6838d;
+    color:#f6838d;
+}

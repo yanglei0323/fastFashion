@@ -36,12 +36,12 @@
     </block>
 
     <!--服务评价-->
-    <view class="cell-box mt-10">
+    <view class="cell-box mt-10" wx:if="{{storeInfo.commentnum >= 1}}">
         <view class="cell-manage">
             <view class="strong">服务评价（{{storeInfo.commentnum}}）</view>
         </view>
     </view>
-    <view class="eval-cont bg-fff">
+    <view class="eval-cont bg-fff" wx:if="{{storeInfo.commentnum >= 1}}">
         <image src="{{storeInfo.comment.user.avatar}}" class="head-img"></image>
         <view class="eval-msg">
             <text class="msg-name">{{storeInfo.comment.user.name}}</text>

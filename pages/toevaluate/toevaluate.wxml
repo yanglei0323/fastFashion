@@ -52,13 +52,11 @@
         </view>
         <text class="ft-20 mt-30">请评价等级</text>
         <view class="eval-label">
-            <view class="mt-30 label-item">店内环境很好</view>
-            <view class="mt-30 label-item">服务超好</view>
-            <view class="mt-30 label-item">很专业</view>
-            <view class="mt-30 label-item">下次一定来</view>
-            <view class="mt-30 label-item">造型技术较满意</view>
+            <block wx:for="{{tagids}}" wx:key="index">
+                <view class="mt-30 label-item {{item.selected==true ? 'selected' : ''}}" data-id="{{item.id}}" bindtap="selectLabel">{{item.name}}</view>
+            </block>
         </view>
     </view>
     <textarea placeholder="其他意见和建议" placeholder-class="placeholder-style" name="textarea" class="message" bindblur="bindTextAreaBlur"/>
-    <view class="fixed-btn bg-light">确定提交评价</view>
+    <view class="fixed-btn bg-light" bindtap="toevaluate">确定提交评价</view>
 </view>

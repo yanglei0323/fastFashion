@@ -83,4 +83,5 @@
 	color:#333;
 	line-height:88rpx;
 	text-align:center;
+	z-index:999;
 }

@@ -1,0 +1,45 @@
+<!--pages/refundSuc/refundSuc.wxml-->
+<import src="../makecall/makecall.wxml" />
+<view class="container">
+    <view class="refundSuc-header bg-fff">
+        <icon type="success" size="75" color="#f6838d" class="refundSuc-icon" />
+    </view>
+    <view class="header-msg bg-fff">
+        <text class="ft-28 color-333 trong">退款成功</text>
+        <text class="ft-20 color-999 mt-20">退款将于3个工作日内到达您的支付账户</text>
+    </view>
+
+    <view class="project-item mt-10">
+        <view class="cell-box">
+            <view class="cell-manage" bindtap="toStoreDetail" data-id="{{orderDetail.store.id}}">
+                <view class="strong">{{orderDetail.store.name}}</view>
+            </view>
+        </view>
+        <view class="project-cont">
+            <image src="{{orderDetail.store.imgurl}}"></image>
+            <view class="project-msg">
+                <text class="project-name strong">
+                    <text>服务项目：</text>
+                    <block wx:for="{{orderDetail.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
+                        <text>{{service.name}} </text>
+                    </block>
+                </text>
+                <text class="store-text">服务时间：{{orderDetail.reservetime}}</text>
+            </view>
+        </view>
+        <view class="project-title">
+            <text></text>
+            <text>
+                <text class="price-total">合计：￥{{orderDetail.actualprice}}</text>
+            </text>
+        </view>
+    </view>
+
+    <view class="mt-10 bg-fff store-box">
+        <text class="ft-24 color-999">订单编号：{{orderDetail.id}}</text>
+        <text class="ft-24 color-999 mt-30">付款时间：{{orderDetail.time}}</text>
+        <text class="ft-24 color-999 mt-30">支付方式：{{orderDetail.payway}}</text>
+    </view>
+
+    <template is="tocall" />
+</view>

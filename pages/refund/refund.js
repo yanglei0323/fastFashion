@@ -1,4 +1,4 @@
-// pages/evaluate/evaluate.js
+// pages/refund/refund.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -8,104 +8,106 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tagids: [],
-    selectstar: 5,
-    selecttagids: [],
-    textareaMsg: '',
-    orderId:0
+    refundreasonlist:[],
+    selectlist: '',
+    orderid:'',
+    other:false,
+    othercont:'其他'
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    let orderid = options.orderid;
-    that.setData({
-      orderId:orderid
-    });
-    wx.request({//获取评价标签
-      url: bsurl + '/user/taglist.json',
-      method: 'POST',
-      header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'sessionid':app.globalData.sessionId
-      },
-      success: function (res) {
-        console.log(res);
-        let taglist = res.data.data.taglist;
-        for(let item of taglist){
+      var that = this;
+      let orderid=options.orderid;
+      wx.request({//获取退款原因列表
+        url: bsurl + '/order/refundreasonlist.json',
+        method: 'POST',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'sessionid':app.globalData.sessionId
+        },
+        success: function (res) {
+          console.log(res);
+          let refundreasonlist=res.data.data.refundreasonlist;
+          for(let item of refundreasonlist){
+            item.selected = false;
+          }
+          that.setData({
+            refundreasonlist:refundreasonlist,
+            orderid:orderid
+          });
+        }
+      });
+  },
+  choosereason: function (e){
+      var that = this ;
+      let id =e.currentTarget.dataset.id;
+      let selectlist=that.data.selectlist;
+      let refundreasonlist=that.data.refundreasonlist;
+      for(let item of refundreasonlist){
+        if(item.id == id){
+          if(item.selected == true){
+            item.selected = false;
+            selectlist = '';
+          }else{
+            item.selected = true;
+            selectlist=item.id;
+          }
+        }else{
           item.selected = false;
         }
-        that.setData({
-          tagids:taglist
-        });
       }
+      that.setData({
+        selectlist:selectlist,
+        refundreasonlist:refundreasonlist
+      });
+  },
+  chooseother: function (){
+    var that = this;
+    let other = !that.data.other;
+    that.setData({
+      other:other
     });
-    
   },
   bindTextAreaBlur:function (e){
     var that = this;
     that.setData({
-      textareaMsg:e.detail.value
+      othercont:e.detail.value
     });
   },
-  selectStar: function (e){
-      var that = this ;
-      let num =e.currentTarget.dataset.num;
-      if(num == that.data.selectstar){
-          return;
-      }else{
-        that.setData({
-          selectstar:num,
-        });
-      }
-  },
-  selectLabel: function (e){
-      var that = this ;
-      let id =e.currentTarget.dataset.id;
-      let selecttagids=that.data.selecttagids;
-      let tagids=that.data.tagids;
-      for(let item of tagids){
-        if(item.id == id){
-          if(item.selected){
-            item.selected = false;
-            for(let childitem of selecttagids){
-              if(childitem == id){
-                let index= selecttagids.indexOf(childitem);
-                selecttagids.splice(index,1);
-              }
-            }
-          }else{
-            item.selected = true;
-            selecttagids.push(item.id);
-          }
-        }
-      }
-      that.setData({
-        selecttagids:selecttagids,
-        tagids:tagids
-      });
-  },
-  toevaluate:function (){
+  submit: function (){
     var that = this;
+    let reasonid=that.data.selectlist;
+    let other=that.data.othercont;
+    if(reasonid == '' && other == '其他'){
+        wx.showModal({
+          title: 'YUE时尚提示您',
+          content: '请选择退款原因',
+          showCancel:false,
+          confirmColor:'#f6838d',
+          success: function(res) {
+          }
+        })
+        return;
+    }
     wx.request({
-      url: bsurl + '/user/comment.json',
+      url: bsurl + '/order/refund.json',
       method: 'POST',
       header: {
           'content-type': 'application/x-www-form-urlencoded',
           'sessionid':app.globalData.sessionId
       },
       data:{
-        orderid:that.data.orderId,
-        tagids:that.data.selecttagids,
-        content:that.data.textareaMsg,
-        star:that.data.selectstar
+        orderid:that.data.orderid,
+        reasonid:that.data.selectlist,
+        other:that.data.othercont
       },
       success: function (res) {
         console.log(res);
         if (res.data.code== 1 ) {
           wx.showToast({
-            title: '评价成功',
+            title: '退款成功',
             icon: 'success',
             duration: 1500
           });
@@ -162,13 +164,13 @@ Page({
     setTimeout(function(){
         wx.stopPullDownRefresh();
     },1500)
-
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+
   },
 
   /**

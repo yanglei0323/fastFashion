@@ -2,6 +2,7 @@
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
+const pingpp = require('../../util/pingpp.js');
 Page({
 
   /**
@@ -37,6 +38,145 @@ Page({
         });
       }
     });
+  },
+  confirmAppoint:function (){
+    var that = this;
+    wx.showLoading({
+      title: '支付中...',
+    });
+    if(that.data.couponId == 0){//没选优惠券
+      wx.request({
+        url: bsurl + '/pay/getpingcharge.json',
+        method: 'POST',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'sessionid':app.globalData.sessionId
+        },
+        data:{
+          orderid:that.data.orderInfo.id,
+          channel:'wx_lite'
+        },
+        success: function (res) {
+          console.log(res);
+          wx.hideLoading();
+          if(res.data.code == 1){
+            pingpp.createPayment(JSON.stringify(res.data), function(result, err) {
+              if (result=="success") {
+                // payment succeeded
+                wx.showToast({
+                  title: '支付成功',
+                  icon: 'success',
+                  duration: 1500
+                });
+                setTimeout(function(){
+                  wx.reLaunch({
+                    url: '../orders/orders'
+                  });
+                }, 1500);
+              } else {
+                console.log(result+" "+err.msg+" "+err.extra);
+                wx.showModal({
+                  title: 'YUE时尚提示您',
+                  content: err.msg,
+                  showCancel:false,
+                  confirmColor:'#f6838d',
+                  success: function(res) {
+                  }
+                })
+              }
+            });
+          }else{
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: res.data.reason,
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+              }
+            })
+          }
+        }
+      });
+    }else{
+      wx.request({
+        url: bsurl + '/user/usecoupon.json',
+        method: 'POST',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'sessionid':app.globalData.sessionId
+        },
+        data:{
+          orderid:that.data.orderInfo.id,
+          couponid:that.data.couponId
+        },
+        success: function (res) {
+          console.log(res);
+          if(res.data.code == 1){
+              wx.request({
+                url: bsurl + '/pay/getpingcharge.json',
+                method: 'POST',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'sessionid':app.globalData.sessionId
+                },
+                data:{
+                  orderid:that.data.orderInfo.id,
+                  channel:'wx_lite'
+                },
+                success: function (res) {
+                  wx.hideLoading();
+                  console.log(res);
+                  if(res.data.code == 1){
+                      pingpp.createPayment(JSON.stringify(res.data), function(result, err) {
+                        if (result=="success") {
+                          // payment succeeded
+                          wx.showToast({
+                            title: '支付成功',
+                            icon: 'success',
+                            duration: 1500
+                          });
+                          setTimeout(function(){
+                            wx.reLaunch({
+                              url: '../orders/orders'
+                            });
+                          }, 1500);
+                        } else {
+                          console.log(result+" "+err.msg+" "+err.extra);
+                          wx.showModal({
+                            title: 'YUE时尚提示您',
+                            content: err.msg,
+                            showCancel:false,
+                            confirmColor:'#f6838d',
+                            success: function(res) {
+                            }
+                          })
+                        }
+                      });
+                  }else{
+                    wx.showModal({
+                      title: 'YUE时尚提示您',
+                      content: res.data.reason,
+                      showCancel:false,
+                      confirmColor:'#f6838d',
+                      success: function(res) {
+                      }
+                    })
+                  }
+                }
+              });
+          }else{
+            wx.showModal({
+              title: 'YUE时尚提示您',
+              content: res.data.reason,
+              showCancel:false,
+              confirmColor:'#f6838d',
+              success: function(res) {
+              }
+            })
+          }
+        }
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

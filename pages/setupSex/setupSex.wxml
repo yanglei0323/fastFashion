@@ -9,13 +9,13 @@
     <view class="cell-box">
         <view class="cell-manage" bindtap="chooseSex" data-id="1">
             <view>男</view>
-            <icon type="{{sex == 1 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+            <icon type="{{sex == 1 ? 'success' : 'circle'}}" size="20" color="{{sex == 1 ? '#f6838d' : '#999'}}" class="select-icon" />
         </view>
     </view>
     <view class="cell-box">
         <view class="cell-manage" bindtap="chooseSex" data-id="2">
             <view>女</view>
-            <icon type="{{sex == 2 ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+            <icon type="{{sex == 2 ? 'success' : 'circle'}}" size="20" color="{{sex == 2 ? '#f6838d' : '#999'}}" class="select-icon" />
         </view>
     </view>
     <view class="submit-btn" bindtap="goBack">确定</view>

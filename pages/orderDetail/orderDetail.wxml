@@ -1,0 +1,57 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="container">
+    <view class="detail-header bg-fff">
+    	<text class="ft-28 color-333 strong">排号信息</text>
+    	<text class="ft-20 color-999 mt-20">注：请提前十分钟到达门店等候服务</text>
+    </view>
+
+    <view class="detail-box bg-fff">
+    	<view class="box-left">
+    		<text class="ft-24 color-333 mt-30">排号信息：</text>
+    		<text class="ft-24 color-333 mt-30">服务时间：</text>
+    		<text class="ft-24 color-333 mt-30">验票码：</text>
+    	</view>
+    	<view class="box-right">
+    		<text class="ft-24 color-333 mt-30">{{orderDetail.rownum}}</text>
+    		<text class="ft-24 color-333 mt-30">{{orderDetail.reservetime}}</text>
+    		<text class="ft-24 color-333 mt-30 mr-66">{{orderDetail.qrcodenum}}</text>
+    		<image src="{{orderDetail.qrcodeurl}}" class="qrcode"></image>
+    	</view>
+    </view>
+
+    <view class="detail-box bg-fff">
+    	<view class="box-left">
+    		<text class="ft-24 color-999 mt-30">服务门店：</text>
+    		<text class="ft-24 color-999 mt-30">服务项目：</text>
+    		<text class="ft-24 color-999 mt-30">价格：</text>
+    	</view>
+    	<view class="box-right">
+    		<text class="ft-24 color-999 mt-30">{{orderDetail.store.name}}</text>
+    		<text class="ft-24 color-999 mt-30">
+    			<block wx:for="{{orderDetail.serviceArray}}" wx:key="{{index}}">
+			        <text>{{item.name}} </text>
+			    </block>
+    		</text>
+    		<text class="ft-24 color-999 mt-30">￥{{orderDetail.actualprice}}</text>
+    	</view>
+    </view>
+
+    <view class="mt-10 bg-fff store-box">
+    	<text class="ft-28 color-333 strong">门店信息</text>
+    	<text class="ft-24 color-999 mt-30">营业时间：10:00-21:00</text>
+    	<text class="ft-24 color-999 mt-30 pr-230">{{orderDetail.store.location}}:</text>
+    	<view class="navigation-box light" bindtap="toNavigation">导航</view>
+    </view>
+    
+    <view class="mt-10 bg-fff store-box">
+    	<text class="ft-24 color-999">订单编号：{{orderDetail.id}}</text>
+    	<text class="ft-24 color-999 mt-30">付款时间：{{orderDetail.time}}</text>
+    	<text class="ft-24 color-999 mt-30">支付方式：{{orderDetail.payway}}</text>
+    </view>
+
+    <view class="fixed-box bg-fff" wx:if="{{orderDetail.stateflag == 1}}">
+    	<view class="fixed-left" bindtap="refund">申请退款</view>
+    	<view class="fixed-right bg-light" wx:if="{{orderDetail.timechangeflag == 0}}" bindtap="appointment">修改时间</view>
+    	<view class="fixed-right bg-d2" wx:if="{{orderDetail.timechangeflag >= 1}}" bindtap="noappointment">修改时间</view>
+    </view>
+</view>

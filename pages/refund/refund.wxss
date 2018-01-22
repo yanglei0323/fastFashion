@@ -1,0 +1,53 @@
+@import '../../styles/mycell.wxss';
+.cell-box .cell-manage::after{
+    display:none;
+}
+.container{
+	background:#ececec;
+	padding-bottom:100rpx;
+}
+.refund-header{
+	display:flex;
+	flex-direction:column;
+	background:#fff;
+	padding:32rpx 20rpx 30rpx;
+	border-bottom:1rpx solid #ececec;
+}
+.mt-20{
+	margin-top:20rpx;
+}
+.cell-box{
+	line-height:98rpx !important;
+	font-size:24rpx !important;
+	border-bottom:none !important;
+}
+.cell-box .cell-manage{
+	padding-left:20rpx !important;
+	height:98rpx !important;
+}
+.textarea-box{
+	padding-bottom:100rpx;
+}
+.message{
+    width:660rpx;
+    height:132rpx;
+    background:#ececec;
+    font-size:24rpx;
+    border-radius:5rpx;
+    margin:0 auto;
+    padding:20rpx;
+}
+.placeholder-style{
+    color:#999;
+}
+.submit-btn{
+	width:420rpx;
+	height:88rpx;
+	border:1rpx solid #f6838d;
+	border-radius:5rpx;
+	font-size:28rpx;
+	line-height:86rpx;
+	text-align:center;
+	color:#f6838d;
+	margin:60rpx auto 0;
+}

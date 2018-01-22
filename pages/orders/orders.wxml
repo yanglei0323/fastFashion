@@ -16,8 +16,8 @@
 				    	<text>{{item.store.name}}</text>
 			            <text class="project-status">{{item.state}}</text>
 				    </view>
-				    <view class="project-cont">
-				    	<image src="../../assets/images/store.png"></image>
+				    <view class="project-cont" data-orderid="{{item.id}}" data-flag="{{item.stateflag}}" bindtap="toDetail">
+				    	<image src="{{item.store.imgurl}}"></image>
 				    	<view class="project-msg">
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
@@ -57,8 +57,8 @@
 				    	<text>{{item.store.name}}</text>
 			            <text class="project-status">{{item.state}}</text>
 				    </view>
-				    <view class="project-cont">
-				    	<image src="../../assets/images/store.png"></image>
+				    <view class="project-cont" data-orderid="{{item.id}}" data-flag="{{item.stateflag}}" bindtap="toDetail">
+				    	<image src="{{item.store.imgurl}}"></image>
 				    	<view class="project-msg">
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
@@ -94,8 +94,8 @@
 				    	<text>{{item.store.name}}</text>
 			            <text class="project-status">{{item.state}}</text>
 				    </view>
-				    <view class="project-cont">
-				    	<image src="../../assets/images/store.png"></image>
+				    <view class="project-cont" data-orderid="{{item.id}}" data-flag="{{item.stateflag}}" bindtap="toDetail">
+				    	<image src="{{item.store.imgurl}}"></image>
 				    	<view class="project-msg">
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
@@ -130,8 +130,8 @@
 				    	<text>{{item.store.name}}</text>
 			            <text class="project-status">{{item.state}}</text>
 				    </view>
-				    <view class="project-cont">
-				    	<image src="../../assets/images/store.png"></image>
+				    <view class="project-cont" data-orderid="{{item.id}}" data-flag="{{item.stateflag}}" bindtap="toDetail">
+				    	<image src="{{item.store.imgurl}}"></image>
 				    	<view class="project-msg">
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>

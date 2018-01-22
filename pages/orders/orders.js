@@ -92,7 +92,7 @@ Page({
         let orderlist=res.data.data.orderlist;
         if(orderlist.length >= 1){
             for(let item of orderlist){
-                // item.store.imgurl = imgpath + item.store.imgurl;
+                item.store.imgurl = imgpath + item.store.imgurl;
                 allordersList.push(item);
             }
             that.setData({
@@ -135,7 +135,7 @@ Page({
         let orderlist=res.data.data.orderlist;
         if(orderlist.length >= 1){
             for(let item of orderlist){
-                // item.store.imgurl = imgpath + item.store.imgurl;
+                item.store.imgurl = imgpath + item.store.imgurl;
                 dfwordersList.push(item);
             }
             that.setData({
@@ -177,7 +177,7 @@ Page({
         let orderlist=res.data.data.orderlist;
         if(orderlist.length >= 1){
             for(let item of orderlist){
-                // item.store.imgurl = imgpath + item.store.imgurl;
+                item.store.imgurl = imgpath + item.store.imgurl;
                 dpjordersList.push(item);
             }
             that.setData({
@@ -219,7 +219,7 @@ Page({
         let orderlist=res.data.data.orderlist;
         if(orderlist.length >= 1){
             for(let item of orderlist){
-                // item.store.imgurl = imgpath + item.store.imgurl;
+                item.store.imgurl = imgpath + item.store.imgurl;
                 ytkordersList.push(item);
             }
             that.setData({
@@ -257,6 +257,20 @@ Page({
     wx.navigateTo({
       url: '../toevaluate/toevaluate?orderid='+orderid
     })
+  },
+  toDetail: function (e){
+    var that = this;
+    let orderid = e.currentTarget.dataset.orderid;
+    let flag = e.currentTarget.dataset.flag;
+    if(flag == 6 || flag == 4){
+      wx.navigateTo({
+        url: '../refundSuc/refundSuc?orderid='+orderid
+      })
+    }else{
+      wx.navigateTo({
+        url: '../orderDetail/orderDetail?orderid='+orderid
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

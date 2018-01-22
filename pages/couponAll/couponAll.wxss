@@ -56,6 +56,9 @@
 	margin-right:10rpx;
 	border-radius:2rpx;
 }
+.lab-used{
+	background:#999;
+}
 .coupon-type{
 	font-size:24rpx;
 	line-height:24rpx;

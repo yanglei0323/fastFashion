@@ -42,18 +42,26 @@ Page({
       },
       success: function (res) {
         let storeInfo = res.data.data;
-        // console.log(res);
+        console.log(res);
         let imgarray = [];
         for(let item of res.data.data.imgarray){
             item = imgpath + item;
             imgarray.push(item);
         }
-        that.setData({
-          storeInfo:storeInfo,
-          imgUrls:imgarray,
-          star:storeInfo.comment.star,
-          serviceArray:storeInfo.serviceArray
-        });
+        if(storeInfo.commentnum == 0){
+          that.setData({
+            storeInfo:storeInfo,
+            imgUrls:imgarray,
+            serviceArray:storeInfo.serviceArray
+          });
+        }else{
+          that.setData({
+            storeInfo:storeInfo,
+            imgUrls:imgarray,
+            star:storeInfo.comment.star,
+            serviceArray:storeInfo.serviceArray
+          });
+        }
         wx.setNavigationBarTitle({
           title: 'YUE时尚-'+storeInfo.name
         }); 

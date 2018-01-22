@@ -10,7 +10,7 @@
         <view class="cell-box">
             <view class="cell-manage" bindtap="chooseAge" data-id="{{index}}" data-name="{{item}}">
                 <view>{{item}}</view>
-                <icon type="{{age == index ? 'success' : 'circle'}}" size="20" color="#f6838d" class="select-icon" />
+                <icon type="{{age == index ? 'success' : 'circle'}}" size="20" color="{{age == index ? '#f6838d' : '#999'}}" class="select-icon" />
             </view>
         </view>
     </block>

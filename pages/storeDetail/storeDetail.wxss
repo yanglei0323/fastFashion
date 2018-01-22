@@ -230,11 +230,11 @@
 }
 .sitem-delet{
     display:inline-block;
-    width:24rpx;
-    height:24rpx;
+    width:32rpx;
+    height:32rpx;
     position:absolute;
-    top:32rpx;
-    right:64rpx;
+    top:28rpx;
+    right:72rpx;
 }
 .sitem-num{
     display:inline-block;
@@ -244,14 +244,14 @@
     overflow:hidden;
     position:absolute;
     top:0;
-    right:24rpx;
+    right:28rpx;
 }
 .sitem-add{
     display:inline-block;
-    width:24rpx;
-    height:24rpx;
+    width:32rpx;
+    height:32rpx;
     position:absolute;
-    top:32rpx;
+    top:28rpx;
     right:0;
 }
 .delet-icon{

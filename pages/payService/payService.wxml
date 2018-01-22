@@ -50,8 +50,8 @@
     <!--底部-->
     <view class="fixedbtn-box bg-fff"> 
         <view class="fixedbtn-left">
-            <text class="total-price color-333">合计：￥</text>
-            <text class="free-price color-999">已优惠：￥</text>
+            <text class="total-price color-333">合计：￥{{orderInfo.allprice}}</text>
+            <text class="free-price color-999">已优惠：￥{{orderInfo.freeprice}}</text>
         </view>
         <view class="fixedbtn-right bg-light" bindtap="confirmAppoint">立即支付</view>
     </view>

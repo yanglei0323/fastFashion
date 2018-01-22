@@ -1,4 +1,4 @@
-// pages/coupon/coupon.js
+// pages/refundSuc/refundSuc.js
 const app = getApp();
 const bsurl = require('../../util/bsurl.js');
 const imgpath = require('../../util/imgpath.js');
@@ -8,59 +8,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    selectedCouponId:0,
-    couponList: []
+    orderDetail:[]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
       var that = this;
-      wx.request({//获取可用优惠券
-        url: bsurl + '/user/unusedcouponlist.json',
+      let orderid=options.orderid;
+      wx.request({//获取订单详情
+        url: bsurl + '/order/orderdetail.json',
         method: 'POST',
         header: {
             'content-type': 'application/x-www-form-urlencoded',
             'sessionid':app.globalData.sessionId
         },
+        data:{
+          orderid:orderid
+        },
         success: function (res) {
           console.log(res);
-          let couponList=res.data.data.couponlist;
-          that.setData({
-            couponList:couponList
-          });
+          if(res.data.code == 1){
+            let orderDetail = res.data.data;
+            orderDetail.store.imgurl = imgpath + orderDetail.store.imgurl;
+            that.setData({
+              orderDetail:orderDetail
+            });
+          }
         }
       });
   },
-  chooseCoupon: function (e){
-    var that=this;
-    that.setData({
-      selectedCouponId:e.currentTarget.dataset.id
-    });
-    var pages = getCurrentPages();  
-    if (pages.length > 1) {   
-        var prePage = pages[pages.length - 2];    
-        prePage.setData({
-          couponName:e.currentTarget.dataset.name,
-          couponId:e.currentTarget.dataset.id
-        });  
-    }
-    
-  },
-  clearUsed: function (){
-    var that=this;
-    that.setData({
-      selectedCouponId:0
-    });
-    var pages = getCurrentPages();  
-    if (pages.length > 1) {   
-        var prePage = pages[pages.length - 2];    
-        prePage.setData({
-          couponName:'',
-          couponId:0
-        });  
-    }
-    wx.navigateBack();
+  toStoreDetail: function (e){
+    let storId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../storeDetail/storeDetail?storeId='+storId
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

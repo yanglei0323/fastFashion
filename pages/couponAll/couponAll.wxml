@@ -33,17 +33,17 @@
 	    <swiper-item>
 	    	<block wx:for="{{used}}" wx:key="index">
 				<view class="coupon-cont">
-					<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+					<image src="../../assets/icons/couponbgused.png" class="coupon-bg"></image>
 					<view class="coupon-left">
 						<text>￥{{item.price}}</text>
 						<text class="coupon-cond">满{{item.scoreprice}}使用</text>
 					</view>
 					<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
 						<view>
-							<text class="coupon-lab">悦券</text>
+							<text class="coupon-lab lab-used">悦券</text>
 							<text>全品类（特例商品除外）</text>
 						</view>
-						<text class="coupon-type light">{{item.typeString}}</text>
+						<text class="coupon-type">{{item.typeString}}</text>
 						<text class="coupon-time">{{item.starttime}}-{{item.endtime}}</text>
 					</view>
 					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
@@ -56,17 +56,17 @@
 	    <swiper-item>
 	    	<block wx:for="{{overduse}}" wx:key="index">
 				<view class="coupon-cont">
-					<image src="../../assets/icons/couponbg.png" class="coupon-bg"></image>
+					<image src="../../assets/icons/couponbgused.png" class="coupon-bg"></image>
 					<view class="coupon-left">
 						<text>￥{{item.price}}</text>
 						<text class="coupon-cond">满{{item.scoreprice}}使用</text>
 					</view>
 					<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
 						<view>
-							<text class="coupon-lab">悦券</text>
+							<text class="coupon-lab lab-used">悦券</text>
 							<text>全品类（特例商品除外）</text>
 						</view>
-						<text class="coupon-type light">{{item.typeString}}</text>
+						<text class="coupon-type">{{item.typeString}}</text>
 						<text class="coupon-time">{{item.starttime}}-{{item.endtime}}</text>
 					</view>
 					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />

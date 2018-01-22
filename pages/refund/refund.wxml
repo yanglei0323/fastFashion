@@ -1,0 +1,28 @@
+<!--pages/refund/refund.wxml-->
+<import src="../makecall/makecall.wxml" />
+<view class="container">
+	<view class="refund-header">
+        <text class="ft-28 color-333 strong">退款原因</text>
+        <text class="ft-20 color-999 mt-20">请选择退款原因，我们会尽快为您办理退款</text>
+    </view>
+    <!-- 功能列表 -->
+    <block wx:for="{{refundreasonlist}}" wx:key="{{index}}">
+        <view class="cell-box">
+            <view class="cell-manage" bindtap="choosereason" data-id="{{item.id}}">
+                <view>{{item.reason}}</view>
+                <icon type="{{item.selected==true ? 'success' : 'circle'}}" size="20" color="{{item.selected==true ? '#f6838d' : '#999'}}" class="select-icon" />
+            </view>
+        </view>
+    </block>
+    <view class="cell-box">
+        <view class="cell-manage" bindtap="chooseother">
+            <view>其他</view>
+            <icon type="{{other==true ? 'success' : 'circle'}}" size="20" color="{{other==true ? '#f6838d' : '#999'}}" class="select-icon" />
+        </view>
+    </view>
+    <view class="textarea-box bg-fff">
+        <textarea placeholder="其他意见和建议(选填)" placeholder-class="placeholder-style" name="textarea" class="message" bindblur="bindTextAreaBlur" wx:if="{{other}}"/>
+        <view class="submit-btn" bindtap="submit">完成</view>
+    </view>
+    <template is="tocall" />
+</view>
