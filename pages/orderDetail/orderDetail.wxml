@@ -15,7 +15,7 @@
     		<text class="ft-24 color-333 mt-30">{{orderDetail.rownum}}</text>
     		<text class="ft-24 color-333 mt-30">{{orderDetail.reservetime}}</text>
     		<text class="ft-24 color-333 mt-30 mr-66">{{orderDetail.qrcodenum}}</text>
-    		<image src="{{orderDetail.qrcodeurl}}" class="qrcode"></image>
+    		<image src="{{orderDetail.qrcodeurl}}" class="qrcode" bindtap="previewImage"></image>
     	</view>
     </view>
 

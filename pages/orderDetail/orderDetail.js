@@ -93,6 +93,15 @@ Page({
       address:location
     })
   },
+  previewImage:function (){
+    var that = this;
+    let urls = [];
+    urls.push(that.data.orderDetail.qrcodeurl);
+    wx.previewImage({
+      // current: '', // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
