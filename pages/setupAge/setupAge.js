@@ -118,7 +118,7 @@ Page({
              wx.navigateBack();
         }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',

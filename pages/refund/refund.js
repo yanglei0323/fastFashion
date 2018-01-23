@@ -82,7 +82,7 @@ Page({
     let other=that.data.othercont;
     if(reasonid == '' && other == '其他'){
         wx.showModal({
-          title: 'YUE时尚提示您',
+          title: '温馨提示',
           content: '请选择退款原因',
           showCancel:false,
           confirmColor:'#f6838d',
@@ -118,7 +118,7 @@ Page({
           }, 1500);
         } else {
           wx.showModal({
-            title: 'YUE时尚提示您',
+            title: '温馨提示',
             content: res.data.reason,
             showCancel:false,
             confirmColor:'#f6838d',

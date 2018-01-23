@@ -76,7 +76,7 @@ Page({
               } else {
                 console.log(result+" "+err.msg+" "+err.extra);
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: err.msg,
                   showCancel:false,
                   confirmColor:'#f6838d',
@@ -87,7 +87,7 @@ Page({
             });
           }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',
@@ -143,7 +143,7 @@ Page({
                         } else {
                           console.log(result+" "+err.msg+" "+err.extra);
                           wx.showModal({
-                            title: 'YUE时尚提示您',
+                            title: '温馨提示',
                             content: err.msg,
                             showCancel:false,
                             confirmColor:'#f6838d',
@@ -154,7 +154,7 @@ Page({
                       });
                   }else{
                     wx.showModal({
-                      title: 'YUE时尚提示您',
+                      title: '温馨提示',
                       content: res.data.reason,
                       showCancel:false,
                       confirmColor:'#f6838d',
@@ -166,7 +166,7 @@ Page({
               });
           }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',

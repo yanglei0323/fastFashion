@@ -71,7 +71,7 @@ Page({
         console.log(res);
         if(res.data.code == 1){
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: '添加成功，在购物车等你哦~',
               showCancel:false,
               confirmColor:'#f6838d',
@@ -87,7 +87,7 @@ Page({
             }
         }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',
@@ -118,7 +118,7 @@ Page({
             })
         }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: '请先将服务加入购物车，再去预约时间',
               showCancel:false,
               confirmColor:'#f6838d',

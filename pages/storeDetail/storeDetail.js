@@ -159,7 +159,7 @@ Page({
     var that = this;
     if(that.data.cartNum == 0){//当前购物车没有选择任何服务
         wx.showModal({
-          title: 'YUE时尚提示您',
+          title: '温馨提示',
           content: '当前购物车中没有选中的服务，请先选择服务再来预约时间！',
           showCancel:false,
           confirmColor:'#f6838d',
@@ -276,7 +276,7 @@ Page({
                 that.getCartInfo();//重新获取购物车信息
             }else{
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: res.data.reason,
                   showCancel:false,
                   confirmColor:'#f6838d',
@@ -294,7 +294,7 @@ Page({
       for(let item of carts){
           if(item.service.serviceid == serviceid && item.num >= 5){
               wx.showModal({
-                title: 'YUE时尚提示您',
+                title: '温馨提示',
                 content:'每项服务单次预约上限为5次！',
                 showCancel:false,
                 confirmColor:'#f6838d',
@@ -324,7 +324,7 @@ Page({
                 that.getCartInfo();//重新获取购物车信息
             }else{
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: res.data.reason,
                   showCancel:false,
                   confirmColor:'#f6838d',
@@ -338,7 +338,7 @@ Page({
   clearCart:function (){
       var that = this;
       wx.showModal({
-        title: 'YUE时尚提示您',
+        title: '温馨提示',
         content:'是否确认清空该门店下的购物车中的服务项目？',
         confirmColor:'#f6838d',
         success: function(res) {

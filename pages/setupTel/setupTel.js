@@ -52,7 +52,7 @@ Page({
     }
     if(!(/^1[34578]\d{9}$/.test(that.data.phoneNum))){
       wx.showModal({
-        title: 'YUE时尚提示您',
+        title: '温馨提示',
         content: '请输入正确格式的手机号码',
         showCancel:false,
         confirmColor:'#f6838d',
@@ -98,7 +98,7 @@ Page({
                   })
               }else{
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: res.data.reason,
                   showCancel:false,
                   confirmColor:'#f6838d',
@@ -141,7 +141,7 @@ Page({
                   })
               }else{
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: res.data.reason,
                   showCancel:false,
                   confirmColor:'#f6838d',
@@ -158,7 +158,7 @@ Page({
     var that = this;
     if(!(/^1[34578]\d{9}$/.test(that.data.phoneNum))){
       wx.showModal({
-        title: 'YUE时尚提示您',
+        title: '温馨提示',
         content: '请输入正确格式的手机号码',
         showCancel:false,
         confirmColor:'#f6838d',
@@ -169,7 +169,7 @@ Page({
     }
     if(!(/^\d{4,6}$/.test(that.data.codeNum))){
       wx.showModal({
-        title: 'YUE时尚提示您',
+        title: '温馨提示',
         content: '请输入正确格式的验证码',
         showCancel:false,
         confirmColor:'#f6838d',
@@ -209,7 +209,7 @@ Page({
             });
           }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',
@@ -249,7 +249,7 @@ Page({
             wx.navigateBack();
           }else{
             wx.showModal({
-              title: 'YUE时尚提示您',
+              title: '温馨提示',
               content: res.data.reason,
               showCancel:false,
               confirmColor:'#f6838d',

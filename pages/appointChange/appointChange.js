@@ -211,7 +211,7 @@ Page({
       let time = that.data.currentTime;
       if(day == 0){
           wx.showModal({
-            title: 'YUE时尚提示您',
+            title: '温馨提示',
             content: '请先选择预约时间！',
             showCancel:false,
             confirmColor:'#f6838d',
@@ -247,7 +247,7 @@ Page({
                   }, 1500);
               }else{
                 wx.showModal({
-                  title: 'YUE时尚提示您',
+                  title: '温馨提示',
                   content: res.data.reason,
                   showCancel:false,
                   confirmColor:'#f6838d',
