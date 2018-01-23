@@ -41,8 +41,7 @@ Page({
         let commentlist = res.data.data.commentlist;
         console.log(commentlist);
         if(commentlist.length > 0){
-          let page = that.data.page;
-          page += 1;
+          let page = that.data.page + 1;
           for(let item of commentlist){
             evaList.push(item);
           }
