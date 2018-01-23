@@ -266,6 +266,10 @@ Page({
       wx.navigateTo({
         url: '../refundSuc/refundSuc?orderid='+orderid
       })
+    }else if(flag == 0){
+      wx.navigateTo({
+        url: '../payService/payService?orderid='+orderid
+      })
     }else{
       wx.navigateTo({
         url: '../orderDetail/orderDetail?orderid='+orderid
