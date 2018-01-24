@@ -50,3 +50,19 @@ YUE时尚小程序wxapp
 		</view> 
 	</view> 
 ```
+- 11、获取input内容可以用bindblur：
+```html
+	<input id="myInput" bindblur="bindBlur" />
+```
+```js
+	var inputContent = {}
+
+	Page({
+	  data: {
+	    inputContent: {}
+	  },
+	  bindBlur: function(e) {
+	    inputContent[e.currentTarget.id] = e.detail.value
+	  }
+	}) 
+```
