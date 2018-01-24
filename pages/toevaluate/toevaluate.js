@@ -12,7 +12,8 @@ Page({
     selectstar: 5,
     selecttagids: [],
     textareaMsg: '',
-    orderId:0
+    orderId:0,
+    orderDetail:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -39,6 +40,28 @@ Page({
         that.setData({
           tagids:taglist
         });
+      }
+    });
+
+    wx.request({//获取订单详情
+      url: bsurl + '/order/orderdetail.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        orderid:orderid
+      },
+      success: function (res) {
+        console.log(res);
+        if(res.data.code == 1){
+          let orderDetail = res.data.data;
+          orderDetail.store.imgurl = imgpath + orderDetail.store.imgurl;
+          that.setData({
+            orderDetail:orderDetail
+          });
+        }
       }
     });
     

@@ -1,10 +1,10 @@
 <!--pages/toevaluate/toevaluate.wxml-->
 <view class="container">
     <view class="project-cont">
-        <image src="../../assets/images/store.png"></image>
+        <image src="{{orderDetail.store.imgurl}}"></image>
         <view class="project-msg">
             <text class="project-name strong">
-                <text>朝外悠唐店</text>
+                <text>{{orderDetail.store.name}}</text>
             </text>
             <text class="store-text">一个好的发型是美好事物的开端</text>
         </view>
