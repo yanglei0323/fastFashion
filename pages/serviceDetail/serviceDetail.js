@@ -100,34 +100,38 @@ Page({
   },
   appointment: function (){
     var that = this;
-    wx.request({//获取购物车中的信息
-      url: bsurl + '/cart/mycart.json',
-      method: 'POST',
-      header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'sessionid':app.globalData.sessionId
-      },
-      data:{
-        storeid:that.data.storeId
-      },
-      success: function (res) {
-        let cartList=res.data.data.cartlist;
-        if(cartList.length >= 1){
-            wx.navigateTo({
-              url: '../appointment/appointment?storeId='+that.data.storeId
-            })
-        }else{
-            wx.showModal({
-              title: '温馨提示',
-              content: '请先将服务加入购物车，再去预约时间',
-              showCancel:false,
-              confirmColor:'#f6838d',
-              success: function(res) {
-              }
-            })
-        }
-      }
-    });
+    that.addToCart();
+    wx.navigateTo({
+      url: '../appointment/appointment?storeId='+that.data.storeId
+    })
+    // wx.request({//获取购物车中的信息
+    //   url: bsurl + '/cart/mycart.json',
+    //   method: 'POST',
+    //   header: {
+    //       'content-type': 'application/x-www-form-urlencoded',
+    //       'sessionid':app.globalData.sessionId
+    //   },
+    //   data:{
+    //     storeid:that.data.storeId
+    //   },
+    //   success: function (res) {
+    //     let cartList=res.data.data.cartlist;
+    //     if(cartList.length >= 1){
+    //         wx.navigateTo({
+    //           url: '../appointment/appointment?storeId='+that.data.storeId
+    //         })
+    //     }else{
+    //         wx.showModal({
+    //           title: '温馨提示',
+    //           content: '请先将服务加入购物车，再去预约时间',
+    //           showCancel:false,
+    //           confirmColor:'#f6838d',
+    //           success: function(res) {
+    //           }
+    //         })
+    //     }
+    //   }
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
