@@ -109,6 +109,7 @@ Page({
   appointment: function (){
     var that = this;
     that.addToCart();
+    app.globalData.refreshFlag = true;
     wx.navigateTo({
       url: '../appointment/appointment?storeId='+that.data.storeId
     })

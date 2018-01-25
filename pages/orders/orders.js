@@ -303,6 +303,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that =this;
+    if(app.globalData.refreshFlag){
+      that.setData({
+        allordersList: [],
+        allpage:1,
+        hasMoreall:1
+      });
+      that.getAllorders();
+      app.globalData.refreshFlag = false;
+    }
     
   },
 

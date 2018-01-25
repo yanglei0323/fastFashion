@@ -114,7 +114,8 @@ App({
     sessionId:0,      //登陆状态保持凭证
     wxCode:0,         //授权后得到的code
     positionx:0,
-    positiony:0
+    positiony:0,
+    refreshFlag:false //控制订单页面刷新
   }
 
 })

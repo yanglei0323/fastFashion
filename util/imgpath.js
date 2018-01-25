@@ -1,1 +1,1 @@
-module.exports="http://photo.yueyishujia.com:8112"
+module.exports="https://photo.yueyishujia.com"
