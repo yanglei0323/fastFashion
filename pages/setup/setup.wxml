@@ -2,7 +2,7 @@
 <import src="../makecall/makecall.wxml" />
 <view class="container">
 	<view class="header">
-        <image src="{{userInfo.avatar}}" class="thumb"></image>
+        <image src="{{thumb}}" class="thumb"></image>
         <text class="nickname strong">{{userInfo.name}}</text>
         <text class="about">距离您上次服务已经<text class="time">{{userInfo.lastservice}}</text>天了~</text>
     </view>

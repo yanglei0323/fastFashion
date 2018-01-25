@@ -48,7 +48,7 @@ App({
                 },
                 data:{
                   code:that.globalData.wxCode,
-                  nickName:userInfo.nickName,
+                  nickName:userInfo.nickName, 
                   avatarUrl:userInfo.avatarUrl,
                   sexFlag:userInfo.gender //性别 0：未知、1：男、2：女
                 },

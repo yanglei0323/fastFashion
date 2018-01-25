@@ -8,13 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:[]
+    userInfo:[],
+    thumb:'../../assets/icons/logo.png'
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    wx.getUserInfo({
+      success: function(res){
+        that.setData({
+          thumb: res.userInfo.avatarUrl
+        })
+      }
+    });
     that.getUserinfo();
   },
   getUserinfo: function(){
