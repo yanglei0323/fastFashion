@@ -19,7 +19,11 @@ Page({
     allpage:1,
     dfwpage:1,
     dpjpage:1,
-    ytkpage:1
+    ytkpage:1,
+    hasMoreall:1,//0-列表为空，1-还可加载，3-不需要加载了
+    hasMoredfw:1,//0-列表为空，1-还可加载，3-不需要加载了
+    hasMoredpj:1,//0-列表为空，1-还可加载，3-不需要加载了
+    hasMoreytk:1,//0-列表为空，1-还可加载，3-不需要加载了
   },  
   /** 
      * 滑动切换tab 
@@ -100,11 +104,14 @@ Page({
               allpage:allpage
             });
         }else{
-          wx.showToast({
-            title: '暂无更多',
-            icon: 'success',
-            duration: 2000
-          })
+          that.setData({
+            hasMoreall:2
+          });
+        }
+        if(allordersList.length <= 0){
+          that.setData({
+            hasMoreall:0
+          });
         }
         
       }
@@ -143,11 +150,14 @@ Page({
               dfwpage:dfwpage
             });
         }else{
-          wx.showToast({
-            title: '暂无更多',
-            icon: 'success',
-            duration: 2000
-          })
+          that.setData({
+            hasMoredfw:2
+          });
+        }
+        if(dfwordersList.length <= 0){
+          that.setData({
+            hasMoredfw:0
+          });
         }
         
       }
@@ -185,11 +195,14 @@ Page({
               dpjpage:dpjpage
             });
         }else{
-          wx.showToast({
-            title: '暂无更多',
-            icon: 'success',
-            duration: 2000
-          })
+          that.setData({
+            hasMoredpj:2
+          });
+        }
+        if(dpjordersList.length <= 0){
+          that.setData({
+            hasMoredpj:0
+          });
         }
         
       }
@@ -227,11 +240,14 @@ Page({
               ytkpage:ytkpage
             });
         }else{
-          wx.showToast({
-            title: '暂无更多',
-            icon: 'success',
-            duration: 2000
-          })
+          that.setData({
+            hasMoreytk:2
+          });
+        }
+        if(ytkordersList.length <= 0){
+          that.setData({
+            hasMoreytk:0
+          });
         }
         
       }

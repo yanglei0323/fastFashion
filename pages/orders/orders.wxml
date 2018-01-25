@@ -46,7 +46,9 @@
 				    </view>
 		    	</view>
 	    	</block> 
-	    	<view class="load-more" bindtap="getAllorders">加载更多</view>
+	    	<view class="load-more" bindtap="getAllorders" wx:if="{{hasMoreall == 1}}">加载更多</view>
+    		<view class="nomore-text" wx:if="{{hasMoreall == 2}}">—— 我也是有底线的 ——</view>
+    		<image src="../../assets/icons/box.png" wx:if="{{hasMoreall == 0}}" class="nothing"></image>
 	    </swiper-item>  
 
 	    <!-- 待服务 -->  
@@ -82,7 +84,9 @@
 				    </view>
 		    	</view>
 	    	</block>
-	    	<view class="load-more" bindtap="getDfworders">加载更多</view>
+	    	<view class="load-more" bindtap="getDfworders" wx:if="{{hasMoredfw == 1}}">加载更多</view>
+    		<view class="nomore-text" wx:if="{{hasMoredfw == 2}}">—— 我也是有底线的 ——</view>
+    		<image src="../../assets/icons/box.png" wx:if="{{hasMoredfw == 0}}" class="nothing"></image>
 
 	    </swiper-item> 
 
@@ -119,7 +123,9 @@
 				    </view>
 		    	</view>
 	    	</block> 
-	    	<view class="load-more" bindtap="getDpjorders">加载更多</view>
+	    	<view class="load-more" bindtap="getDpjorders" wx:if="{{hasMoredpj == 1}}">加载更多</view>
+    		<view class="nomore-text" wx:if="{{hasMoredpj == 2}}">—— 我也是有底线的 ——</view>
+    		<image src="../../assets/icons/box.png" wx:if="{{hasMoredpj == 0}}" class="nothing"></image>
 	    </swiper-item> 
 
 	    <!-- 已退款 -->  
@@ -155,7 +161,9 @@
 				    </view>
 		    	</view>
 	    	</block>
-	    	<view class="load-more" bindtap="getYtkorders">加载更多</view>
+	    	<view class="load-more" bindtap="getYtkorders" wx:if="{{hasMoreytk == 1}}">加载更多</view>
+    		<view class="nomore-text" wx:if="{{hasMoreytk == 2}}">—— 我也是有底线的 ——</view>
+    		<image src="../../assets/icons/box.png" wx:if="{{hasMoreytk == 0}}" class="nothing"></image>
 	    </swiper-item> 
 	</swiper>
     

@@ -76,7 +76,7 @@
             <text class="store-info color-666">{{storeInfo.location}}</text>
         </view>
     </view>
-    <view class="cell-box">
+    <view class="cell-box box-2">
         <view class="cell-manage paddingLeft-74">
             <image src="../../assets/icons/line.png" class="store-icon"></image>
             <text class="store-info color-666">{{storeInfo.trafficroutes}}</text>

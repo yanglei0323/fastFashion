@@ -27,6 +27,7 @@
 					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
 				</view>
 			</block>
+    		<image src="../../assets/icons/box.png" wx:if="{{unUsed.length <= 0}}" class="nothing"></image>
 	    </swiper-item>  
 
 	    <!-- 已使用 -->  
@@ -49,6 +50,7 @@
 					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
 				</view>
 			</block>
+    		<image src="../../assets/icons/box.png" wx:if="{{used.length <= 0}}" class="nothing"></image>
 
 	    </swiper-item> 
 
@@ -72,6 +74,7 @@
 					<icon type="success" size="16" color="#f6838d" class="coupon-select" wx:if="{{selectedCouponId == item.id}}" />
 				</view>
 			</block>
+    		<image src="../../assets/icons/box.png" wx:if="{{overduse.length <= 0}}" class="nothing"></image>
 	    </swiper-item> 
  
 	</swiper> 

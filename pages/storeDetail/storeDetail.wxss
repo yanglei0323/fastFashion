@@ -5,6 +5,16 @@
 .cell-box .cell-manage{
     padding-left:20rpx;
 }
+.box-2 .cell-manage{
+    min-height:88rpx !important;
+    overflow:visible !important;
+    white-space:normal !important;
+    line-height:38rpx !important;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    height:auto !important;
+}
 .mt-10{
     margin-top:10rpx;
 }

@@ -9,7 +9,8 @@ Page({
    */
   data: {
     evaList: [],
-    page: 1
+    page: 1,
+    hasMore:true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -52,11 +53,9 @@ Page({
           wx.hideLoading();
         }else{
           wx.hideLoading();
-          wx.showToast({
-            title: '暂无更多评论',
-            icon: 'success',
-            duration: 1500
-          })
+          that.setData({
+            hasMore:false
+          });
         }
         
       }
