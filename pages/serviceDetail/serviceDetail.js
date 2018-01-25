@@ -23,6 +23,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
     let id = options.serviceid;
     let storeId = options.storeId;
     wx.request({//获取门店详情
@@ -46,6 +49,7 @@ Page({
             item.imgurl = imgpath + item.imgurl;
             itemlist.push(item);
         }
+        wx.hideLoading();
         that.setData({
           serviceInfo:serviceInfo,
           imgUrls:imgarray,
@@ -57,6 +61,9 @@ Page({
   },
   addToCart: function (){
     var that = this;
+    wx.showLoading({
+      title: '提交中',
+    });
     wx.request({//添加到购物车
       url: bsurl + '/cart/addtocart.json',
       method: 'POST',
@@ -69,6 +76,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         if(res.data.code == 1){
             wx.showModal({
               title: '温馨提示',

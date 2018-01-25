@@ -28,6 +28,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     let id = options.storeId;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取门店详情
       url: bsurl + '/home/storedetail.json',
       method: 'POST',
@@ -65,6 +68,7 @@ Page({
         wx.setNavigationBarTitle({
           title: 'YUE时尚-'+storeInfo.name
         }); 
+        wx.hideLoading();
         //获取购物车信息
         that.getCartInfo();
       }
@@ -250,6 +254,9 @@ Page({
   delOfCart: function (e){
       var that = this;
       let serviceid = e.currentTarget.dataset.id;
+      wx.showLoading({
+        title: '删除中',
+      });
       wx.request({
           url: bsurl + '/cart/decreasingcart.json',
           method: 'POST',
@@ -261,6 +268,7 @@ Page({
             serviceid:serviceid
           },
           success: function (res) {
+            wx.hideLoading();
             if(res.data.code == 1){
                 wx.showToast({
                   title: '删除成功！',
@@ -304,6 +312,9 @@ Page({
               return;
           }
       }
+      wx.showLoading({
+        title: '添加中',
+      });
       wx.request({
           url: bsurl + '/cart/addtocart.json',
           method: 'POST',
@@ -315,6 +326,7 @@ Page({
             serviceid:serviceid
           },
           success: function (res) {
+            wx.hideLoading();
             if(res.data.code == 1){
                 wx.showToast({
                   title: '添加成功！',
@@ -344,6 +356,9 @@ Page({
         success: function(res) {
           if (res.confirm) {
             // console.log('用户点击确定')
+            wx.showLoading({
+              title: '清空中',
+            });
             wx.request({
                 url: bsurl + '/cart/clearcart.json',
                 method: 'POST',
@@ -355,6 +370,7 @@ Page({
                   storeid:that.data.storeInfo.id
                 },
                 success: function (res) {
+                    wx.hideLoading();
                     if(res.data.code == 1){
                       that.getCartInfo();//重新获取购物车信息
                       that.setData({

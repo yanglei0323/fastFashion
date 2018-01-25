@@ -61,6 +61,10 @@ Page({
       })
       return;
     }
+
+    wx.showLoading({
+      title: '提交中',
+    });
     that.setData({
         sending: true
       })
@@ -90,6 +94,7 @@ Page({
           },
           success: function (res) {
               console.log(res);
+              wx.hideLoading();
               if(res.data.code == 1){
                   wx.showToast({
                     title: '发送成功',
@@ -133,6 +138,7 @@ Page({
             telnum:that.data.phoneNum
           },
           success: function (res) {
+              wx.hideLoading();
               if(res.data.code == 1){
                   wx.showToast({
                     title: '发送成功',

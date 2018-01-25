@@ -16,6 +16,9 @@ Page({
    */
   onLoad: function (options) {
       var that = this;
+      wx.showLoading({
+        title: '加载中',
+      });
       wx.request({//获取可用优惠券
         url: bsurl + '/user/unusedcouponlist.json',
         method: 'POST',
@@ -25,6 +28,7 @@ Page({
         },
         success: function (res) {
           console.log(res);
+          wx.hideLoading();
           let couponList=res.data.data.couponlist;
           that.setData({
             couponList:couponList

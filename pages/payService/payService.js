@@ -19,6 +19,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     let orderId = options.orderid;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取订单信息
       url: bsurl + '/user/getserviceorderinfo.json',
       method: 'POST',
@@ -31,6 +34,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         let orderInfo = res.data.data;
         orderInfo.store.imgurl = imgpath + orderInfo.store.imgurl;
         that.setData({

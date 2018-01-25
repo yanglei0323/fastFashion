@@ -27,6 +27,9 @@ Page({
   },
   getUserinfo: function(){
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取个人信息
       url: bsurl + '/user/mine.json',
       method: 'POST',
@@ -36,6 +39,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         that.setData({
           userInfo:res.data.data
         });

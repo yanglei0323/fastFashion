@@ -30,6 +30,9 @@ Page({
     var orderid = options.orderid;
 
     var tabInfo =[];//tab数据
+    wx.showLoading({
+      title: '加载中',
+    });
     //构造头部日期选项卡
     for (let i = 0; i < 5; i++) {
       tabInfo.push({'date': that.addDays(i).date, 'week': that.addDays(i).week, 'index': i + 1});
@@ -106,6 +109,7 @@ Page({
               day5List.push({'showSelect':that.data.tabInfo[4].date+' '+sepcificTimeArr[d5 - 1], 'day': 5, 'time': d5, 'showtime':sepcificTimeArr[d5 - 1], 'status':that.data.reservetime[4][d5 - 1]});
             
           }
+          wx.hideLoading();
           that.setData({
             day1:day1List,
             day2:day2List,

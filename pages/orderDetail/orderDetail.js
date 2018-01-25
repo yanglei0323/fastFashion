@@ -17,6 +17,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     let orderid=options.orderid;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取订单详情
       url: bsurl + '/order/orderdetail.json',
       method: 'POST',
@@ -29,6 +32,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         if(res.data.code == 1){
           let orderDetail = res.data.data;
           orderDetail.qrcodeurl = imgpath + orderDetail.qrcodeurl;

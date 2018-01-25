@@ -20,6 +20,9 @@ Page({
   onLoad: function (options) {
       var that = this;
       let orderid=options.orderid;
+      wx.showLoading({
+        title: '加载中',
+      });
       wx.request({//获取退款原因列表
         url: bsurl + '/order/refundreasonlist.json',
         method: 'POST',
@@ -33,6 +36,7 @@ Page({
           for(let item of refundreasonlist){
             item.selected = false;
           }
+          wx.hideLoading();
           that.setData({
             refundreasonlist:refundreasonlist,
             orderid:orderid

@@ -21,6 +21,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     let orderid = options.orderid;
+    wx.showLoading({
+      title: '加载中',
+    });
     that.setData({
       orderId:orderid
     });
@@ -32,6 +35,7 @@ Page({
           'sessionid':app.globalData.sessionId
       },
       success: function (res) {
+        wx.hideLoading();
         console.log(res);
         let taglist = res.data.data.taglist;
         for(let item of taglist){
@@ -111,6 +115,9 @@ Page({
   },
   toevaluate:function (){
     var that = this;
+    wx.showLoading({
+      title: '评价中',
+    });
     wx.request({
       url: bsurl + '/user/comment.json',
       method: 'POST',
@@ -126,6 +133,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         if (res.data.code== 1 ) {
           wx.showToast({
             title: '评价成功',

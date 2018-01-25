@@ -14,7 +14,8 @@ Page({
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
     storelsit: [],
-    loading:true
+    loading:true,
+    hasMore:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -135,19 +136,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    wx.showLoading({
-      title: '加载中',
-      success: function (){
-        setTimeout(function(){
-          wx.hideLoading()
-          wx.showToast({
-            title: '加载成功',
-            icon: 'success',
-            duration: 1500
-          })
-        },1500)
-      }
-    })
   },
 
   /**

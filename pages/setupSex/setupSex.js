@@ -73,6 +73,9 @@ Page({
   },
   goBack: function (){
     var that = this;
+    wx.showLoading({
+      title: '提交中',
+    });
     wx.request({
       url: bsurl + '/user/edit.json',
       method: 'POST',
@@ -84,6 +87,7 @@ Page({
         sexflag:that.data.sex
       },
       success: function (res) {
+        wx.hideLoading();
         if(res.data.code == 1){
             wx.showToast({
               title: '修改成功！',

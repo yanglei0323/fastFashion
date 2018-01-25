@@ -27,4 +27,5 @@
         </block>
         <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
     </view>
+    <view class="nomore-text" wx:if="{{!hasMore}}">——我也是有底线的——</view>
 </view>

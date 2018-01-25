@@ -17,6 +17,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
     wx.request({//获取年龄信息
       url: bsurl + '/user/agelist.json',
       method: 'POST',
@@ -26,6 +29,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        wx.hideLoading();
         that.setData({
           agelist:res.data.data.agelist,
           ageName:res.data.data.agelist[0]
@@ -92,6 +96,9 @@ Page({
   },
   goBack: function (){
     var that = this;
+    wx.showLoading({
+      title: '提交中',
+    });
     wx.request({
       url: bsurl + '/user/edit.json',
       method: 'POST',
@@ -103,6 +110,7 @@ Page({
         age:that.data.ageName
       },
       success: function (res) {
+        wx.hideLoading();
         if(res.data.code == 1){
             wx.showToast({
               title: '修改成功！',

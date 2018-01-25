@@ -30,6 +30,9 @@ Page({
     var storeId = options.storeId;
 
     var tabInfo =[];//tab数据
+    wx.showLoading({
+      title: '加载中',
+    });
     //构造头部日期选项卡
     for (let i = 0; i < 5; i++) {
       tabInfo.push({'date': that.addDays(i).date, 'week': that.addDays(i).week, 'index': i + 1});
@@ -130,6 +133,7 @@ Page({
             day4:day4List,
             day5:day5List
           });
+          wx.hideLoading();
       }
     });
 
