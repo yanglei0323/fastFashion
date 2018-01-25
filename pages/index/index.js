@@ -34,7 +34,11 @@ Page({
         });
       }
     });
-
+    that.getStoreInfo();
+    
+  },
+  getStoreInfo:function (){
+    var that = this;
     //获取附近门店
     wx.getLocation({
       type: 'wgs84',
@@ -62,6 +66,30 @@ Page({
             });
           }
         });
+      },
+      fail:function (res){
+        wx.showModal({
+            title: '警告',
+            content: '若不授权当前位置信息，则无法使用附近门店功能；点击重新获取授权，则可重新使用；若点击不授权，后期还可以使用小程序，需在微信【发现】-【小程序】-删掉【悦艺术家】，重新搜索授权登录，方能正常使用',
+            cancelText:'不授权',
+            confirmText:'授权',
+            success: function(res) {
+                wx.openSetting({
+                  success:function(res){
+                    if (!res.authSetting["scope.userInfo"] || !res.authSetting["scope.userLocation"]) {
+                       //这里是授权成功之后 填写你重新获取数据的js
+                       // console.log('重新授权');
+                       that.getStoreInfo();                                   
+                    }else{
+                       that.getStoreInfo();
+                    }
+                  }
+                })
+            },
+            fail: function (res){
+              that.getStoreInfo();
+            }
+          });
       }
     });
   },
