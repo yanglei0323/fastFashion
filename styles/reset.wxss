@@ -44,7 +44,7 @@ page{
     font-weight: bold;
 }
 .light{
-    color:#f6838d;
+    color:#f6838d !important;
 }
 
 .bg-ec{

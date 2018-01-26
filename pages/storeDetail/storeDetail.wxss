@@ -14,6 +14,8 @@
     flex-direction:column;
     justify-content:center;
     height:auto !important;
+    padding-right:20rpx;
+
 }
 .mt-10{
     margin-top:10rpx;

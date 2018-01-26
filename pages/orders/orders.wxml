@@ -27,6 +27,7 @@
 				    		</text>
 				    		<text class="store-text">服务门店：{{item.store.name}}</text>
 				    		<text class="store-text">门店地址：{{item.store.location}}</text>
+				    		<text class="store-text light" wx:if="{{item.stateflag == 0}}">剩余付款时间：{{item.countdown}}</text>
 				    	</view>
 				    </view>
 				    <view class="project-title">
