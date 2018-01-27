@@ -38,7 +38,7 @@ Page({
           'sessionid':app.globalData.sessionId
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         that.setData({
           userInfo:res.data.data

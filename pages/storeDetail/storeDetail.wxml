@@ -13,7 +13,7 @@
     <view class="sd-title bg-fff">
         <text class="sd-name strong">{{storeInfo.name}}</text>
         <text class="sd-location">{{storeInfo.location}}</text>
-        <text class="sd-distance">{{storeInfo.distance}}M</text>
+        <text class="sd-distance">{{storeInfo.distance}}</text>
         <text class="sd-navigation light" bindtap="toNavigation" data-x="{{storeInfo.positionx}}" data-y="{{storeInfo.positiony}}" data-name="{{storeInfo.name}}" data-location="{{storeInfo.location}}">导 航</text>
     </view>
 

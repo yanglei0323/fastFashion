@@ -31,7 +31,7 @@ Page({
             'sessionid':app.globalData.sessionId
         },
         success: function (res) {
-          console.log(res);
+          // console.log(res);
           let refundreasonlist=res.data.data.refundreasonlist;
           for(let item of refundreasonlist){
             item.selected = false;
@@ -108,18 +108,18 @@ Page({
         other:that.data.othercont
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         if (res.data.code== 1 ) {
           wx.showToast({
             title: '退款成功',
             icon: 'success',
-            duration: 1500
+            duration: 1000
           });
           setTimeout(function(){
             wx.reLaunch({
               url: '../orders/orders'
             });
-          }, 1500);
+          }, 1000);
         } else {
           wx.showModal({
             title: '温馨提示',

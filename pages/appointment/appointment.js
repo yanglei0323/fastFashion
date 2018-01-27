@@ -254,7 +254,7 @@ Page({
               time:time 
             },
             success: function (res) {
-              console.log(res);
+              // console.log(res);
               if(res.data.code == 1){
                   wx.redirectTo({
                     url: '../payService/payService?orderid='+res.data.data.id

@@ -33,7 +33,7 @@ Page({
         orderid:orderId
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         let orderInfo = res.data.data;
         orderInfo.store.imgurl = imgpath + orderInfo.store.imgurl;
@@ -61,7 +61,7 @@ Page({
           channel:'wx_lite'
         },
         success: function (res) {
-          console.log(res);
+          // console.log(res);
           wx.hideLoading();
           if(res.data.code == 1){
             pingpp.createPayment(JSON.stringify(res.data.data), function(result, err) {
@@ -70,15 +70,15 @@ Page({
                 wx.showToast({
                   title: '支付成功',
                   icon: 'success',
-                  duration: 1500
+                  duration: 1000
                 });
                 setTimeout(function(){
                   wx.reLaunch({
                     url: '../orders/orders'
                   });
-                }, 1500);
+                }, 1000);
               } else {
-                console.log(result+" "+err.msg+" "+err.extra);
+                // console.log(result+" "+err.msg+" "+err.extra);
                 wx.showModal({
                   title: '温馨提示',
                   content: '支付失败，请稍后再试！',
@@ -114,19 +114,19 @@ Page({
           couponid:that.data.couponId
         },
         success: function (res) {
-          console.log(res);
+          // console.log(res);
           if(res.data.code == 1){
               if(res.data.data.price == 0){
                   wx.showToast({
                     title: '支付成功',
                     icon: 'success',
-                    duration: 1500
+                    duration: 1000
                   });
                   setTimeout(function(){
                     wx.reLaunch({
                       url: '../orders/orders'
                     });
-                  }, 1500);
+                  }, 1000);
               }else{
                   wx.request({
                     url: bsurl + '/pay/getpingcharge.json',
@@ -141,7 +141,7 @@ Page({
                     },
                     success: function (res) {
                       wx.hideLoading();
-                      console.log(res);
+                      // console.log(res);
                       if(res.data.code == 1){
                           pingpp.createPayment(JSON.stringify(res.data.data), function(result, err) {
                             if (result=="success") {
@@ -149,15 +149,15 @@ Page({
                               wx.showToast({
                                 title: '支付成功',
                                 icon: 'success',
-                                duration: 1500
+                                duration: 1000
                               });
                               setTimeout(function(){
                                 wx.reLaunch({
                                   url: '../orders/orders'
                                 });
-                              }, 1500);
+                              }, 1000);
                             } else {
-                              console.log(result+" "+err.msg+" "+err.extra);
+                              // console.log(result+" "+err.msg+" "+err.extra);
                               wx.showModal({
                                 title: '温馨提示',
                                 content: '支付失败，请稍后再试！',

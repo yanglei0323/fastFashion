@@ -27,7 +27,7 @@ Page({
             'sessionid':app.globalData.sessionId
         },
         success: function (res) {
-          console.log(res);
+          // console.log(res);
           wx.hideLoading();
           let couponList=res.data.data.couponlist;
           that.setData({

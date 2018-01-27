@@ -89,7 +89,7 @@ Page({
         page:that.data.allpage
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         let allordersList = that.data.allordersList;
         let allpage = that.data.allpage+1;
@@ -135,7 +135,7 @@ Page({
         page:that.data.dfwpage
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         let dfwordersList = that.data.dfwordersList;
         let dfwpage = that.data.dfwpage+1;
@@ -180,7 +180,7 @@ Page({
         page:that.data.dpjpage
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         let dpjordersList = that.data.dpjordersList;
         let dpjpage = that.data.dpjpage+1;
@@ -225,7 +225,7 @@ Page({
         page:that.data.ytkpage
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         let ytkordersList = that.data.ytkordersList;
         let ytkpage = that.data.ytkpage+1;

@@ -92,7 +92,7 @@ Page({
             wx.showToast({
               title: '修改成功！',
               icon: 'success',
-              duration: 2000
+              duration: 1000
             });
             //改变上一页面该项目的选中状态
             var pages = getCurrentPages();

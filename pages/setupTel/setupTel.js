@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.type);
+    // console.log(options.type);
     var that = this;
     if(options.type == 1){
         that.setData({
@@ -93,13 +93,13 @@ Page({
             telnum:that.data.phoneNum
           },
           success: function (res) {
-              console.log(res);
+              // console.log(res);
               wx.hideLoading();
               if(res.data.code == 1){
                   wx.showToast({
                     title: '发送成功',
                     icon: 'success',
-                    duration: 1500
+                    duration: 1000
                   })
               }else{
                 wx.showModal({
@@ -143,7 +143,7 @@ Page({
                   wx.showToast({
                     title: '发送成功',
                     icon: 'success',
-                    duration: 1500
+                    duration: 1000
                   })
               }else{
                 wx.showModal({
@@ -201,12 +201,12 @@ Page({
         },
         success: function (res) {
           wx.hideLoading();
-          console.log(res);
+          // console.log(res);
           if(res.data.code == 1){//绑定成功
             wx.showToast({
               title: '绑定成功',
               icon: 'success',
-              duration: 1500
+              duration: 1000
             });
             app.globalData.userInfo = res.data.data;
             wx.setStorageSync('userInfo',res.data.data);
@@ -239,12 +239,12 @@ Page({
         },
         success: function (res) {
           wx.hideLoading();
-          console.log(res);
+          // console.log(res);
           if(res.data.code == 1){//绑定成功
             wx.showToast({
               title: '修改成功',
               icon: 'success',
-              duration: 1500
+              duration: 1000
             });
             //改变上一页面该项目的选中状态
             var pages = getCurrentPages();

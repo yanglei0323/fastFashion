@@ -22,7 +22,7 @@
     <!--服务项目-->
     <view class="cell-box mt-10">
         <view class="cell-manage">
-            <view class="strong">请选择服务</view>
+            <view class="strong">服务详情</view>
         </view>
     </view>
     <block wx:for="{{itemUrls}}" wx:key="{{index}}">

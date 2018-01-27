@@ -36,7 +36,7 @@ Page({
       },
       success: function (res) {
         wx.hideLoading();
-        console.log(res);
+        // console.log(res);
         let taglist = res.data.data.taglist;
         for(let item of taglist){
           item.selected = false;
@@ -58,7 +58,7 @@ Page({
         orderid:orderid
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         if(res.data.code == 1){
           let orderDetail = res.data.data;
           orderDetail.store.imgurl = imgpath + orderDetail.store.imgurl;
@@ -132,19 +132,19 @@ Page({
         star:that.data.selectstar
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         if (res.data.code== 1 ) {
           wx.showToast({
             title: '评价成功',
             icon: 'success',
-            duration: 1500
+            duration: 1000
           });
           setTimeout(function(){
             wx.reLaunch({
               url: '../orders/orders'
             });
-          }, 1500);
+          }, 1000);
         } else {
           wx.showModal({
             title: '温馨提示',

@@ -31,7 +31,7 @@ Page({
         orderid:orderid
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         if(res.data.code == 1){
           let orderDetail = res.data.data;

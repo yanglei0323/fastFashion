@@ -237,18 +237,18 @@ Page({
               time:time 
             },
             success: function (res) {
-              console.log(res);
+              // console.log(res);
               if(res.data.code == 1){
                   wx.showToast({
                     title: '修改成功',
                     icon: 'success',
-                    duration: 1500
+                    duration: 1000
                   });
                   setTimeout(function(){
                     wx.reLaunch({
                       url: '../orders/orders'
                     });
-                  }, 1500);
+                  }, 1000);
               }else{
                 wx.showModal({
                   title: '温馨提示',

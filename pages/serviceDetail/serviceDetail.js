@@ -75,16 +75,13 @@ Page({
         serviceid:that.data.serviceInfo.id
       },
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         wx.hideLoading();
         if(res.data.code == 1){
-            wx.showModal({
-              title: '温馨提示',
-              content: '添加成功，在购物车等你哦~',
-              showCancel:false,
-              confirmColor:'#f6838d',
-              success: function(res) {
-              }
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 1000
             })
             //改变上一页面该项目的选中状态
             var pages = getCurrentPages();  
@@ -106,9 +103,29 @@ Page({
       }
     });
   },
+  addToCartA: function (){
+    var that = this;
+    wx.showLoading({
+      title: '提交中',
+    });
+    wx.request({//添加到购物车
+      url: bsurl + '/cart/addtocart.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        serviceid:that.data.serviceInfo.id
+      },
+      success: function (res) {
+        wx.hideLoading(); 
+      }
+    });
+  },
   appointment: function (){
     var that = this;
-    that.addToCart();
+    that.addToCartA();
     app.globalData.refreshFlag = true;
     wx.navigateTo({
       url: '../appointment/appointment?storeId='+that.data.storeId
