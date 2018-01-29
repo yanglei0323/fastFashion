@@ -5,25 +5,26 @@ App({
     // console.log('App Launch')// 小程序启动之后 触发
     var that = this;
     //校验session是否过期
-    wx.checkSession({
-      success: function(){
-        //session 未过期，并且在本生命周期一直有效
-          if(wx.getStorageSync('sessionId')){//有sessionId凭证
-              //校验sessionId凭证是否过期
-              that.globalData.userInfo = wx.getStorageSync('userInfo');
-              that.globalData.sessionId = wx.getStorageSync('sessionId');
-              that.globalData.wxCode = wx.getStorageSync('wxCode');
-              that.confirmPhone();
+    // wx.checkSession({
+    //   success: function(){
+    //     //session 未过期，并且在本生命周期一直有效
+    //       if(wx.getStorageSync('sessionId')){//有sessionId凭证
+    //           //校验sessionId凭证是否过期
+    //           that.globalData.userInfo = wx.getStorageSync('userInfo');
+    //           that.globalData.sessionId = wx.getStorageSync('sessionId');
+    //           that.globalData.wxCode = wx.getStorageSync('wxCode');
+    //           that.confirmPhone();
               
-          }else{//缓存中没有登录信息，重新获取(用户清理了缓存)
-              that.getUserInfo();
-          }
-      },
-      fail: function(){//第一次进入小程序或者session过期 
-        //登录态过期
-        that.getUserInfo();
-      }
-    })
+    //       }else{//缓存中没有登录信息，重新获取(用户清理了缓存)
+    //           that.getUserInfo();
+    //       }
+    //   },
+    //   fail: function(){//第一次进入小程序或者session过期 
+    //     //登录态过期
+    //     that.getUserInfo();
+    //   }
+    // })
+    that.getUserInfo(); 
   },
   onShow: function () {
     // console.log('App Show')
@@ -39,7 +40,7 @@ App({
           wx.setStorageSync('wxCode',res.code);
           wx.getUserInfo({
             success: function(res) {
-              var userInfo = res.userInfo
+              var userInfo = res.userInfo;
               wx.request({
                 url: bsurl + '/user/wxpublogin.json',
                 method: 'POST',
@@ -53,7 +54,7 @@ App({
                   sexFlag:userInfo.gender //性别 0：未知、1：男、2：女
                 },
                 success: function (res) {
-                  // console.log(res);
+                  console.log("登录");
                   that.globalData.userInfo = res.data.data;
                   wx.setStorageSync('userInfo',res.data.data);
                   that.globalData.sessionId = res.data.data.sessionid;
