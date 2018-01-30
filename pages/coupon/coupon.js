@@ -47,7 +47,10 @@ Page({
         prePage.setData({
           couponName:e.currentTarget.dataset.name,
           couponId:e.currentTarget.dataset.id
-        });  
+        });
+        setTimeout(function(){
+          wx.navigateBack();
+        }, 300);  
     }
     
   },
