@@ -9,10 +9,12 @@
         <image src="{{orderInfo.store.imgurl}}"></image>
         <view class="project-msg">
             <text class="project-name strong">
-                <text>服务项目：</text>
-                <block wx:for="{{orderInfo.servicelist}}" wx:key="{{index}}">
-                    <text>{{item.name}}、</text>
-                </block>
+                <text class="serItem-title">服务项目：</text>
+                <text class="serItem-msg">
+                    <block wx:for="{{orderInfo.servicelist}}" wx:key="{{index}}">
+                        <text>{{item.name}} ×{{item.num}}\n</text>
+                    </block>
+                </text>
             </text>
             <text class="store-text">服务门店：{{orderInfo.store.name}}</text>
             <text class="store-text">门店地址：{{orderInfo.store.location}}</text>

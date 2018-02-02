@@ -865,6 +865,8 @@ Page({
             success: function (res) {
               // console.log(res);
               if(res.data.code == 1){
+
+                  app.globalData.refreshFlag = true;
                   wx.redirectTo({
                     url: '../payService/payService?orderid='+res.data.data.id
                   })

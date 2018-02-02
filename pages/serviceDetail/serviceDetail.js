@@ -120,6 +120,14 @@ Page({
       },
       success: function (res) {
         wx.hideLoading(); 
+        wx.showModal({
+          title: '温馨提示',
+          content: '加入购物车成功，该服务同购物车内项目一起结算！',
+          showCancel:false,
+          confirmColor:'#f6838d',
+          success: function(res) {
+          }
+        });
       }
     });
   },

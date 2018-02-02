@@ -115,9 +115,10 @@ Page({
             icon: 'success',
             duration: 1000
           });
+          app.globalData.refreshFlag = true;
           setTimeout(function(){
-            wx.reLaunch({
-              url: '../orders/orders'
+            wx.redirectTo({
+              url: '../refundSuc/refundSuc?orderid='+that.data.orderid
             });
           }, 1000);
         } else {

@@ -29,7 +29,7 @@
     		<text class="ft-24 color-999 mt-30">{{orderDetail.store.name}}</text>
     		<text class="ft-24 color-999 mt-30">
     			<block wx:for="{{orderDetail.serviceArray}}" wx:key="{{index}}">
-			        <text>、{{item.name}}</text>
+			        <text> {{item.name}}</text>
 			    </block>
     		</text>
     		<text class="ft-24 color-999 mt-30">￥{{orderDetail.actualprice}}</text>
@@ -39,7 +39,7 @@
     <view class="mt-10 bg-fff store-box">
     	<text class="ft-28 color-333 strong">门店信息</text>
     	<text class="ft-24 color-999 mt-30">营业时间：10:00-21:00</text>
-    	<text class="ft-24 color-999 mt-30 pr-230">{{orderDetail.store.location}}:</text>
+    	<text class="ft-24 color-999 mt-30 pr-230">{{orderDetail.store.location}}</text>
     	<view class="navigation-box light" bindtap="toNavigation">导航</view>
     </view>
     

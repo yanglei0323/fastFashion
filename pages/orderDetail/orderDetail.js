@@ -17,32 +17,34 @@ Page({
   onLoad: function (options) {
     var that = this;
     let orderid=options.orderid;
-    wx.showLoading({
-      title: '加载中',
+    that.setData({
+      orderid:orderid
     });
-    wx.request({//获取订单详情
-      url: bsurl + '/order/orderdetail.json',
-      method: 'POST',
-      header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'sessionid':app.globalData.sessionId
-      },
-      data:{
-        orderid:orderid
-      },
-      success: function (res) {
-        // console.log(res);
-        wx.hideLoading();
-        if(res.data.code == 1){
-          let orderDetail = res.data.data;
-          orderDetail.qrcodeurl = imgpath + orderDetail.qrcodeurl;
-          that.setData({
-            orderDetail:orderDetail,
-            orderid:orderid
-          });
-        }
-      }
-    });
+    // wx.showLoading({
+    //   title: '加载中',
+    // });
+    // wx.request({//获取订单详情
+    //   url: bsurl + '/order/orderdetail.json',
+    //   method: 'POST',
+    //   header: {
+    //       'content-type': 'application/x-www-form-urlencoded',
+    //       'sessionid':app.globalData.sessionId
+    //   },
+    //   data:{
+    //     orderid:orderid
+    //   },
+    //   success: function (res) {
+    //     // console.log(res);
+    //     wx.hideLoading();
+    //     if(res.data.code == 1){
+    //       let orderDetail = res.data.data;
+    //       orderDetail.qrcodeurl = imgpath + orderDetail.qrcodeurl;
+    //       that.setData({
+    //         orderDetail:orderDetail
+    //       });
+    //     }
+    //   }
+    // });
     
   },
   appointment:function (){
@@ -117,7 +119,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+    });
+    wx.request({//获取订单详情
+      url: bsurl + '/order/orderdetail.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        orderid:that.data.orderid
+      },
+      success: function (res) {
+        // console.log(res);
+        wx.hideLoading();
+        if(res.data.code == 1){
+          let orderDetail = res.data.data;
+          orderDetail.qrcodeurl = imgpath + orderDetail.qrcodeurl;
+          that.setData({
+            orderDetail:orderDetail
+          });
+        }
+      }
+    });
   },
 
   /**

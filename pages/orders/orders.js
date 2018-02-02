@@ -307,10 +307,23 @@ Page({
     if(app.globalData.refreshFlag){
       that.setData({
         allordersList: [],
+        dfwordersList: [],
+        dpjordersList: [],
+        ytkordersList: [],
         allpage:1,
-        hasMoreall:1
+        dfwpage:1,
+        dpjpage:1,
+        ytkpage:1,
+        hasMoreall:1,//0-列表为空，1-还可加载，3-不需要加载了
+        hasMoredfw:1,//0-列表为空，1-还可加载，3-不需要加载了
+        hasMoredpj:1,//0-列表为空，1-还可加载，3-不需要加载了
+        hasMoreytk:1//0-列表为空，1-还可加载，3-不需要加载了
       });
+      
       that.getAllorders();
+      that.getDfworders();
+      that.getDpjorders();
+      that.getYtkorders();
       app.globalData.refreshFlag = false;
     }
     

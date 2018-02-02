@@ -12,7 +12,8 @@ Page({
     orderInfo:[],
     couponName:'',
     couponId:0,
-    freeprice:0
+    freeprice:0,
+    orderid:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -39,7 +40,8 @@ Page({
         let orderInfo = res.data.data;
         orderInfo.store.imgurl = imgpath + orderInfo.store.imgurl;
         that.setData({
-          orderInfo:orderInfo
+          orderInfo:orderInfo,
+          orderid:orderId
         });
       }
     });
@@ -73,10 +75,11 @@ Page({
                   icon: 'success',
                   duration: 1000
                 });
+                app.globalData.refreshFlag = true;
                 setTimeout(function(){
-                  wx.reLaunch({
-                    url: '../orders/orders'
-                  });
+                  wx.redirectTo({
+                    url: '../orderDetail/orderDetail?orderid='+that.data.orderid
+                  })
                 }, 1000);
               } else {
                 // console.log(result+" "+err.msg+" "+err.extra);
@@ -123,10 +126,11 @@ Page({
                     icon: 'success',
                     duration: 1000
                   });
+                app.globalData.refreshFlag = true;
                   setTimeout(function(){
-                    wx.reLaunch({
-                      url: '../orders/orders'
-                    });
+                    wx.redirectTo({
+                      url: '../orderDetail/orderDetail?orderid='+that.data.orderid
+                    })
                   }, 1000);
               }else{
                   wx.request({
@@ -152,9 +156,10 @@ Page({
                                 icon: 'success',
                                 duration: 1000
                               });
+                              app.globalData.refreshFlag = true;
                               setTimeout(function(){
-                                wx.reLaunch({
-                                  url: '../orders/orders'
+                                wx.redirectTo({
+                                  url: '../orderDetail/orderDetail?orderid='+that.data.orderid
                                 });
                               }, 1000);
                             } else {
