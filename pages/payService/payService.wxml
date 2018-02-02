@@ -11,7 +11,7 @@
             <text class="project-name strong">
                 <text>服务项目：</text>
                 <block wx:for="{{orderInfo.servicelist}}" wx:key="{{index}}">
-                    <text>{{item.name}} </text>
+                    <text>{{item.name}}、</text>
                 </block>
             </text>
             <text class="store-text">服务门店：{{orderInfo.store.name}}</text>
@@ -51,7 +51,7 @@
     <view class="fixedbtn-box bg-fff"> 
         <view class="fixedbtn-left">
             <text class="total-price color-333">合计：￥{{orderInfo.allprice}}</text>
-            <text class="free-price color-999">已优惠：￥{{orderInfo.freeprice}}</text>
+            <text class="free-price color-999">已优惠：￥{{freeprice}}</text>
         </view>
         <view class="fixedbtn-right bg-light" bindtap="confirmAppoint">立即支付</view>
     </view>

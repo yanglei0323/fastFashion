@@ -46,7 +46,8 @@ Page({
         var prePage = pages[pages.length - 2];    
         prePage.setData({
           couponName:e.currentTarget.dataset.name,
-          couponId:e.currentTarget.dataset.id
+          couponId:e.currentTarget.dataset.id,
+          freeprice:e.currentTarget.dataset.price
         });
         setTimeout(function(){
           wx.navigateBack();
@@ -64,7 +65,8 @@ Page({
         var prePage = pages[pages.length - 2];    
         prePage.setData({
           couponName:'',
-          couponId:0
+          couponId:0,
+          freeprice:0
         });  
     }
     wx.navigateBack();

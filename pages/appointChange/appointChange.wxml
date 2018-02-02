@@ -17,11 +17,11 @@
 		<!--第1天时间显示区域-->
 		<swiper-item class="appointTime-cont">
 			<block wx:for="{{day1}}" wx:key="{{index}}">
-		        <view class="appointTime-item {{item.status==5 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.day==currentDay&&item.time==currentTime ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
+		        <view class="appointTime-item {{item.status==4 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.ischoose == true ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
 		        	<text>{{item.showtime}}</text>
-		        	<text wx:if="{{item.status == 5}}">已约满</text>
-		        	<view class="selected-div" wx:if="{{item.day==currentDay&&item.time==currentTime}}"></view>
-		        	<view class="selected-text" wx:if="{{item.day==currentDay&&item.time==currentTime}}">√</view>
+		        	<text wx:if="{{item.status == 4}}">已约满</text>
+		        	<view class="selected-div" wx:if="{{item.ischoose == true}}"></view>
+		        	<view class="selected-text" wx:if="{{item.ischoose == true}}">√</view>
 		        </view>
 		    </block>
 		</swiper-item>
@@ -29,11 +29,11 @@
 		<!--第2天时间显示区域-->
 		<swiper-item class="appointTime-cont">
 			<block wx:for="{{day2}}" wx:key="{{index}}">
-		        <view class="appointTime-item {{item.status==5 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.day==currentDay&&item.time==currentTime ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
+		        <view class="appointTime-item {{item.status==4 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.ischoose == true ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
 		        	<text>{{item.showtime}}</text>
-		        	<text wx:if="{{item.status == 5}}">已约满</text>
-		        	<view class="selected-div" wx:if="{{item.day==currentDay&&item.time==currentTime}}"></view>
-		        	<view class="selected-text" wx:if="{{item.day==currentDay&&item.time==currentTime}}">√</view>
+		        	<text wx:if="{{item.status == 4}}">已约满</text>
+		        	<view class="selected-div" wx:if="{{item.ischoose == true}}"></view>
+		        	<view class="selected-text" wx:if="{{item.ischoose == true}}">√</view>
 		        </view>
 		    </block>
 		</swiper-item>
@@ -41,11 +41,11 @@
 		<!--第3天时间显示区域-->
 		<swiper-item class="appointTime-cont">
 			<block wx:for="{{day3}}" wx:key="{{index}}">
-		        <view class="appointTime-item {{item.status==5 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.day==currentDay&&item.time==currentTime ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
+		        <view class="appointTime-item {{item.status==4 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.ischoose == true ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
 		        	<text>{{item.showtime}}</text>
-		        	<text wx:if="{{item.status == 5}}">已约满</text>
-		        	<view class="selected-div" wx:if="{{item.day==currentDay&&item.time==currentTime}}"></view>
-		        	<view class="selected-text" wx:if="{{item.day==currentDay&&item.time==currentTime}}">√</view>
+		        	<text wx:if="{{item.status == 4}}">已约满</text>
+		        	<view class="selected-div" wx:if="{{item.ischoose == true}}"></view>
+		        	<view class="selected-text" wx:if="{{item.ischoose == true}}">√</view>
 		        </view>
 		    </block>
 		</swiper-item>
@@ -53,11 +53,11 @@
 		<!--第4天时间显示区域-->
 		<swiper-item class="appointTime-cont">
 			<block wx:for="{{day4}}" wx:key="{{index}}">
-		        <view class="appointTime-item {{item.status==5 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.day==currentDay&&item.time==currentTime ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
+		        <view class="appointTime-item {{item.status==4 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.ischoose == true ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
 		        	<text>{{item.showtime}}</text>
-		        	<text wx:if="{{item.status == 5}}">已约满</text>
-		        	<view class="selected-div" wx:if="{{item.day==currentDay&&item.time==currentTime}}"></view>
-		        	<view class="selected-text" wx:if="{{item.day==currentDay&&item.time==currentTime}}">√</view>
+		        	<text wx:if="{{item.status == 4}}">已约满</text>
+		        	<view class="selected-div" wx:if="{{item.ischoose == true}}"></view>
+		        	<view class="selected-text" wx:if="{{item.ischoose == true}}">√</view>
 		        </view>
 		    </block>
 		</swiper-item>
@@ -65,11 +65,11 @@
 		<!--第5天时间显示区域-->
 		<swiper-item class="appointTime-cont">
 			<block wx:for="{{day5}}" wx:key="{{index}}">
-		        <view class="appointTime-item {{item.status==5 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.day==currentDay&&item.time==currentTime ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
+		        <view class="appointTime-item {{item.status==4 ? 'full' : ''}} {{item.status==9 ? 'overtime' : ''}} {{item.ischoose == true ? 'selected' : ''}}" data-day="{{item.day}}" data-time="{{item.time}}" data-status="{{item.status}}" data-showselect="{{item.showSelect}}" bindtap="selectItem">
 		        	<text>{{item.showtime}}</text>
-		        	<text wx:if="{{item.status == 5}}">已约满</text>
-		        	<view class="selected-div" wx:if="{{item.day==currentDay&&item.time==currentTime}}"></view>
-		        	<view class="selected-text" wx:if="{{item.day==currentDay&&item.time==currentTime}}">√</view>
+		        	<text wx:if="{{item.status == 4}}">已约满</text>
+		        	<view class="selected-div" wx:if="{{item.ischoose == true}}"></view>
+		        	<view class="selected-text" wx:if="{{item.ischoose == true}}">√</view>
 		        </view>
 		    </block>
 		</swiper-item>

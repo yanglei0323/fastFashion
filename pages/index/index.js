@@ -44,8 +44,8 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
-        app.globalData.positionx = res.latitude;
-        app.globalData.positiony = res.longitude;
+        app.globalData.positionx = res.longitude;
+        app.globalData.positiony = res.latitude;
         wx.request({//获取附近门店
           url: bsurl + '/home/nearbystore.json',
           method: 'POST',

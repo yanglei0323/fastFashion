@@ -11,7 +11,8 @@ Page({
   data: {
     orderInfo:[],
     couponName:'',
-    couponId:0
+    couponId:0,
+    freeprice:0
   },
   /**
    * 生命周期函数--监听页面加载

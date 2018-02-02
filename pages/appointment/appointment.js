@@ -21,7 +21,7 @@ Page({
     reservetime:[],
     showSelect:'请选择时间',
     cartList:[],
-    cartNum:0
+    cartNum:1
   },
   /**
    * 生命周期函数--监听页面加载
@@ -58,7 +58,7 @@ Page({
         // console.log(res);
         let cartlist=res.data.data.cartlist;
         if(cartlist.length >= 1){
-          let cartNum=0;
+          let cartNum=1;
           for(let item of cartlist){
               cartNum += item.num;
           }
@@ -69,7 +69,7 @@ Page({
         }else{
           that.setData({
             cartList:cartlist,
-            cartNum:0
+            cartNum:1
           });
         }
       }
@@ -101,7 +101,7 @@ Page({
           let myhours=mydate.getHours();
           let mytime=mydate.getMinutes();
           var nowtime=new Date("1111/1/1," + myhours + ":" + mytime + ":0");
-          //status：{5：已约满，9：已过期，<5：可预约}（9是前端自定义的）
+          //status：{5：已约满(修改为4)，9：已过期，<5：可预约}（9是前端自定义的）
           //构造day1第一天数据
           var day1List = [];
           for (let d1 = 1; d1 < 25; d1++) {
@@ -110,7 +110,7 @@ Page({
             if(chartime <= 0){//可预约
                day1List.push({'ischoose':false,'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
             }else{//已过期
-                if(that.data.reservetime[0][d1 - 1] == 5){//已过期中属于预约满的情况
+                if(that.data.reservetime[0][d1 - 1] == 4){//已过期中属于预约满的情况
                    day1List.push({'ischoose':false,'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':that.data.reservetime[0][d1 - 1]});
                 }else{
                    day1List.push({'ischoose':false,'showSelect':that.data.tabInfo[0].date+' '+sepcificTimeArr[d1 - 1], 'day': 1, 'time': d1, 'showtime':sepcificTimeArr[d1 - 1], 'status':9});
@@ -120,25 +120,25 @@ Page({
           //构造day2第二天数据
           var day2List = [];
           for (let d2 = 1; d2 < 25; d2++) {
-              day2List.push({'showSelect':that.data.tabInfo[1].date+' '+sepcificTimeArr[d2 - 1], 'day': 2, 'time': d2, 'showtime':sepcificTimeArr[d2 - 1], 'status':that.data.reservetime[1][d2 - 1]});
+              day2List.push({'ischoose':false,'showSelect':that.data.tabInfo[1].date+' '+sepcificTimeArr[d2 - 1], 'day': 2, 'time': d2, 'showtime':sepcificTimeArr[d2 - 1], 'status':that.data.reservetime[1][d2 - 1]});
             
           }
           //构造day3第三天数据
           var day3List = [];
           for (let d3 = 1; d3 < 25; d3++) {
-              day3List.push({'showSelect':that.data.tabInfo[2].date+' '+sepcificTimeArr[d3 - 1], 'day': 3, 'time': d3, 'showtime':sepcificTimeArr[d3 - 1], 'status':that.data.reservetime[2][d3 - 1]});
+              day3List.push({'ischoose':false,'showSelect':that.data.tabInfo[2].date+' '+sepcificTimeArr[d3 - 1], 'day': 3, 'time': d3, 'showtime':sepcificTimeArr[d3 - 1], 'status':that.data.reservetime[2][d3 - 1]});
             
           }
           //构造day4第四天数据
           var day4List = [];
           for (let d4 = 1; d4 < 25; d4++) {
-              day4List.push({'showSelect':that.data.tabInfo[3].date+' '+sepcificTimeArr[d4 - 1], 'day': 4, 'time': d4, 'showtime':sepcificTimeArr[d4 - 1], 'status':that.data.reservetime[3][d4 - 1]});
+              day4List.push({'ischoose':false,'showSelect':that.data.tabInfo[3].date+' '+sepcificTimeArr[d4 - 1], 'day': 4, 'time': d4, 'showtime':sepcificTimeArr[d4 - 1], 'status':that.data.reservetime[3][d4 - 1]});
             
           }
           //构造day5第五天数据
           var day5List = [];
           for (let d5 = 1; d5 < 25; d5++) {
-              day5List.push({'showSelect':that.data.tabInfo[4].date+' '+sepcificTimeArr[d5 - 1], 'day': 5, 'time': d5, 'showtime':sepcificTimeArr[d5 - 1], 'status':that.data.reservetime[4][d5 - 1]});
+              day5List.push({'ischoose':false,'showSelect':that.data.tabInfo[4].date+' '+sepcificTimeArr[d5 - 1], 'day': 5, 'time': d5, 'showtime':sepcificTimeArr[d5 - 1], 'status':that.data.reservetime[4][d5 - 1]});
             
           }
           that.setData({
@@ -223,7 +223,7 @@ Page({
     let time = e.currentTarget.dataset.time;
     let status = e.currentTarget.dataset.status;
     let showSelect = e.currentTarget.dataset.showselect;
-    if(status >= 5){//当前时间不可选
+    if(status >= 4){//当前时间不可选
         return;
     }else{
       switch (currentDay) {

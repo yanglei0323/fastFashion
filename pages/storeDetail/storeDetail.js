@@ -9,6 +9,7 @@ Page({
    */
   data: {
     hasMask:false,
+    storeid:0,
     storeInfo:[],
     imgUrls: [],
     star:0,
@@ -28,6 +29,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     let id = options.storeId;
+    that.setData({
+      storeid:id
+    });
+    that.init();
+  },
+  init:function (){
+    var that = this;
     wx.showLoading({
       title: '加载中',
     });
@@ -39,7 +47,7 @@ Page({
           'sessionid':app.globalData.sessionId
       },
       data:{
-        storeid:id,
+        storeid:that.data.storeid,
         positionx:app.globalData.positionx,
         positiony:app.globalData.positiony
       },
@@ -73,7 +81,6 @@ Page({
         that.getCartInfo();
       }
     });
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -86,7 +93,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    that.init();
   },
 
   /**

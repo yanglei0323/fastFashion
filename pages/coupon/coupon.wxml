@@ -7,7 +7,7 @@
 				<text>￥{{item.price}}</text>
 				<text class="coupon-cond">满{{item.scoreprice}}使用</text>
 			</view>
-			<view class="coupon-right" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
+			<view class="coupon-right" data-price="{{item.price}}" data-id="{{item.id}}" data-name="{{item.typeString}}" bindtap="chooseCoupon">
 				<view>
 					<text class="coupon-lab">悦券</text>
 					<text>全品类（特例商品除外）</text>
