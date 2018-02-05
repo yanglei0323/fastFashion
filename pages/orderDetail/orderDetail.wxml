@@ -48,7 +48,13 @@
     	<text class="ft-24 color-999 mt-30">付款时间：{{orderDetail.time}}</text>
     	<text class="ft-24 color-999 mt-30">支付方式：{{orderDetail.payway}}</text>
     </view>
-
+    <view class="previewImage-box" wx:if="{{showImage}}">
+        <view class="previewImage-cont">
+            <image src="{{orderDetail.qrcodeurl}}" class="qrcode-img"></image>
+            <view class="previewImage-msg">服务时向发型师出示此二维码</view>
+            <view class="previewImage-btn" bindtap="previewImage">已验票，关闭</view>
+        </view>
+    </view>
     <view class="fixed-box bg-fff" wx:if="{{orderDetail.stateflag == 1}}">
     	<view class="fixed-left" bindtap="refund">申请退款</view>
     	<view class="fixed-right bg-light" wx:if="{{orderDetail.timechangeflag == 0}}" bindtap="appointment">修改时间</view>

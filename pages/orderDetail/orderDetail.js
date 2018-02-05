@@ -9,7 +9,8 @@ Page({
    */
   data: {
     orderDetail:[],
-    orderid:''
+    orderid:'',
+    showImage:false
   }, 
   /**
    * 生命周期函数--监听页面加载
@@ -101,12 +102,9 @@ Page({
   },
   previewImage:function (){
     var that = this;
-    let urls = [];
-    urls.push(that.data.orderDetail.qrcodeurl);
-    wx.previewImage({
-      // current: '', // 当前显示图片的http链接
-      urls: urls // 需要预览的图片http链接列表
-    })
+    that.setData({
+      showImage:!that.data.showImage
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

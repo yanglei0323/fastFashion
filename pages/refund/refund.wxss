@@ -44,10 +44,11 @@
 	width:420rpx;
 	height:88rpx;
 	border:1rpx solid #f6838d;
+	background:#f6838d;
 	border-radius:5rpx;
 	font-size:28rpx;
 	line-height:86rpx;
 	text-align:center;
-	color:#f6838d;
+	color:#fff;
 	margin:60rpx auto 0;
 }
