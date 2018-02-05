@@ -66,5 +66,17 @@ YUE时尚小程序wxapp
 	  }
 	}) 
 ```
+	目前项目中使用bindinput：
+```html
+	<input placeholder="请输入验证码" maxlength="6" type="number" placeholder-class="placeholder" bindinput ="codeInput"/>
+```	
+```js
+	codeInput:function (e){
+        var that = this;
+        that.setData({
+        	codeNum: e.detail.value
+        })
+    }
+```
 - 12、bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以阻止冒泡事件向上冒泡。
 - 13、同问题8，如果较为复杂，那么我目前选择放在onShow（）里面执行；
