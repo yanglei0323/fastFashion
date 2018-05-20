@@ -1,1 +1,1 @@
-module.exports="https://ttapi.yueyishujia.com/yuefashion"
+module.exports="https://api.yueyishujia.com/yuefashion"
