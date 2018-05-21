@@ -53,7 +53,7 @@ Page({
     });
     if(that.data.couponId == 0){//没选优惠券
       wx.request({
-        url: bsurl + '/pay/getpingcharge.json',
+        url: bsurl + '/pay/prepay.json',
         method: 'POST',
         header: {
             'content-type': 'application/x-www-form-urlencoded',
@@ -61,10 +61,10 @@ Page({
         },
         data:{
           orderid:that.data.orderInfo.id,
-          channel:'wx_lite'
+          type:'xcx'
         },
         success: function (res) {
-          // console.log(res);
+          console.log(res);
           wx.hideLoading();
           if(res.data.code == 1){
             pingpp.createPayment(JSON.stringify(res.data.data), function(result, err) {

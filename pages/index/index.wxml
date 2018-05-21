@@ -16,7 +16,7 @@
     <!-- 门店列表 -->
     <view>
         <block wx:for="{{storelsit}}" wx:key="index">
-        	<view class="store-list" bindtap="toStoreDetail" data-id="{{item.id}}">
+        	<view class="store-list" bindtap="toStoreDetail" data-id="{{item.id}}" data-flag="{{item.onlineflag}}" wx:if="{{item.topflag == 1}}">
             	<image src="{{item.imgurl}}" class="store-img"></image>
             	<text class="store-title strong">{{item.name}}</text>
             	<view class="store-md-msg">
@@ -24,6 +24,16 @@
             		<text>{{item.distance}}</text>
             	</view>
         	</view>
+        </block>
+        <block wx:for="{{storelsit}}" wx:key="index">
+            <view class="store-list" bindtap="toStoreDetail" data-id="{{item.id}}" data-flag="{{item.onlineflag}}" wx:if="{{item.topflag == 0}}">
+                <image src="{{item.imgurl}}" class="store-img"></image>
+                <text class="store-title strong">{{item.name}}</text>
+                <view class="store-md-msg">
+                    <text>{{item.location}}</text>
+                    <text>{{item.distance}}</text>
+                </view>
+            </view>
         </block>
         <image src="../../assets/icons/loading.gif" class="loading-icon" wx:if="{{loading}}"></image>
     </view>

@@ -57,6 +57,7 @@ Page({
             positiony:app.globalData.positiony
           },
           success: function (res) {
+            console.log(res);
             let storelsit=res.data.data.storelsit;
             for(let item of storelsit){
                 item.imgurl = imgpath + item.imgurl;
@@ -151,8 +152,18 @@ Page({
   },
   toStoreDetail: function (e){
     let storId = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../storeDetail/storeDetail?storeId='+storId
-    })
+    let onlineflag = e.currentTarget.dataset.flag;
+    if(onlineflag == 1){
+      wx.navigateTo({
+        url: '../storeDetail/storeDetail?storeId='+storId
+      })
+    }else{
+      wx.showToast({
+        title: '即将开通',
+        icon: 'none',
+        duration: 1500
+      })
+    }
+    
   }
 })
