@@ -83,7 +83,11 @@
         </view>
     </view>
 
-    <template is="tocall" />
+    <!-- <template is="tocall" /> -->
+    <view class="contact-us">
+        <text class="light">客服电话：{{storeInfo.telephone}}</text>
+        <text>营业时间：{{storeInfo.servicetime}}</text>
+    </view>
 
     <!--购物车-->
     <view class="mask" wx:if="{{hasMask}}" bindtap="hideMask">

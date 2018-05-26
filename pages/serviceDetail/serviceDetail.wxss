@@ -16,7 +16,7 @@
     background:#fff;
 }
 .service-title{
-    height:208rpx;
+    height:176rpx;
     width:100%;
     display:flex;
     flex-direction:column;

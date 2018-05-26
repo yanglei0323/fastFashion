@@ -16,7 +16,8 @@ Page({
     interval: 3000, //自动切换时间间隔,3s
     duration: 800, //  滑动动画时长1s
     imgUrls: [],
-    itemUrls:[]
+    itemUrls:[],
+    detailimgurl:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -38,7 +39,9 @@ Page({
         serviceid:id
       },
       success: function (res) {
+        console.log(res);
         let serviceInfo = res.data.data;
+        let detailimgurl=imgpath+serviceInfo.detailimgurl;
         let imgarray = [];
         for(let item of serviceInfo.imgarray){
             item = imgpath + item;
@@ -54,7 +57,29 @@ Page({
           serviceInfo:serviceInfo,
           imgUrls:imgarray,
           itemUrls:itemlist,
-          storeId:storeId
+          storeId:storeId,
+          detailimgurl:detailimgurl
+        });
+      }
+    });
+
+    // --------
+    wx.request({//获取门店详情
+      url: bsurl + '/home/storedetail.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      data:{
+        storeid:storeId,
+        positionx:app.globalData.positionx,
+        positiony:app.globalData.positiony
+      },
+      success: function (res) {
+        let storeInfo = res.data.data;
+        that.setData({
+          storeInfo:storeInfo
         });
       }
     });
@@ -150,7 +175,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this;
+    wx.request({
+      url: bsurl + '/user/mine.json',
+      method: 'POST',
+      header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'sessionid':app.globalData.sessionId
+      },
+      success: function (res) {
+        if(res.data.code == 2){//初次登录且未绑定手机号 
+          wx.redirectTo({
+            url: '../setupTel/setupTel?type=1' 
+          })
+        }
+      }
+    });
   },
 
   /**

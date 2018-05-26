@@ -57,7 +57,7 @@ Page({
             positiony:app.globalData.positiony
           },
           success: function (res) {
-            console.log(res);
+            // console.log(res);
             let storelsit=res.data.data.storelsit;
             for(let item of storelsit){
                 item.imgurl = imgpath + item.imgurl;

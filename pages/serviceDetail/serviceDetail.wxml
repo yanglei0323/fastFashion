@@ -12,7 +12,7 @@
     </view>
     <view class="service-title bg-fff">
         <text class="mt-60 item-title strong">{{serviceInfo.name}}</text>
-        <text class="mt-20 item-cont">{{serviceInfo.info}}</text>
+        <!-- <text class="mt-20 item-cont">{{serviceInfo.info}}</text> -->
         <text class="mt-15">
             <text class="item-title strong">￥{{serviceInfo.price}}</text>
             <text class="item-cont ml-20 through">￥{{serviceInfo.originalprice}}</text>
@@ -25,12 +25,13 @@
             <view class="strong">服务详情</view>
         </view>
     </view>
-    <block wx:for="{{itemUrls}}" wx:key="{{index}}">
+    <!-- <block wx:for="{{itemUrls}}" wx:key="{{index}}">
         <view class="service-cell pl-108 bg-fff">
             <image src="{{item.imgurl}}" class="service-icon"></image>
             <text class="service-info color-666">{{item.name}}</text>
         </view>
-    </block>
+    </block> -->
+    <image src="{{detailimgurl}}" mode="widthFix" style="width:100%;"></image>
 
     <!--用户须知-->
     <view class="cell-box mt-10">
@@ -42,7 +43,11 @@
         <text>{{serviceInfo.notice}}</text>
     </view>
 
-    <template is="tocall" />
+    <!-- <template is="tocall" /> -->
+    <view class="contact-us">
+        <text class="light">客服电话：{{storeInfo.telephone}}</text>
+        <text>营业时间：{{storeInfo.servicetime}}</text>
+    </view>
 
     <!--底部-->
     <view class="fixedbtn-box bg-fff"> 

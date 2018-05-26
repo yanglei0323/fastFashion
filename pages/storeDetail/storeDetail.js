@@ -53,7 +53,7 @@ Page({
       },
       success: function (res) {
         let storeInfo = res.data.data;
-        // console.log(res);
+        console.log(res);
         let imgarray = [];
         for(let item of res.data.data.imgarray){
             item = imgpath + item;

@@ -38,6 +38,25 @@ App({
       success: res => {
           that.globalData.wxCode = res.code;//存储code以备后续使用
           wx.setStorageSync('wxCode',res.code);
+          // console.log(res.code);
+          // wx.request({
+          //     url: bsurl + '/user/wxpublogin.json',
+          //     method: 'POST',
+          //     header: {
+          //         'content-type': 'application/x-www-form-urlencoded' // 默认值
+          //     },
+          //     data:{
+          //       code:that.globalData.wxCode
+          //     },
+          //     success: function (res) {
+          //       console.log(res);
+          //       that.globalData.userInfo = res.data.data;
+          //       wx.setStorageSync('userInfo',res.data.data);
+          //       that.globalData.sessionId = res.data.data.sessionid;
+          //       wx.setStorageSync('sessionId',res.data.data.sessionid);
+          //       that.confirmPhone();
+          //     }
+          // })
           wx.getUserInfo({
             success: function(res) {
               var userInfo = res.userInfo;

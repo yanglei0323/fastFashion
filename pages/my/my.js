@@ -31,7 +31,7 @@ Page({
           'sessionid':app.globalData.sessionId
       },
       success: function (res) {
-        // console.log(res);
+        console.log(res);
         that.setData({
           userInfo:res.data.data
         });
@@ -89,12 +89,12 @@ Page({
   },
   makecall: function (){
     wx.showActionSheet({
-      itemList: ['010-85611588', '呼叫'],
+      itemList: ['56855808', '呼叫'],
       itemColor:'#333',
       success: function(res) {
         if(res.tapIndex == 1){
             wx.makePhoneCall({
-              phoneNumber: '01085611588' 
+              phoneNumber: '56855808' 
             })
         }
       },

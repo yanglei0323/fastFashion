@@ -32,5 +32,9 @@
             <view>关于快时尚</view>
         </view>
     </view>
-    <template is="tocall" />
+    <!-- <template is="tocall" /> -->
+    <view class="contact-us">
+        <text class="light">客服电话：{{userInfo.servicetel}}</text>
+        <text>营业时间：{{userInfo.servicetime}}</text>
+    </view>
 </view>

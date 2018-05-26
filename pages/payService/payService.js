@@ -67,9 +67,13 @@ Page({
           console.log(res);
           wx.hideLoading();
           if(res.data.code == 1){
-            pingpp.createPayment(JSON.stringify(res.data.data), function(result, err) {
-              if (result=="success") {
-                // payment succeeded
+            wx.requestPayment({
+             'timeStamp': res.data.data.timeStamp.toString(),
+             'nonceStr': res.data.data.nonceStr,
+             'package': res.data.data.package,
+             'signType': 'MD5',
+             'paySign': res.data.data.paySign,
+             'success':function(res){
                 wx.showToast({
                   title: '支付成功',
                   icon: 'success',
@@ -81,8 +85,9 @@ Page({
                     url: '../orderDetail/orderDetail?orderid='+that.data.orderid
                   })
                 }, 1000);
-              } else {
-                // console.log(result+" "+err.msg+" "+err.extra);
+             },
+             'fail':function(res){
+                console.log(res);
                 wx.showModal({
                   title: '温馨提示',
                   content: '支付失败，请稍后再试！',
@@ -91,8 +96,9 @@ Page({
                   success: function(res) {
                   }
                 })
-              }
-            });
+             }
+            })
+            
           }else{
             wx.showModal({
               title: '温馨提示',
@@ -134,7 +140,7 @@ Page({
                   }, 1000);
               }else{
                   wx.request({
-                    url: bsurl + '/pay/getpingcharge.json',
+                    url: bsurl + '/pay/prepay.json',
                     method: 'POST',
                     header: {
                         'content-type': 'application/x-www-form-urlencoded',
@@ -142,38 +148,44 @@ Page({
                     },
                     data:{
                       orderid:that.data.orderInfo.id,
-                      channel:'wx_lite'
+                      type:'xcx'
                     },
                     success: function (res) {
+                      console.log(res);
                       wx.hideLoading();
-                      // console.log(res);
                       if(res.data.code == 1){
-                          pingpp.createPayment(JSON.stringify(res.data.data), function(result, err) {
-                            if (result=="success") {
-                              // payment succeeded
-                              wx.showToast({
-                                title: '支付成功',
-                                icon: 'success',
-                                duration: 1000
-                              });
-                              app.globalData.refreshFlag = true;
-                              setTimeout(function(){
-                                wx.redirectTo({
-                                  url: '../orderDetail/orderDetail?orderid='+that.data.orderid
-                                });
-                              }, 1000);
-                            } else {
-                              // console.log(result+" "+err.msg+" "+err.extra);
-                              wx.showModal({
-                                title: '温馨提示',
-                                content: '支付失败，请稍后再试！',
-                                showCancel:false,
-                                confirmColor:'#f6838d',
-                                success: function(res) {
-                                }
+                        wx.requestPayment({
+                         'timeStamp': res.data.data.timeStamp.toString(),
+                         'nonceStr': res.data.data.nonceStr,
+                         'package': res.data.data.package,
+                         'signType': 'MD5',
+                         'paySign': res.data.data.paySign,
+                         'success':function(res){
+                            wx.showToast({
+                              title: '支付成功',
+                              icon: 'success',
+                              duration: 1000
+                            });
+                            app.globalData.refreshFlag = true;
+                            setTimeout(function(){
+                              wx.redirectTo({
+                                url: '../orderDetail/orderDetail?orderid='+that.data.orderid
                               })
-                            }
-                          });
+                            }, 1000);
+                         },
+                         'fail':function(res){
+                            console.log(res);
+                            wx.showModal({
+                              title: '温馨提示',
+                              content: '支付失败，请稍后再试！',
+                              showCancel:false,
+                              confirmColor:'#f6838d',
+                              success: function(res) {
+                              }
+                            })
+                         }
+                        })
+                        
                       }else{
                         wx.showModal({
                           title: '温馨提示',
