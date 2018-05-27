@@ -29,7 +29,7 @@
     		<text class="ft-24 color-999 mt-30">{{orderDetail.store.name}}</text>
     		<text class="ft-24 color-999 mt-30">
     			<block wx:for="{{orderDetail.serviceArray}}" wx:key="{{index}}">
-			        <text> {{item.name}}</text>
+			        <text> {{item.name}}x{{item.num}}</text>
 			    </block>
     		</text>
     		<text class="ft-24 color-999 mt-30">￥{{orderDetail.actualprice}}</text>

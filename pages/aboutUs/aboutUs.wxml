@@ -1,0 +1,4 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view>
+	<image src="../../assets/images/yue.jpg" class="about-us" mode="widthFix"></image>
+</view>

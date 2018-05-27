@@ -102,5 +102,12 @@ Page({
         // console.log(res.errMsg)
       }
     })
+  },
+  aboutUs:function(){
+    wx.navigateTo({
+      url: '/pages/aboutUs/aboutUs'
+    })
   }
+    
+
 })

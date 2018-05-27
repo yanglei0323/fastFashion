@@ -27,14 +27,14 @@
             <navigator url="../setup/setup" hover-class="navigator-hover">个人设置</navigator>
         </view>
     </view>
-    <view class="cell-box mt-10">
+    <view class="cell-box mt-10" bindtap="aboutUs">
         <view class="cell-manage">
-            <view>关于快时尚</view>
+            <view>关于YUE时尚</view>
         </view>
     </view>
     <!-- <template is="tocall" /> -->
     <view class="contact-us">
-        <text class="light">客服电话：{{userInfo.servicetel}}</text>
         <text>营业时间：{{userInfo.servicetime}}</text>
+        <text class="light">客服电话：{{userInfo.servicetel}}</text>
     </view>
 </view>

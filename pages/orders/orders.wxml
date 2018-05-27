@@ -22,7 +22,7 @@
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
 				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
-				    				<text>{{service.name}}、</text>
+				    				<text>{{service.name}}x{{service.num}}、</text>
 				    			</block>
 				    		</text>
 				    		<text class="store-text">服务门店：{{item.store.name}}</text>
@@ -66,7 +66,7 @@
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
 				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
-				    				<text>{{service.name}}、</text>
+				    				<text>{{service.name}}x{{service.num}}、</text>
 				    			</block>
 				    		</text>
 				    		<text class="store-text">服务门店：{{item.store.name}}</text>
@@ -105,7 +105,7 @@
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
 				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
-				    				<text>{{service.name}}、</text>
+				    				<text>{{service.name}}x{{service.num}}、</text>
 				    			</block>
 				    		</text>
 				    		<text class="store-text">服务门店：{{item.store.name}}</text>
@@ -143,7 +143,7 @@
 				    		<text class="project-name strong">
 				    			<text>服务项目：</text>
 				    			<block wx:for="{{item.serviceArray}}" wx:key="{{index}}" wx:for-item="service">
-				    				<text>{{service.name}}、</text>
+				    				<text>{{service.name}}x{{service.num}}、</text>
 				    			</block>
 				    		</text>
 				    		<text class="store-text">服务门店：{{item.store.name}}</text>

@@ -20,7 +20,8 @@
     "pages/orderDetail/orderDetail",
     "pages/appointChange/appointChange",
     "pages/refund/refund",
-    "pages/refundSuc/refundSuc"
+    "pages/refundSuc/refundSuc",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "navigationBarTitleText": "YUE时尚-臻选您的美丽",
